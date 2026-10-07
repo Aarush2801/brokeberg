@@ -1,0 +1,7 @@
+.env
+keys-scratch.txt
+__pycache__/
+*.pyc
+.venv/
+node_modules/
+.vcr_cassettes/
