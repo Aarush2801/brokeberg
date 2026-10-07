@@ -148,6 +148,16 @@ class EdgeType(StrEnum):
     CORRELATES_WITH = "CORRELATES_WITH"
 
 
+class EventLinkType(StrEnum):
+    """Event -> event links between clusters (`event_links`). Temporal sequence, never causation.
+
+    Separate from `EdgeType` so the entity-edge extraction schema is unaffected.
+    """
+
+    FOLLOWS = "FOLLOWS"
+    RESPONDS_TO = "RESPONDS_TO"
+
+
 class VerificationStatus(StrEnum):
     UNVERIFIED = "unverified"
     SINGLE_SOURCE = "single_source"
@@ -167,5 +177,6 @@ ALL_ENUMS: tuple[type[StrEnum], ...] = (
     SourceType,
     TrustTier,
     EdgeType,
+    EventLinkType,
     VerificationStatus,
 )

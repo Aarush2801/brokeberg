@@ -39,6 +39,20 @@ class Settings(BaseSettings):
     embed_model: str = "BAAI/bge-large-en-v1.5"
     embed_dim: int = 1024
 
+    # Clustering (pass 6). Cosine similarities on bge-large; initial values from the fixture corpus,
+    # to be re-tuned on real data. >= t_high (with entity overlap) attaches, < t_low starts a new
+    # cluster, the band between gets one LLM tiebreak.
+    cluster_t_high: float = 0.85
+    cluster_t_low: float = 0.70
+    cluster_window_hours: float = 48
+    cluster_min_entity_overlap: int = 1
+    cluster_knn: int = 10
+    # Related events: prior/later cluster heads sharing an entity, centroid cosine >= min_sim.
+    # Senate votes share ~100 voters, so the entity filter is weak there; at 0.60 unrelated votes
+    # linked on the dev corpus, while true follow-ons (successive cloture votes) scored >= 0.75.
+    related_window_days: float = 30
+    related_min_sim: float = 0.70
+
     # AWS
     aws_region: str | None = None
     s3_raw_bucket: str | None = None

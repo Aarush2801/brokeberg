@@ -36,6 +36,7 @@ from brokeberg.db.base import Base
 from brokeberg.taxonomy import (
     EdgeType,
     EntityType,
+    EventLinkType,
     EventType,
     RaceRating,
     RaceType,
@@ -77,6 +78,7 @@ ENUM_CHECKS: dict[str, type[StrEnum]] = {
     "trust_tier": TrustTier,
     "stance": Stance,
     "edge_type": EdgeType,
+    "event_link_type": EventLinkType,
     "race_type": RaceType,
     "race_rating": RaceRating,
     "review_kind": ReviewKind,
@@ -163,6 +165,11 @@ class Entity(Base):
 
 
 class Event(Base):
+    """A member event (one per extracted raw item) or a cluster head (the event object).
+
+    A head has `cluster_id = id`; a member points `cluster_id` at its head; NULL = unclustered.
+    """
+
     __tablename__ = "events"
     __table_args__ = (
         _unit_range("confidence"),
@@ -172,7 +179,9 @@ class Event(Base):
     )
 
     id: Mapped[int] = _pk()
-    cluster_id: Mapped[int | None] = mapped_column(BigInteger, index=True)
+    cluster_id: Mapped[int | None] = mapped_column(
+        BigInteger, ForeignKey("events.id", ondelete="SET NULL"), index=True
+    )
     event_type: Mapped[EventType] = mapped_column(_enum(EventType, "event_type"), nullable=False)
     headline: Mapped[str] = mapped_column(Text, nullable=False)
     what_happened: Mapped[str | None] = mapped_column(Text)
@@ -193,6 +202,8 @@ class Event(Base):
     )
     # A jurisdiction canonical ID (`fips:13`) or 'federal'.
     jurisdiction: Mapped[str | None] = mapped_column(Text)
+    # Heads only: hash of member ids + synthesis version; unchanged -> skip re-materializing.
+    cluster_hash: Mapped[str | None] = mapped_column(Text)
 
 
 class EventSource(Base):
@@ -342,14 +353,57 @@ class PollAverage(Base):
 
 
 class EventEmbedding(Base):
-    """ANN index (ivfflat/hnsw) is deliberately deferred until there is data to tune it on."""
+    """One vector per member event. Heads are never embedded; similarity runs over members.
+
+    HNSW (cosine), not ivfflat: HNSW needs no training pass, so it is correct on an empty and
+    growing table, and has better recall/latency. ivfflat's `lists` must be tuned on existing data.
+    """
 
     __tablename__ = "event_embeddings"
+    __table_args__ = (
+        Index(
+            "ix_event_embeddings_embedding_hnsw",
+            "embedding",
+            postgresql_using="hnsw",
+            postgresql_with={"m": 16, "ef_construction": 64},
+            postgresql_ops={"embedding": "vector_cosine_ops"},
+        ),
+    )
 
     event_id: Mapped[int] = mapped_column(
         ForeignKey("events.id", ondelete="CASCADE"), primary_key=True
     )
     embedding: Mapped[list[float]] = mapped_column(Vector(EMBED_DIM), nullable=False)
+    # NULL / a different model than configured -> stale, re-embedded.
+    embed_model: Mapped[str | None] = mapped_column(Text)
+    text_hash: Mapped[str | None] = mapped_column(Text)
+
+
+class EventLink(Base):
+    """A link between two cluster heads: `src` came after `dst`. Never causal."""
+
+    __tablename__ = "event_links"
+    __table_args__ = (
+        _unit_range("confidence"),
+        CheckConstraint("src_event <> dst_event", name="no_self_loop"),
+        UniqueConstraint(
+            "src_event", "relation", "dst_event", name="uq_event_links_src_relation_dst"
+        ),
+    )
+
+    id: Mapped[int] = _pk()
+    src_event: Mapped[int] = mapped_column(
+        ForeignKey("events.id", ondelete="CASCADE"), nullable=False, index=True
+    )
+    relation: Mapped[EventLinkType] = mapped_column(
+        _enum(EventLinkType, "event_link_type"), nullable=False
+    )
+    dst_event: Mapped[int] = mapped_column(
+        ForeignKey("events.id", ondelete="CASCADE"), nullable=False, index=True
+    )
+    rationale: Mapped[str | None] = mapped_column(Text)
+    confidence: Mapped[float] = mapped_column(Float, nullable=False)
+    created_at: Mapped[datetime] = _created_at()
 
 
 class ReviewQueue(Base):

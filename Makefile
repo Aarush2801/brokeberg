@@ -7,4 +7,5 @@ eval:        ; cd pipeline && uv run python -m brokeberg.eval.run $(ARGS)
 lint:        ; cd pipeline && uv run ruff check . && uv run mypy brokeberg
 ingest-once: ; cd pipeline && uv run python -m brokeberg.ingest.run_once $(if $(REPLAY),--replay,)
 extract:     ; cd pipeline && uv run python -m brokeberg.extract.run $(ARGS)
+cluster:     ; cd pipeline && uv run python -m brokeberg.cluster.run $(ARGS)
 web:         ; cd web && npm run dev
