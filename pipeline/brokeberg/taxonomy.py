@@ -89,12 +89,13 @@ class RaceType(StrEnum):
 
 
 class RaceRating(StrEnum):
-    """{Safe, Likely, Lean, Tossup} x {D, R}."""
+    """{Safe, Likely, Lean, Tossup} x {D, R}, plus a pure Toss-up when the rater gives no tilt."""
 
     SAFE_D = "safe_d"
     LIKELY_D = "likely_d"
     LEAN_D = "lean_d"
     TOSSUP_D = "tossup_d"
+    TOSSUP = "tossup"
     TOSSUP_R = "tossup_r"
     LEAN_R = "lean_r"
     LIKELY_R = "likely_r"

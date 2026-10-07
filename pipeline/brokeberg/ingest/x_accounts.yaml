@@ -1,0 +1,24 @@
+# Curated X accounts (<= 20): both senators from each MVP race state.
+# user_id comes from unitedstates/congress-legislators (legislators-social-media.json), so no
+# billed X lookups are needed. Entries with user_id: null are skipped until an ID is added.
+accounts:
+  - {handle: LisaMurkowski, user_id: "18061669", bioguide: M001153}
+  - {handle: SenDanSullivan, user_id: "2891210047", bioguide: S001198}
+  - {handle: SenOssoff, user_id: "1356714265894408196", bioguide: O000174}
+  - {handle: SenatorWarnock, user_id: "1352287997853622273", bioguide: W000790}
+  - {handle: SenJoniErnst, user_id: "2856787757", bioguide: E000295}
+  - {handle: ChuckGrassley, user_id: "10615232", bioguide: G000386}
+  - {handle: SenatorCollins, user_id: "19726613", bioguide: C001035}
+  - {handle: SenAngusKing, user_id: "1068481578", bioguide: K000383}
+  - {handle: SenGaryPeters, user_id: "236511574", bioguide: P000595}
+  - {handle: RepSlotkin, user_id: "1078401427347857408", bioguide: S001208}
+  - {handle: SenAmyKlobuchar, user_id: "22044727", bioguide: K000367}
+  - {handle: SenTinaSmith, user_id: "941000686275387392", bioguide: S001203}
+  - {handle: RepTedBudd, user_id: "817138492614524928", bioguide: B001305}
+  - {handle: SenThomTillis, user_id: "2964174789", bioguide: T000476}
+  - {handle: SenatorHassan, user_id: "946549322", bioguide: H001076}
+  - {handle: SenatorShaheen, user_id: "109287731", bioguide: S001181}
+  - {handle: JohnCornyn, user_id: "13218102", bioguide: C001056}
+  - {handle: SenTedCruz, user_id: "1074480192", bioguide: C001098}
+  - {handle: null, user_id: null, bioguide: H001104}  # Husted: no public X ID yet
+  - {handle: berniemoreno, user_id: null, bioguide: M001242}  # Moreno: no public X ID yet

@@ -25,6 +25,7 @@ def _senator(rec: dict[str, Any], social: dict[str, dict[str, Any]]) -> dict[str
     bioguide = rec["id"]["bioguide"]
     return {
         "bioguide": bioguide,
+        "lis": rec["id"].get("lis"),
         "fec": rec["id"].get("fec", []),
         "ballotpedia": rec["id"].get("ballotpedia"),
         "first": name["first"],

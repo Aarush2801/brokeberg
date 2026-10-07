@@ -232,13 +232,17 @@ class Edge(Base):
 
 
 class Indicator(Base):
-    """One observation of an economic series (FRED series ID, un-namespaced)."""
+    """One observation of an economic series (FRED series ID, un-namespaced).
+
+    `source` is part of the key: BLS values are stored under the matching FRED series ID as a
+    verification reference, alongside FRED's own value for the same date.
+    """
 
     __tablename__ = "indicators"
 
     series_id: Mapped[str] = mapped_column(String(32), primary_key=True)
     asof: Mapped[date] = mapped_column(Date, primary_key=True)
-    source: Mapped[str] = mapped_column(String(32), nullable=False)
+    source: Mapped[str] = mapped_column(String(32), primary_key=True)
     value: Mapped[Decimal] = mapped_column(Numeric, nullable=False)
 
 
@@ -300,6 +304,8 @@ class PollAverage(Base):
     )
     asof: Mapped[date] = mapped_column(Date, nullable=False)
     source_url: Mapped[str] = mapped_column(Text, nullable=False)
+    # Idempotency key over the source row, so re-ingesting a poll file never double-inserts.
+    content_hash: Mapped[str] = mapped_column(Text, nullable=False, unique=True)
 
 
 class EventEmbedding(Base):

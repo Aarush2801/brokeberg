@@ -1,0 +1,96 @@
+interactions:
+- request:
+    body: '{"seriesid":["CUSR0000SA0","CUSR0000SA0L1E","LNS14000000","CES0000000001","LNS11300000"],"startyear":"2025","endyear":"2026","registrationkey":"REDACTED"}'
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      content-length:
+      - '178'
+      content-type:
+      - application/json
+      host:
+      - api.bls.gov
+      user-agent:
+      - brokeberg/0.1 (political-economic research; +https://github.com/Aarush2801/brokeberg)
+    method: POST
+    uri: https://api.bls.gov/publicAPI/v2/timeseries/data/
+  response:
+    body:
+      string: '{"status":"REQUEST_SUCCEEDED","responseTime":94,"message":[],"Results":{
+
+        "series":
+
+        [{"seriesID":"CUSR0000SA0","data":[{"year":"2026","period":"M08","periodName":"August","latest":"true","value":"334.131","footnotes":[{}]},{"year":"2026","period":"M07","periodName":"July","value":"332.813","footnotes":[{}]},{"year":"2026","period":"M06","periodName":"June","value":"332.568","footnotes":[{}]},{"year":"2026","period":"M05","periodName":"May","value":"333.979","footnotes":[{}]},{"year":"2026","period":"M04","periodName":"April","value":"332.407","footnotes":[{}]},{"year":"2026","period":"M03","periodName":"March","value":"330.293","footnotes":[{}]},{"year":"2026","period":"M02","periodName":"February","value":"327.460","footnotes":[{}]},{"year":"2026","period":"M01","periodName":"January","value":"326.588","footnotes":[{}]},{"year":"2025","period":"M12","periodName":"December","value":"326.031","footnotes":[{}]},{"year":"2025","period":"M11","periodName":"November","value":"325.063","footnotes":[{}]},{"year":"2025","period":"M10","periodName":"October","value":"-","footnotes":[{"code":"X","text":"Data
+        unavailable due to the 2025 lapse in appropriations"}]},{"year":"2025","period":"M09","periodName":"September","value":"324.245","footnotes":[{}]},{"year":"2025","period":"M08","periodName":"August","value":"323.291","footnotes":[{}]},{"year":"2025","period":"M07","periodName":"July","value":"322.169","footnotes":[{}]},{"year":"2025","period":"M06","periodName":"June","value":"321.435","footnotes":[{}]},{"year":"2025","period":"M05","periodName":"May","value":"320.620","footnotes":[{}]},{"year":"2025","period":"M04","periodName":"April","value":"320.302","footnotes":[{}]},{"year":"2025","period":"M03","periodName":"March","value":"319.785","footnotes":[{}]},{"year":"2025","period":"M02","periodName":"February","value":"319.679","footnotes":[{}]},{"year":"2025","period":"M01","periodName":"January","value":"318.961","footnotes":[{}]}]},
+
+        {"seriesID":"CUSR0000SA0L1E","data":[{"year":"2026","period":"M08","periodName":"August","latest":"true","value":"337.765","footnotes":[{}]},{"year":"2026","period":"M07","periodName":"July","value":"336.789","footnotes":[{}]},{"year":"2026","period":"M06","periodName":"June","value":"336.065","footnotes":[{}]},{"year":"2026","period":"M05","periodName":"May","value":"336.121","footnotes":[{}]},{"year":"2026","period":"M04","periodName":"April","value":"335.423","footnotes":[{}]},{"year":"2026","period":"M03","periodName":"March","value":"334.165","footnotes":[{}]},{"year":"2026","period":"M02","periodName":"February","value":"333.512","footnotes":[{}]},{"year":"2026","period":"M01","periodName":"January","value":"332.793","footnotes":[{}]},{"year":"2025","period":"M12","periodName":"December","value":"331.814","footnotes":[{}]},{"year":"2025","period":"M11","periodName":"November","value":"331.043","footnotes":[{}]},{"year":"2025","period":"M10","periodName":"October","value":"-","footnotes":[{"code":"X","text":"Data
+        unavailable due to the 2025 lapse in appropriations"}]},{"year":"2025","period":"M09","periodName":"September","value":"330.418","footnotes":[{}]},{"year":"2025","period":"M08","periodName":"August","value":"329.700","footnotes":[{}]},{"year":"2025","period":"M07","periodName":"July","value":"328.682","footnotes":[{}]},{"year":"2025","period":"M06","periodName":"June","value":"327.658","footnotes":[{}]},{"year":"2025","period":"M05","periodName":"May","value":"326.893","footnotes":[{}]},{"year":"2025","period":"M04","periodName":"April","value":"326.467","footnotes":[{}]},{"year":"2025","period":"M03","periodName":"March","value":"325.690","footnotes":[{}]},{"year":"2025","period":"M02","periodName":"February","value":"325.465","footnotes":[{}]},{"year":"2025","period":"M01","periodName":"January","value":"324.638","footnotes":[{}]}]},
+
+        {"seriesID":"LNS14000000","data":[{"year":"2026","period":"M09","periodName":"September","latest":"true","value":"4.2","footnotes":[{}]},{"year":"2026","period":"M08","periodName":"August","value":"4.1","footnotes":[{}]},{"year":"2026","period":"M07","periodName":"July","value":"4.1","footnotes":[{}]},{"year":"2026","period":"M06","periodName":"June","value":"4.2","footnotes":[{}]},{"year":"2026","period":"M05","periodName":"May","value":"4.3","footnotes":[{}]},{"year":"2026","period":"M04","periodName":"April","value":"4.3","footnotes":[{}]},{"year":"2026","period":"M03","periodName":"March","value":"4.3","footnotes":[{}]},{"year":"2026","period":"M02","periodName":"February","value":"4.4","footnotes":[{}]},{"year":"2026","period":"M01","periodName":"January","value":"4.3","footnotes":[{"code":"12","text":"January
+        2026 estimates were revised to incorporate updated population controls. For
+        more information, see www.bls.gov/cps/documentation.htm#pop."}]},{"year":"2025","period":"M12","periodName":"December","value":"4.4","footnotes":[{}]},{"year":"2025","period":"M11","periodName":"November","value":"4.5","footnotes":[{}]},{"year":"2025","period":"M10","periodName":"October","value":"-","footnotes":[{"code":"9","text":"Data
+        unavailable due to the 2025 lapse in appropriations."}]},{"year":"2025","period":"M09","periodName":"September","value":"4.4","footnotes":[{}]},{"year":"2025","period":"M08","periodName":"August","value":"4.3","footnotes":[{}]},{"year":"2025","period":"M07","periodName":"July","value":"4.3","footnotes":[{}]},{"year":"2025","period":"M06","periodName":"June","value":"4.1","footnotes":[{}]},{"year":"2025","period":"M05","periodName":"May","value":"4.3","footnotes":[{}]},{"year":"2025","period":"M04","periodName":"April","value":"4.2","footnotes":[{}]},{"year":"2025","period":"M03","periodName":"March","value":"4.2","footnotes":[{}]},{"year":"2025","period":"M02","periodName":"February","value":"4.2","footnotes":[{}]},{"year":"2025","period":"M01","periodName":"January","value":"4.0","footnotes":[{}]}]},
+
+        {"seriesID":"CES0000000001","data":[{"year":"2026","period":"M09","periodName":"September","latest":"true","value":"159044","footnotes":[{"code":"P","text":"preliminary"}]},{"year":"2026","period":"M08","periodName":"August","value":"159015","footnotes":[{"code":"P","text":"preliminary"}]},{"year":"2026","period":"M07","periodName":"July","value":"158882","footnotes":[{}]},{"year":"2026","period":"M06","periodName":"June","value":"158892","footnotes":[{}]},{"year":"2026","period":"M05","periodName":"May","value":"158861","footnotes":[{}]},{"year":"2026","period":"M04","periodName":"April","value":"158798","footnotes":[{}]},{"year":"2026","period":"M03","periodName":"March","value":"158650","footnotes":[{}]},{"year":"2026","period":"M02","periodName":"February","value":"158436","footnotes":[{}]},{"year":"2026","period":"M01","periodName":"January","value":"158592","footnotes":[{}]},{"year":"2025","period":"M12","periodName":"December","value":"158432","footnotes":[{}]},{"year":"2025","period":"M11","periodName":"November","value":"158449","footnotes":[{}]},{"year":"2025","period":"M10","periodName":"October","value":"158408","footnotes":[{}]},{"year":"2025","period":"M09","periodName":"September","value":"158548","footnotes":[{}]},{"year":"2025","period":"M08","periodName":"August","value":"158472","footnotes":[{}]},{"year":"2025","period":"M07","periodName":"July","value":"158542","footnotes":[{}]},{"year":"2025","period":"M06","periodName":"June","value":"158478","footnotes":[{}]},{"year":"2025","period":"M05","periodName":"May","value":"158498","footnotes":[{}]},{"year":"2025","period":"M04","periodName":"April","value":"158485","footnotes":[{}]},{"year":"2025","period":"M03","periodName":"March","value":"158377","footnotes":[{}]},{"year":"2025","period":"M02","periodName":"February","value":"158310","footnotes":[{}]},{"year":"2025","period":"M01","periodName":"January","value":"158268","footnotes":[{}]}]},
+
+        {"seriesID":"LNS11300000","data":[{"year":"2026","period":"M09","periodName":"September","latest":"true","value":"61.8","footnotes":[{}]},{"year":"2026","period":"M08","periodName":"August","value":"61.6","footnotes":[{}]},{"year":"2026","period":"M07","periodName":"July","value":"61.4","footnotes":[{}]},{"year":"2026","period":"M06","periodName":"June","value":"61.5","footnotes":[{}]},{"year":"2026","period":"M05","periodName":"May","value":"61.8","footnotes":[{}]},{"year":"2026","period":"M04","periodName":"April","value":"61.8","footnotes":[{}]},{"year":"2026","period":"M03","periodName":"March","value":"61.9","footnotes":[{}]},{"year":"2026","period":"M02","periodName":"February","value":"62.0","footnotes":[{}]},{"year":"2026","period":"M01","periodName":"January","value":"62.1","footnotes":[{"code":"12","text":"January
+        2026 estimates were revised to incorporate updated population controls. For
+        more information, see www.bls.gov/cps/documentation.htm#pop."}]},{"year":"2025","period":"M12","periodName":"December","value":"62.4","footnotes":[{}]},{"year":"2025","period":"M11","periodName":"November","value":"62.5","footnotes":[{}]},{"year":"2025","period":"M10","periodName":"October","value":"-","footnotes":[{"code":"9","text":"Data
+        unavailable due to the 2025 lapse in appropriations."}]},{"year":"2025","period":"M09","periodName":"September","value":"62.5","footnotes":[{}]},{"year":"2025","period":"M08","periodName":"August","value":"62.3","footnotes":[{}]},{"year":"2025","period":"M07","periodName":"July","value":"62.2","footnotes":[{}]},{"year":"2025","period":"M06","periodName":"June","value":"62.3","footnotes":[{}]},{"year":"2025","period":"M05","periodName":"May","value":"62.4","footnotes":[{}]},{"year":"2025","period":"M04","periodName":"April","value":"62.6","footnotes":[{}]},{"year":"2025","period":"M03","periodName":"March","value":"62.5","footnotes":[{}]},{"year":"2025","period":"M02","periodName":"February","value":"62.5","footnotes":[{}]},{"year":"2025","period":"M01","periodName":"January","value":"62.6","footnotes":[{}]}]}]
+
+        }}'
+    headers:
+      access-control-allow-headers:
+      - origin,x-requested-with,access-control-request-headers,content-type,access-control-request-method,accept
+      access-control-allow-origin:
+      - '*'
+      alt-svc:
+      - h3=":443"; ma=93600
+      apc-route-id:
+      - _01_05v
+      cache-control:
+      - max-age=0, no-cache, no-store
+      connection:
+      - keep-alive
+      content-length:
+      - '9922'
+      content-security-policy:
+      - frame-ancestors https://*.bls.gov
+      content-type:
+      - application/json
+      cross-origin-opener-policy:
+      - same-origin
+      date:
+      - Wed, 07 Oct 2026 15:38:06 GMT
+      expires:
+      - Wed, 07 Oct 2026 15:38:06 GMT
+      pool-info:
+      - AP01
+      pragma:
+      - no-cache
+      route-id:
+      - _t8_08v;
+      server-timing:
+      - cdn-cache; desc=MISS
+      - edge; dur=261
+      - origin; dur=124
+      - ak_p; desc="1791387486281_388044814_2458233100_38407_9705_7_19_-";dur=1
+      set-cookie:
+      - JSESSIONID=B49C61584B7A5144E27B53B532DF8A63._t8_08v; Path=/publicAPI; Version=1;
+        Secure; Httponly
+      strict-transport-security:
+      - max-age=31536000 ; includeSubDomains ; preload
+      vary:
+      - Origin, Accept-Encoding
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - ALLOW-FROM https://www.bls.gov
+    status:
+      code: 200
+      message: OK
+version: 1

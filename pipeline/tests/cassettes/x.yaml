@@ -1,0 +1,192 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      authorization:
+      - REDACTED
+      connection:
+      - keep-alive
+      host:
+      - api.x.com
+      user-agent:
+      - brokeberg/0.1 (political-economic research; +https://github.com/Aarush2801/brokeberg)
+    method: GET
+    uri: https://api.x.com/2/users/18061669/tweets?exclude=retweets&max_results=5&start_time=2026-09-30T00%3A00%3A00Z&tweet.fields=created_at%2Cpublic_metrics%2Creferenced_tweets%2Clang
+  response:
+    body:
+      string: "{\"data\":[{\"created_at\":\"2026-10-05T22:52:37.000Z\",\"edit_history_tweet_ids\":[\"2107242586108834095\"],\"id\":\"2107242586108834095\",\"lang\":\"en\",\"public_metrics\":{\"bookmark_count\":1,\"impression_count\":8384,\"like_count\":64,\"quote_count\":1,\"reply_count\":21,\"retweet_count\":5},\"text\":\"Senator
+        Stevens was a tireless champion for Alaska and the men and women who serve
+        our nation, and it was an honor to celebrate his name joining one of the most
+        formidable warships of the 21st century. I know Captain Hays and her crew
+        will proudly carry on Uncle Ted\u2019s legacy of https://t.co/xhfRCiC2iw\"},{\"created_at\":\"2026-10-01T19:14:43.000Z\",\"edit_history_tweet_ids\":[\"2105738197368238324\"],\"id\":\"2105738197368238324\",\"lang\":\"en\",\"public_metrics\":{\"bookmark_count\":3,\"impression_count\":12879,\"like_count\":241,\"quote_count\":2,\"reply_count\":21,\"retweet_count\":13},\"referenced_tweets\":[{\"id\":\"2105295755925745956\",\"type\":\"quoted\"}],\"text\":\"Congrats
+        to Backpack on becoming the 2026 Fat Bear Week Champion and showing the world
+        how Alaskans get through the winter: eating a lot of salmon! https://t.co/1FsxytsNzh\"},{\"created_at\":\"2026-09-30T23:31:15.000Z\",\"edit_history_tweet_ids\":[\"2105440368166596960\"],\"id\":\"2105440368166596960\",\"lang\":\"en\",\"public_metrics\":{\"bookmark_count\":6,\"impression_count\":11318,\"like_count\":84,\"quote_count\":8,\"reply_count\":69,\"retweet_count\":14},\"text\":\"This
+        unprecedented announcement moves our long-sought Alaska natural gas pipeline
+        closer than ever to construction and operation. South Korea\u2019s commitment
+        to invest $54 billion to build the gasline will deliver significant benefits
+        for Alaskans, from good jobs to affordable\"},{\"created_at\":\"2026-09-30T19:08:51.000Z\",\"edit_history_tweet_ids\":[\"2105374331161235848\"],\"id\":\"2105374331161235848\",\"lang\":\"en\",\"public_metrics\":{\"bookmark_count\":10,\"impression_count\":14275,\"like_count\":196,\"quote_count\":6,\"reply_count\":75,\"retweet_count\":28},\"text\":\"On
+        Orange Shirt Day, the National Day of Remembrance for Indian Boarding School
+        Survivors, we honor the children who returned home and remember those who
+        never did. \U0001F9E1 https://t.co/uwLMreGWAE\"}],\"meta\":{\"newest_id\":\"2107242586108834095\",\"oldest_id\":\"2105374331161235848\",\"result_count\":4}}"
+    headers:
+      api-version:
+      - '2.170'
+      cache-control:
+      - no-cache, no-store, max-age=0
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a46e1d61be72cca0-YYZ
+      connection:
+      - keep-alive
+      content-disposition:
+      - attachment; filename=json.json
+      content-length:
+      - '2200'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Wed, 07 Oct 2026 15:59:45 GMT
+      origin-cf-ray:
+      - a46e1d61be72cca0-ATL
+      perf:
+      - '7402827104'
+      server:
+      - cloudflare envoy
+      set-cookie:
+      - guest_id_marketing=v1%3A179138878494791137; Max-Age=63072000; Expires=Fri,
+        06 Oct 2028 15:59:45 GMT; Path=/; Domain=.x.com; Secure; SameSite=None
+      - guest_id_ads=v1%3A179138878494791137; Max-Age=63072000; Expires=Fri, 06 Oct
+        2028 15:59:45 GMT; Path=/; Domain=.x.com; Secure; SameSite=None
+      - personalization_id="v1_LZ2rYWvj6u91YXVHrpOuAA=="; Max-Age=63072000; Expires=Fri,
+        06 Oct 2028 15:59:45 GMT; Path=/; Domain=.x.com; Secure; SameSite=None
+      - guest_id=v1%3A179138878494791137; Max-Age=63072000; Expires=Fri, 06 Oct 2028
+        15:59:45 GMT; Path=/; Domain=.x.com; Secure; SameSite=None
+      - __cf_bm=UKQ..xpJ2tkAq8yesBeH05HKQLHBwhQnR1otdpWNj4c-1791388784.9166017-1.0.1.1-8BfTEF5aZof346u_wlNYuXmUtCZb2mzjkpfxTCHunzjNXcbepD8hbwle2cqxGBvmdjcE.4J2oVYKoc5Kp0G1ZIOECPzCg4W6uxA.x4H069VRHwUqWbuN7FVsd5Bm0uHk;
+        HttpOnly; SameSite=None; Secure; Path=/; Domain=x.com; Expires=Wed, 07 Oct
+        2026 16:29:45 GMT
+      strict-transport-security:
+      - max-age=631138519; includeSubdomains
+      vary:
+      - accept-encoding
+      x-access-level:
+      - read
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-rate-limit-limit:
+      - '10000'
+      x-rate-limit-remaining:
+      - '9998'
+      x-rate-limit-reset:
+      - '1791389222'
+      x-response-time:
+      - '73'
+      x-served-by:
+      - t4_a
+      x-transaction-id:
+      - 2bf5b1997056e3aa
+      x-xss-protection:
+      - '0'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      authorization:
+      - REDACTED
+      connection:
+      - keep-alive
+      cookie:
+      - guest_id_marketing=v1%3A179138878494791137; guest_id_ads=v1%3A179138878494791137;
+        personalization_id="v1_LZ2rYWvj6u91YXVHrpOuAA=="; guest_id=v1%3A179138878494791137;
+        __cf_bm=UKQ..xpJ2tkAq8yesBeH05HKQLHBwhQnR1otdpWNj4c-1791388784.9166017-1.0.1.1-8BfTEF5aZof346u_wlNYuXmUtCZb2mzjkpfxTCHunzjNXcbepD8hbwle2cqxGBvmdjcE.4J2oVYKoc5Kp0G1ZIOECPzCg4W6uxA.x4H069VRHwUqWbuN7FVsd5Bm0uHk
+      host:
+      - api.x.com
+      user-agent:
+      - brokeberg/0.1 (political-economic research; +https://github.com/Aarush2801/brokeberg)
+    method: GET
+    uri: https://api.x.com/2/users/2891210047/tweets?exclude=retweets&max_results=5&start_time=2026-09-30T00%3A00%3A00Z&tweet.fields=created_at%2Cpublic_metrics%2Creferenced_tweets%2Clang
+  response:
+    body:
+      string: "{\"data\":[{\"created_at\":\"2026-10-06T23:59:40.000Z\",\"edit_history_tweet_ids\":[\"2107621847928029445\"],\"id\":\"2107621847928029445\",\"lang\":\"en\",\"public_metrics\":{\"bookmark_count\":4,\"impression_count\":1976,\"like_count\":131,\"quote_count\":2,\"reply_count\":23,\"retweet_count\":29},\"text\":\"Alaskans
+        have a right to\_produce\_our own energy and grow our economy. That\u2019s
+        why I put forward the Alaska\u2019s Right to Produce Act 2.0 last week\u2014legislation
+        to protect the gains we\u2019ve made in unlocking the ANWR Coastal Plain and
+        NPR-A from a future lock-up, as was done under https://t.co/lvxf4wRTHp\"},{\"created_at\":\"2026-10-06T19:08:35.000Z\",\"edit_history_tweet_ids\":[\"2107548591497904268\"],\"id\":\"2107548591497904268\",\"lang\":\"en\",\"public_metrics\":{\"bookmark_count\":4,\"impression_count\":2166,\"like_count\":78,\"quote_count\":2,\"reply_count\":5,\"retweet_count\":16},\"text\":\"On
+        Saturday in Whittier, Alaskans gathered to commission the USS Ted Stevens\u2014a
+        state-of-the-art Navy warship fittingly named after our tenacious, late great
+        Senator who served his country in so many different ways. Ted Stevens understood,
+        perhaps better than anyone else, how https://t.co/HkE7L8sHwd\"},{\"created_at\":\"2026-10-02T22:18:30.000Z\",\"edit_history_tweet_ids\":[\"2106146833328136214\"],\"id\":\"2106146833328136214\",\"lang\":\"en\",\"public_metrics\":{\"bookmark_count\":0,\"impression_count\":2014,\"like_count\":51,\"quote_count\":0,\"reply_count\":22,\"retweet_count\":8},\"text\":\"I
+        had a great time meeting with the Ketchikan Wellness Coalition earlier this
+        week and was able to congratulate them on receiving Rural Health Transformation
+        Program funding! \\n\\nThe funding will expand their Malasakit Matters: Filipino
+        Healthy Community Project, to build health https://t.co/GbgH1tOx7L\"},{\"created_at\":\"2026-10-02T02:10:17.000Z\",\"edit_history_tweet_ids\":[\"2105842778764632207\"],\"id\":\"2105842778764632207\",\"lang\":\"en\",\"public_metrics\":{\"bookmark_count\":9,\"impression_count\":46699,\"like_count\":565,\"quote_count\":4,\"reply_count\":39,\"retweet_count\":119},\"text\":\"Big
+        news for Wrangell! The U.S. Department of Commerce is awarding the City and
+        Borough more than $43 million to support three projects: a deep water port
+        and shipyard, a downtown waterfront expansion and marine infrastructure improvements,
+        and a replacement for the Wrangell https://t.co/wHDAkTXz3g\"},{\"created_at\":\"2026-10-01T01:45:12.000Z\",\"edit_history_tweet_ids\":[\"2105474077053886721\"],\"id\":\"2105474077053886721\",\"lang\":\"qht\",\"public_metrics\":{\"bookmark_count\":0,\"impression_count\":3520,\"like_count\":69,\"quote_count\":0,\"reply_count\":19,\"retweet_count\":19},\"referenced_tweets\":[{\"id\":\"2105418167623512441\",\"type\":\"quoted\"}],\"text\":\"#LNGmaxxing
+        https://t.co/DapPEW414Z\"}],\"meta\":{\"newest_id\":\"2107621847928029445\",\"next_token\":\"7140dibdnow9c7btwp0fs2ib7ycbxhu0pscr39j76u78x\",\"oldest_id\":\"2105474077053886721\",\"result_count\":5}}"
+    headers:
+      api-version:
+      - '2.170'
+      cache-control:
+      - no-cache, no-store, max-age=0
+      cf-cache-status:
+      - DYNAMIC
+      cf-ray:
+      - a46e1d64bb64cca0-YYZ
+      connection:
+      - keep-alive
+      content-disposition:
+      - attachment; filename=json.json
+      content-length:
+      - '2830'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Wed, 07 Oct 2026 15:59:45 GMT
+      origin-cf-ray:
+      - a46e1d64bb64cca0-ATL
+      perf:
+      - '7402827104'
+      server:
+      - cloudflare envoy
+      strict-transport-security:
+      - max-age=631138519; includeSubdomains
+      vary:
+      - accept-encoding
+      x-access-level:
+      - read
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      x-rate-limit-limit:
+      - '10000'
+      x-rate-limit-remaining:
+      - '9997'
+      x-rate-limit-reset:
+      - '1791389222'
+      x-response-time:
+      - '104'
+      x-served-by:
+      - t4_a
+      x-transaction-id:
+      - 06361a5d30f25027
+      x-xss-protection:
+      - '0'
+    status:
+      code: 200
+      message: OK
+version: 1

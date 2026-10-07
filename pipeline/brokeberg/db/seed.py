@@ -66,6 +66,7 @@ def senator_rows(snapshot: dict[str, Any]) -> list[dict[str, Any]]:
                 "senate_class": s["senate_class"],
                 "term_end": s["term_end"],
                 "fec_ids": s["fec"],
+                "lis": s.get("lis"),
                 "twitter": s["twitter"],
                 "ballotpedia": s["ballotpedia"],
                 "source_urls": snapshot["source_urls"],

@@ -5,5 +5,5 @@ fetch-senators: ; cd pipeline && uv run python -m brokeberg.db.fetch_senators
 test:        ; cd pipeline && uv run pytest -q
 eval:        ; cd pipeline && uv run python -m brokeberg.eval.run
 lint:        ; cd pipeline && uv run ruff check . && uv run mypy brokeberg
-ingest-once: ; cd pipeline && uv run python -m brokeberg.ingest.run_once
+ingest-once: ; cd pipeline && uv run python -m brokeberg.ingest.run_once $(if $(REPLAY),--replay,)
 web:         ; cd web && npm run dev

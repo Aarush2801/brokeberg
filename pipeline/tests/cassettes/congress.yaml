@@ -1,0 +1,2359 @@
+interactions:
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      host:
+      - api.congress.gov
+      user-agent:
+      - brokeberg/0.1 (political-economic research; +https://github.com/Aarush2801/brokeberg)
+    method: GET
+    uri: https://api.congress.gov/v3/bill/119/s?api_key=REDACTED&format=json&fromDateTime=2026-09-30T00%3A00%3A00Z&limit=20&sort=updateDate+desc
+  response:
+    body:
+      string: "{\n    \"bills\": [\n        {\n            \"congress\": 119,\n            \"introducedDate\":
+        \"2025-03-06\",\n            \"latestAction\": {\n                \"actionDate\":
+        \"2025-03-06\",\n                \"text\": \"Read twice and referred to the
+        Committee on Banking, Housing, and Urban Affairs. (text: CR S1605-1606)\"\n
+        \           },\n            \"number\": \"877\",\n            \"originChamber\":
+        \"Senate\",\n            \"originChamberCode\": \"S\",\n            \"title\":
+        \"Roberto Clemente Commemorative Coin Act\",\n            \"type\": \"S\",\n
+        \           \"updateDate\": \"2026-10-07\",\n            \"updateDateIncludingText\":
+        \"2026-10-07\",\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/877?format=json\"\n
+        \       },\n        {\n            \"congress\": 119,\n            \"introducedDate\":
+        \"2025-09-29\",\n            \"latestAction\": {\n                \"actionDate\":
+        \"2026-09-30\",\n                \"text\": \"Committee on Homeland Security
+        and Governmental Affairs. Hearings held.\"\n            },\n            \"number\":
+        \"2938\",\n            \"originChamber\": \"Senate\",\n            \"originChamberCode\":
+        \"S\",\n            \"title\": \"Artificial Intelligence Risk Evaluation Act
+        of 2025\",\n            \"type\": \"S\",\n            \"updateDate\": \"2026-10-07\",\n
+        \           \"updateDateIncludingText\": \"2026-10-07\",\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/2938?format=json\"\n        },\n
+        \       {\n            \"congress\": 119,\n            \"introducedDate\":
+        \"2026-09-24\",\n            \"latestAction\": {\n                \"actionDate\":
+        \"2026-09-24\",\n                \"text\": \"Read twice and referred to the
+        Committee on the Judiciary.\"\n            },\n            \"number\": \"5547\",\n
+        \           \"originChamber\": \"Senate\",\n            \"originChamberCode\":
+        \"S\",\n            \"title\": \"SCREEN Act of 2026\",\n            \"type\":
+        \"S\",\n            \"updateDate\": \"2026-10-07\",\n            \"updateDateIncludingText\":
+        \"2026-10-07\",\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/5547?format=json\"\n
+        \       },\n        {\n            \"congress\": 119,\n            \"introducedDate\":
+        \"2026-09-24\",\n            \"latestAction\": {\n                \"actionDate\":
+        \"2026-09-24\",\n                \"text\": \"Read twice and referred to the
+        Committee on the Judiciary.\"\n            },\n            \"number\": \"5510\",\n
+        \           \"originChamber\": \"Senate\",\n            \"originChamberCode\":
+        \"S\",\n            \"title\": \"Anti-Bribery Improvement Act\",\n            \"type\":
+        \"S\",\n            \"updateDate\": \"2026-10-07\",\n            \"updateDateIncludingText\":
+        \"2026-10-07\",\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/5510?format=json\"\n
+        \       },\n        {\n            \"congress\": 119,\n            \"introducedDate\":
+        \"2026-09-29\",\n            \"latestAction\": {\n                \"actionDate\":
+        \"2026-10-05\",\n                \"actionTime\": \"16:55:22\",\n                \"text\":
+        \"Held at the desk.\"\n            },\n            \"number\": \"5600\",\n
+        \           \"originChamber\": \"Senate\",\n            \"originChamberCode\":
+        \"S\",\n            \"title\": \"Dennis John Benigno Traumatic Brain Injury
+        Program Reauthorization Act of 2026\",\n            \"type\": \"S\",\n            \"updateDate\":
+        \"2026-10-07\",\n            \"updateDateIncludingText\": \"2026-10-07\",\n
+        \           \"url\": \"https://api.congress.gov/v3/bill/119/s/5600?format=json\"\n
+        \       },\n        {\n            \"congress\": 119,\n            \"introducedDate\":
+        \"2026-08-05\",\n            \"latestAction\": {\n                \"actionDate\":
+        \"2026-10-05\",\n                \"actionTime\": \"16:54:45\",\n                \"text\":
+        \"Held at the desk.\"\n            },\n            \"number\": \"5249\",\n
+        \           \"originChamber\": \"Senate\",\n            \"originChamberCode\":
+        \"S\",\n            \"title\": \"MORE American Fuel Act of 2026\",\n            \"type\":
+        \"S\",\n            \"updateDate\": \"2026-10-07\",\n            \"updateDateIncludingText\":
+        \"2026-10-07\",\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/5249?format=json\"\n
+        \       },\n        {\n            \"congress\": 119,\n            \"introducedDate\":
+        \"2026-07-21\",\n            \"latestAction\": {\n                \"actionDate\":
+        \"2026-10-05\",\n                \"actionTime\": \"16:54:36\",\n                \"text\":
+        \"Held at the desk.\"\n            },\n            \"number\": \"5045\",\n
+        \           \"originChamber\": \"Senate\",\n            \"originChamberCode\":
+        \"S\",\n            \"title\": \"Wildfire Emissions Prevention Act of 2026\",\n
+        \           \"type\": \"S\",\n            \"updateDate\": \"2026-10-07\",\n
+        \           \"updateDateIncludingText\": \"2026-10-07\",\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/5045?format=json\"\n        },\n
+        \       {\n            \"congress\": 119,\n            \"introducedDate\":
+        \"2026-07-14\",\n            \"latestAction\": {\n                \"actionDate\":
+        \"2026-10-05\",\n                \"actionTime\": \"16:54:29\",\n                \"text\":
+        \"Held at the desk.\"\n            },\n            \"number\": \"4974\",\n
+        \           \"originChamber\": \"Senate\",\n            \"originChamberCode\":
+        \"S\",\n            \"title\": \"Making America's Food Safer Act\",\n            \"type\":
+        \"S\",\n            \"updateDate\": \"2026-10-07\",\n            \"updateDateIncludingText\":
+        \"2026-10-07\",\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/4974?format=json\"\n
+        \       },\n        {\n            \"congress\": 119,\n            \"introducedDate\":
+        \"2026-06-02\",\n            \"latestAction\": {\n                \"actionDate\":
+        \"2026-10-05\",\n                \"actionTime\": \"16:54:13\",\n                \"text\":
+        \"Held at the desk.\"\n            },\n            \"number\": \"4668\",\n
+        \           \"originChamber\": \"Senate\",\n            \"originChamberCode\":
+        \"S\",\n            \"title\": \"Protect College Sports Act of 2026\",\n            \"type\":
+        \"S\",\n            \"updateDate\": \"2026-10-07\",\n            \"updateDateIncludingText\":
+        \"2026-10-07\",\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/4668?format=json\"\n
+        \       },\n        {\n            \"congress\": 119,\n            \"introducedDate\":
+        \"2026-04-27\",\n            \"latestAction\": {\n                \"actionDate\":
+        \"2026-10-05\",\n                \"actionTime\": \"16:54:07\",\n                \"text\":
+        \"Held at the desk.\"\n            },\n            \"number\": \"4395\",\n
+        \           \"originChamber\": \"Senate\",\n            \"originChamberCode\":
+        \"S\",\n            \"title\": \"Terrorism Risk Insurance Program Reauthorization
+        Act of 2026\",\n            \"type\": \"S\",\n            \"updateDate\":
+        \"2026-10-07\",\n            \"updateDateIncludingText\": \"2026-10-07\",\n
+        \           \"url\": \"https://api.congress.gov/v3/bill/119/s/4395?format=json\"\n
+        \       },\n        {\n            \"congress\": 119,\n            \"introducedDate\":
+        \"2026-03-05\",\n            \"latestAction\": {\n                \"actionDate\":
+        \"2026-10-05\",\n                \"actionTime\": \"16:53:58\",\n                \"text\":
+        \"Held at the desk.\"\n            },\n            \"number\": \"4009\",\n
+        \           \"originChamber\": \"Senate\",\n            \"originChamberCode\":
+        \"S\",\n            \"title\": \"Falun Gong and Victims of Forced Organ Harvesting
+        Protection Act\",\n            \"type\": \"S\",\n            \"updateDate\":
+        \"2026-10-07\",\n            \"updateDateIncludingText\": \"2026-10-07\",\n
+        \           \"url\": \"https://api.congress.gov/v3/bill/119/s/4009?format=json\"\n
+        \       },\n        {\n            \"congress\": 119,\n            \"introducedDate\":
+        \"2026-02-05\",\n            \"latestAction\": {\n                \"actionDate\":
+        \"2026-10-05\",\n                \"actionTime\": \"16:53:20\",\n                \"text\":
+        \"Held at the desk.\"\n            },\n            \"number\": \"3798\",\n
+        \           \"originChamber\": \"Senate\",\n            \"originChamberCode\":
+        \"S\",\n            \"title\": \"Safe Access to Cash Act of 2026\",\n            \"type\":
+        \"S\",\n            \"updateDate\": \"2026-10-07\",\n            \"updateDateIncludingText\":
+        \"2026-10-07\",\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/3798?format=json\"\n
+        \       },\n        {\n            \"congress\": 119,\n            \"introducedDate\":
+        \"2025-12-08\",\n            \"latestAction\": {\n                \"actionDate\":
+        \"2026-10-05\",\n                \"actionTime\": \"16:53:09\",\n                \"text\":
+        \"Held at the desk.\"\n            },\n            \"number\": \"3383\",\n
+        \           \"originChamber\": \"Senate\",\n            \"originChamberCode\":
+        \"S\",\n            \"title\": \"Unlocking Native Lands and Opportunities
+        for Commerce and Key Economic Developments Act of 2025\",\n            \"type\":
+        \"S\",\n            \"updateDate\": \"2026-10-07\",\n            \"updateDateIncludingText\":
+        \"2026-10-07\",\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/3383?format=json\"\n
+        \       },\n        {\n            \"congress\": 119,\n            \"introducedDate\":
+        \"2025-12-02\",\n            \"latestAction\": {\n                \"actionDate\":
+        \"2026-10-05\",\n                \"actionTime\": \"17:02:10\",\n                \"text\":
+        \"Held at the desk.\"\n            },\n            \"number\": \"3315\",\n
+        \           \"originChamber\": \"Senate\",\n            \"originChamberCode\":
+        \"S\",\n            \"title\": \"Health Care Cybersecurity and Resiliency
+        Act of 2026\",\n            \"type\": \"S\",\n            \"updateDate\":
+        \"2026-10-07\",\n            \"updateDateIncludingText\": \"2026-10-07\",\n
+        \           \"url\": \"https://api.congress.gov/v3/bill/119/s/3315?format=json\"\n
+        \       },\n        {\n            \"congress\": 119,\n            \"introducedDate\":
+        \"2025-11-19\",\n            \"latestAction\": {\n                \"actionDate\":
+        \"2026-10-05\",\n                \"actionTime\": \"16:53:03\",\n                \"text\":
+        \"Held at the desk.\"\n            },\n            \"number\": \"3219\",\n
+        \           \"originChamber\": \"Senate\",\n            \"originChamberCode\":
+        \"S\",\n            \"title\": \"Albuquerque Indian School Act of 2026\",\n
+        \           \"type\": \"S\",\n            \"updateDate\": \"2026-10-07\",\n
+        \           \"updateDateIncludingText\": \"2026-10-07\",\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/3219?format=json\"\n        },\n
+        \       {\n            \"congress\": 119,\n            \"introducedDate\":
+        \"2025-09-10\",\n            \"latestAction\": {\n                \"actionDate\":
+        \"2026-10-05\",\n                \"actionTime\": \"16:52:51\",\n                \"text\":
+        \"Held at the desk.\"\n            },\n            \"number\": \"2754\",\n
+        \           \"originChamber\": \"Senate\",\n            \"originChamberCode\":
+        \"S\",\n            \"title\": \"Crystal Reservoir Conveyance Act\",\n            \"type\":
+        \"S\",\n            \"updateDate\": \"2026-10-07\",\n            \"updateDateIncludingText\":
+        \"2026-10-07\",\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/2754?format=json\"\n
+        \       },\n        {\n            \"congress\": 119,\n            \"introducedDate\":
+        \"2025-07-29\",\n            \"latestAction\": {\n                \"actionDate\":
+        \"2026-10-05\",\n                \"actionTime\": \"16:52:43\",\n                \"text\":
+        \"Held at the desk.\"\n            },\n            \"number\": \"2498\",\n
+        \           \"originChamber\": \"Senate\",\n            \"originChamberCode\":
+        \"S\",\n            \"title\": \"National Park System Long-Term Lease Investment
+        Act\",\n            \"type\": \"S\",\n            \"updateDate\": \"2026-10-07\",\n
+        \           \"updateDateIncludingText\": \"2026-10-07\",\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/2498?format=json\"\n        },\n
+        \       {\n            \"congress\": 119,\n            \"introducedDate\":
+        \"2025-07-24\",\n            \"latestAction\": {\n                \"actionDate\":
+        \"2026-10-05\",\n                \"actionTime\": \"16:51:28\",\n                \"text\":
+        \"Held at the desk.\"\n            },\n            \"number\": \"2437\",\n
+        \           \"originChamber\": \"Senate\",\n            \"originChamberCode\":
+        \"S\",\n            \"title\": \"Snow Water Supply Forecasting Program Reauthorization
+        Act of 2026\",\n            \"type\": \"S\",\n            \"updateDate\":
+        \"2026-10-07\",\n            \"updateDateIncludingText\": \"2026-10-07\",\n
+        \           \"url\": \"https://api.congress.gov/v3/bill/119/s/2437?format=json\"\n
+        \       },\n        {\n            \"congress\": 119,\n            \"introducedDate\":
+        \"2025-07-17\",\n            \"latestAction\": {\n                \"actionDate\":
+        \"2026-10-05\",\n                \"actionTime\": \"16:51:17\",\n                \"text\":
+        \"Held at the desk.\"\n            },\n            \"number\": \"2339\",\n
+        \           \"originChamber\": \"Senate\",\n            \"originChamberCode\":
+        \"S\",\n            \"title\": \"EARLY Act Reauthorization of 2025\",\n            \"type\":
+        \"S\",\n            \"updateDate\": \"2026-10-07\",\n            \"updateDateIncludingText\":
+        \"2026-10-07\",\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/2339?format=json\"\n
+        \       },\n        {\n            \"congress\": 119,\n            \"introducedDate\":
+        \"2025-07-14\",\n            \"latestAction\": {\n                \"actionDate\":
+        \"2026-10-05\",\n                \"actionTime\": \"16:50:45\",\n                \"text\":
+        \"Held at the desk.\"\n            },\n            \"number\": \"2273\",\n
+        \           \"originChamber\": \"Senate\",\n            \"originChamberCode\":
+        \"S\",\n            \"title\": \"Wyoming Education Trust Modernization Act\",\n
+        \           \"type\": \"S\",\n            \"updateDate\": \"2026-10-07\",\n
+        \           \"updateDateIncludingText\": \"2026-10-07\",\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/2273?format=json\"\n        }\n    ],\n
+        \   \"pagination\": {\n        \"count\": 535,\n        \"next\": \"https://api.congress.gov/v3/bill/119/s?fromDateTime=2026-09-30T00:00:00Z&sort=updateDate
+        desc&offset=20&limit=20&format=json\"\n    },\n    \"request\": {\n        \"billType\":
+        \"s\",\n        \"congress\": \"119\",\n        \"contentType\": \"application/json\",\n
+        \       \"format\": \"json\"\n    }\n}"
+    headers:
+      access-control-allow-origin:
+      - '*'
+      age:
+      - '0'
+      cache-control:
+      - public, max-age=1800
+      cf-cache-status:
+      - MISS
+      cf-ray:
+      - a46e0229c96cb57f-PDX
+      connection:
+      - keep-alive
+      content-length:
+      - '13241'
+      content-type:
+      - application/json
+      date:
+      - Wed, 07 Oct 2026 15:41:10 GMT
+      expires:
+      - Wed, 07 Oct 2026 16:11:10 GMT
+      last-modified:
+      - Wed, 07 Oct 2026 15:41:10 GMT
+      link:
+      - <https://api.congress.gov/v3/bill/119/s>; rel="canonical"
+      set-cookie:
+      - __cf_bm=iQQHyXD37v1QgpTN5gNLytB60wLZTJ4d0eaSzXESZCs-1791387670.0507603-1.0.1.1-TPF40.lYTn0gMOJEfIxFbZzrGP4y8wS3MLIbUuIaWwdLabRdvie8CjTzT0edWWWyDQGDATJ5Hd2aOsmDK_Tiu8nIwIK1iSQNsTKk97lkKIje7jZUxJ6NGyH4TLgI8SVD;
+        HttpOnly; SameSite=None; Secure; Path=/; Domain=congress.gov; Expires=Wed,
+        07 Oct 2026 16:11:10 GMT
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      - Accept
+      via:
+      - https/1.1 api-umbrella (ApacheTrafficServer [cMsSf ])
+      x-api-umbrella-request-id:
+      - d12s39c8j5omh3soadeg
+      x-cache:
+      - MISS
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-ratelimit-limit:
+      - '20000'
+      x-ratelimit-remaining:
+      - '19994'
+      x-vcap-request-id:
+      - 1a7e0454-6960-4b6d-7522-581d212fbd78
+    status:
+      code: 200
+      message: OK
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - __cf_bm=iQQHyXD37v1QgpTN5gNLytB60wLZTJ4d0eaSzXESZCs-1791387670.0507603-1.0.1.1-TPF40.lYTn0gMOJEfIxFbZzrGP4y8wS3MLIbUuIaWwdLabRdvie8CjTzT0edWWWyDQGDATJ5Hd2aOsmDK_Tiu8nIwIK1iSQNsTKk97lkKIje7jZUxJ6NGyH4TLgI8SVD
+      host:
+      - api.congress.gov
+      user-agent:
+      - brokeberg/0.1 (political-economic research; +https://github.com/Aarush2801/brokeberg)
+    method: GET
+    uri: https://api.congress.gov/v3/bill/119/s/877?api_key=REDACTED&format=json
+  response:
+    body:
+      string: "{\n    \"bill\": {\n        \"actions\": {\n            \"count\":
+        2,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/877/actions?format=json\"\n
+        \       },\n        \"committees\": {\n            \"count\": 1,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/877/committees?format=json\"\n        },\n
+        \       \"congress\": 119,\n        \"cosponsors\": {\n            \"count\":
+        7,\n            \"countIncludingWithdrawnCosponsors\": 7,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/877/cosponsors?format=json\"\n        },\n
+        \       \"introducedDate\": \"2025-03-06\",\n        \"latestAction\": {\n
+        \           \"actionDate\": \"2025-03-06\",\n            \"text\": \"Read
+        twice and referred to the Committee on Banking, Housing, and Urban Affairs.
+        (text: CR S1605-1606)\"\n        },\n        \"legislationUrl\": \"https://www.congress.gov/bill/119th-congress/senate-bill/877\",\n
+        \       \"number\": \"877\",\n        \"originChamber\": \"Senate\",\n        \"originChamberCode\":
+        \"S\",\n        \"policyArea\": {\n            \"name\": \"Finance and Financial
+        Sector\"\n        },\n        \"relatedBills\": {\n            \"count\":
+        1,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/877/relatedbills?format=json\"\n
+        \       },\n        \"sponsors\": [\n            {\n                \"bioguideId\":
+        \"S000148\",\n                \"firstName\": \"Charles\",\n                \"fullName\":
+        \"Sen. Schumer, Charles E. [D-NY]\",\n                \"isByRequest\": \"N\",\n
+        \               \"lastName\": \"Schumer\",\n                \"middleName\":
+        \"E.\",\n                \"party\": \"D\",\n                \"state\": \"NY\",\n
+        \               \"url\": \"https://api.congress.gov/v3/member/S000148?format=json\"\n
+        \           }\n        ],\n        \"subjects\": {\n            \"count\":
+        1,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/877/subjects?format=json\"\n
+        \       },\n        \"summaries\": {\n            \"count\": 1,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/877/summaries?format=json\"\n        },\n
+        \       \"textVersions\": {\n            \"count\": 1,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/877/text?format=json\"\n        },\n
+        \       \"title\": \"Roberto Clemente Commemorative Coin Act\",\n        \"titles\":
+        {\n            \"count\": 3,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/877/titles?format=json\"\n
+        \       },\n        \"type\": \"S\",\n        \"updateDate\": \"2026-10-07T15:37:02Z\",\n
+        \       \"updateDateIncludingText\": \"2026-10-07T15:37:02Z\"\n    },\n    \"request\":
+        {\n        \"billNumber\": \"877\",\n        \"billType\": \"s\",\n        \"congress\":
+        \"119\",\n        \"contentType\": \"application/json\",\n        \"format\":
+        \"json\"\n    }\n}"
+    headers:
+      access-control-allow-origin:
+      - '*'
+      age:
+      - '205'
+      cache-control:
+      - public, max-age=1800
+      cf-cache-status:
+      - HIT
+      cf-ray:
+      - a46e022e7ea28e69-PDX
+      connection:
+      - keep-alive
+      content-length:
+      - '2575'
+      content-type:
+      - application/json
+      date:
+      - Wed, 07 Oct 2026 15:41:10 GMT
+      expires:
+      - Wed, 07 Oct 2026 16:11:10 GMT
+      last-modified:
+      - Wed, 07 Oct 2026 15:37:45 GMT
+      link:
+      - <https://api.congress.gov/v3/bill/119/s/877>; rel="canonical"
+      set-cookie:
+      - __cf_bm=2cyndcNyDeDnjpenp7vre.qG7StIEylxFcz820yN5J8-1791387670.7998366-1.0.1.1-KzL6IrQgqq0xA5ZB7zOrBavDkVdloPPJ0a1lbUEGauVw17hnwzeMWYzIDrDZqVMLSrwQ180d9Bb_NA1M80otuPtymSt0uRV.kB2wwRQo_rpTPuUE_8u8k2rJ_GBgt6b2;
+        HttpOnly; SameSite=None; Secure; Path=/; Domain=congress.gov; Expires=Wed,
+        07 Oct 2026 16:11:10 GMT
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      - Accept
+      via:
+      - https/1.1 api-umbrella (ApacheTrafficServer [cMsSf ])
+      x-api-umbrella-request-id:
+      - d12s39i3igct75msc3rg
+      x-cache:
+      - MISS
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-ratelimit-limit:
+      - '20000'
+      x-ratelimit-remaining:
+      - '19993'
+      x-vcap-request-id:
+      - b60c84d0-8c01-4cf7-76d6-29b012e8d58b
+    status:
+      code: 200
+      message: OK
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - __cf_bm=2cyndcNyDeDnjpenp7vre.qG7StIEylxFcz820yN5J8-1791387670.7998366-1.0.1.1-KzL6IrQgqq0xA5ZB7zOrBavDkVdloPPJ0a1lbUEGauVw17hnwzeMWYzIDrDZqVMLSrwQ180d9Bb_NA1M80otuPtymSt0uRV.kB2wwRQo_rpTPuUE_8u8k2rJ_GBgt6b2
+      host:
+      - api.congress.gov
+      user-agent:
+      - brokeberg/0.1 (political-economic research; +https://github.com/Aarush2801/brokeberg)
+    method: GET
+    uri: https://api.congress.gov/v3/bill/119/s/2938?api_key=REDACTED&format=json
+  response:
+    body:
+      string: "{\n    \"bill\": {\n        \"actions\": {\n            \"count\":
+        3,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/2938/actions?format=json\"\n
+        \       },\n        \"committees\": {\n            \"count\": 2,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/2938/committees?format=json\"\n        },\n
+        \       \"congress\": 119,\n        \"cosponsors\": {\n            \"count\":
+        2,\n            \"countIncludingWithdrawnCosponsors\": 2,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/2938/cosponsors?format=json\"\n        },\n
+        \       \"introducedDate\": \"2025-09-29\",\n        \"latestAction\": {\n
+        \           \"actionDate\": \"2026-09-30\",\n            \"text\": \"Committee
+        on Homeland Security and Governmental Affairs. Hearings held.\"\n        },\n
+        \       \"legislationUrl\": \"https://www.congress.gov/bill/119th-congress/senate-bill/2938\",\n
+        \       \"number\": \"2938\",\n        \"originChamber\": \"Senate\",\n        \"originChamberCode\":
+        \"S\",\n        \"policyArea\": {\n            \"name\": \"Science, Technology,
+        Communications\"\n        },\n        \"sponsors\": [\n            {\n                \"bioguideId\":
+        \"H001089\",\n                \"firstName\": \"Josh\",\n                \"fullName\":
+        \"Sen. Hawley, Josh [R-MO]\",\n                \"isByRequest\": \"N\",\n                \"lastName\":
+        \"Hawley\",\n                \"party\": \"R\",\n                \"state\":
+        \"MO\",\n                \"url\": \"https://api.congress.gov/v3/member/H001089?format=json\"\n
+        \           }\n        ],\n        \"subjects\": {\n            \"count\":
+        6,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/2938/subjects?format=json\"\n
+        \       },\n        \"textVersions\": {\n            \"count\": 1,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/2938/text?format=json\"\n        },\n
+        \       \"title\": \"Artificial Intelligence Risk Evaluation Act of 2025\",\n
+        \       \"titles\": {\n            \"count\": 3,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/2938/titles?format=json\"\n
+        \       },\n        \"type\": \"S\",\n        \"updateDate\": \"2026-10-07T14:58:06Z\",\n
+        \       \"updateDateIncludingText\": \"2026-10-07T14:58:06Z\"\n    },\n    \"request\":
+        {\n        \"billNumber\": \"2938\",\n        \"billType\": \"s\",\n        \"congress\":
+        \"119\",\n        \"contentType\": \"application/json\",\n        \"format\":
+        \"json\"\n    }\n}"
+    headers:
+      access-control-allow-origin:
+      - '*'
+      age:
+      - '2472'
+      cache-control:
+      - public, max-age=1800
+      cf-cache-status:
+      - HIT
+      cf-ray:
+      - a46e0231bcd31c37-PDX
+      connection:
+      - keep-alive
+      content-length:
+      - '2231'
+      content-type:
+      - application/json
+      date:
+      - Wed, 07 Oct 2026 15:41:11 GMT
+      expires:
+      - Wed, 07 Oct 2026 16:11:11 GMT
+      last-modified:
+      - Wed, 07 Oct 2026 14:59:58 GMT
+      link:
+      - <https://api.congress.gov/v3/bill/119/s/2938>; rel="canonical"
+      set-cookie:
+      - __cf_bm=LZEF9eGIzvU22ng3NgIH0SZ1HWtrksIxf2x923lK538-1791387671.312228-1.0.1.1-KURxprn.PhcNeZGjtItMgYsBiY4N5tDFQrsYmrvfKLi9eh4IAW8ojUzgZQnYjeFD.RCQpDoOSpOr.3UV3XsBT.PdqrYyoJqpO_rH9wDG_z0iPXOgX7p8xcSYhACr4qs.;
+        HttpOnly; SameSite=None; Secure; Path=/; Domain=congress.gov; Expires=Wed,
+        07 Oct 2026 16:11:11 GMT
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      - Accept
+      via:
+      - https/1.1 api-umbrella (ApacheTrafficServer [cMsSf ])
+      x-api-umbrella-request-id:
+      - d12s39m4lk9uaqrm10t0
+      x-cache:
+      - MISS
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-ratelimit-limit:
+      - '20000'
+      x-ratelimit-remaining:
+      - '19992'
+      x-vcap-request-id:
+      - 646e4e65-4743-494a-6b18-e23d13a861a9
+    status:
+      code: 200
+      message: OK
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - __cf_bm=LZEF9eGIzvU22ng3NgIH0SZ1HWtrksIxf2x923lK538-1791387671.312228-1.0.1.1-KURxprn.PhcNeZGjtItMgYsBiY4N5tDFQrsYmrvfKLi9eh4IAW8ojUzgZQnYjeFD.RCQpDoOSpOr.3UV3XsBT.PdqrYyoJqpO_rH9wDG_z0iPXOgX7p8xcSYhACr4qs.
+      host:
+      - api.congress.gov
+      user-agent:
+      - brokeberg/0.1 (political-economic research; +https://github.com/Aarush2801/brokeberg)
+    method: GET
+    uri: https://api.congress.gov/v3/bill/119/s/5547?api_key=REDACTED&format=json
+  response:
+    body:
+      string: "{\n    \"bill\": {\n        \"actions\": {\n            \"count\":
+        2,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/5547/actions?format=json\"\n
+        \       },\n        \"committees\": {\n            \"count\": 1,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/5547/committees?format=json\"\n        },\n
+        \       \"congress\": 119,\n        \"cosponsors\": {\n            \"count\":
+        1,\n            \"countIncludingWithdrawnCosponsors\": 1,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/5547/cosponsors?format=json\"\n        },\n
+        \       \"introducedDate\": \"2026-09-24\",\n        \"latestAction\": {\n
+        \           \"actionDate\": \"2026-09-24\",\n            \"text\": \"Read
+        twice and referred to the Committee on the Judiciary.\"\n        },\n        \"legislationUrl\":
+        \"https://www.congress.gov/bill/119th-congress/senate-bill/5547\",\n        \"number\":
+        \"5547\",\n        \"originChamber\": \"Senate\",\n        \"originChamberCode\":
+        \"S\",\n        \"policyArea\": {\n            \"name\": \"Crime and Law Enforcement\"\n
+        \       },\n        \"relatedBills\": {\n            \"count\": 1,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/5547/relatedbills?format=json\"\n
+        \       },\n        \"sponsors\": [\n            {\n                \"bioguideId\":
+        \"S001217\",\n                \"firstName\": \"Rick\",\n                \"fullName\":
+        \"Sen. Scott, Rick [R-FL]\",\n                \"isByRequest\": \"N\",\n                \"lastName\":
+        \"Scott\",\n                \"party\": \"R\",\n                \"state\":
+        \"FL\",\n                \"url\": \"https://api.congress.gov/v3/member/S001217?format=json\"\n
+        \           }\n        ],\n        \"subjects\": {\n            \"count\":
+        1,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/5547/subjects?format=json\"\n
+        \       },\n        \"textVersions\": {\n            \"count\": 1,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/5547/text?format=json\"\n        },\n
+        \       \"title\": \"SCREEN Act of 2026\",\n        \"titles\": {\n            \"count\":
+        4,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/5547/titles?format=json\"\n
+        \       },\n        \"type\": \"S\",\n        \"updateDate\": \"2026-10-07T15:09:17Z\",\n
+        \       \"updateDateIncludingText\": \"2026-10-07T15:09:17Z\"\n    },\n    \"request\":
+        {\n        \"billNumber\": \"5547\",\n        \"billType\": \"s\",\n        \"congress\":
+        \"119\",\n        \"contentType\": \"application/json\",\n        \"format\":
+        \"json\"\n    }\n}"
+    headers:
+      access-control-allow-origin:
+      - '*'
+      age:
+      - '938'
+      cache-control:
+      - public, max-age=1800
+      cf-cache-status:
+      - HIT
+      cf-ray:
+      - a46e0234fb54b876-PDX
+      connection:
+      - keep-alive
+      content-length:
+      - '2324'
+      content-type:
+      - application/json
+      date:
+      - Wed, 07 Oct 2026 15:41:11 GMT
+      expires:
+      - Wed, 07 Oct 2026 16:11:11 GMT
+      last-modified:
+      - Wed, 07 Oct 2026 15:25:32 GMT
+      link:
+      - <https://api.congress.gov/v3/bill/119/s/5547>; rel="canonical"
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      - Accept
+      via:
+      - https/1.1 api-umbrella (ApacheTrafficServer [cMsSf ])
+      x-api-umbrella-request-id:
+      - d12s39q7rd1r8242vpk0
+      x-cache:
+      - MISS
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-ratelimit-limit:
+      - '20000'
+      x-ratelimit-remaining:
+      - '19991'
+      x-vcap-request-id:
+      - e07862b9-ad0c-43c8-6dfc-7b67f818d326
+    status:
+      code: 200
+      message: OK
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - __cf_bm=LZEF9eGIzvU22ng3NgIH0SZ1HWtrksIxf2x923lK538-1791387671.312228-1.0.1.1-KURxprn.PhcNeZGjtItMgYsBiY4N5tDFQrsYmrvfKLi9eh4IAW8ojUzgZQnYjeFD.RCQpDoOSpOr.3UV3XsBT.PdqrYyoJqpO_rH9wDG_z0iPXOgX7p8xcSYhACr4qs.
+      host:
+      - api.congress.gov
+      user-agent:
+      - brokeberg/0.1 (political-economic research; +https://github.com/Aarush2801/brokeberg)
+    method: GET
+    uri: https://api.congress.gov/v3/bill/119/s/5510?api_key=REDACTED&format=json
+  response:
+    body:
+      string: "{\n    \"bill\": {\n        \"actions\": {\n            \"count\":
+        2,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/5510/actions?format=json\"\n
+        \       },\n        \"committees\": {\n            \"count\": 1,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/5510/committees?format=json\"\n        },\n
+        \       \"congress\": 119,\n        \"cosponsors\": {\n            \"count\":
+        1,\n            \"countIncludingWithdrawnCosponsors\": 1,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/5510/cosponsors?format=json\"\n        },\n
+        \       \"introducedDate\": \"2026-09-24\",\n        \"latestAction\": {\n
+        \           \"actionDate\": \"2026-09-24\",\n            \"text\": \"Read
+        twice and referred to the Committee on the Judiciary.\"\n        },\n        \"legislationUrl\":
+        \"https://www.congress.gov/bill/119th-congress/senate-bill/5510\",\n        \"number\":
+        \"5510\",\n        \"originChamber\": \"Senate\",\n        \"originChamberCode\":
+        \"S\",\n        \"policyArea\": {\n            \"name\": \"Crime and Law Enforcement\"\n
+        \       },\n        \"sponsors\": [\n            {\n                \"bioguideId\":
+        \"K000394\",\n                \"firstName\": \"Andy\",\n                \"fullName\":
+        \"Sen. Kim, Andy [D-NJ]\",\n                \"isByRequest\": \"N\",\n                \"lastName\":
+        \"Kim\",\n                \"party\": \"D\",\n                \"state\": \"NJ\",\n
+        \               \"url\": \"https://api.congress.gov/v3/member/K000394?format=json\"\n
+        \           }\n        ],\n        \"subjects\": {\n            \"count\":
+        1,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/5510/subjects?format=json\"\n
+        \       },\n        \"textVersions\": {\n            \"count\": 1,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/5510/text?format=json\"\n        },\n
+        \       \"title\": \"Anti-Bribery Improvement Act\",\n        \"titles\":
+        {\n            \"count\": 3,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/5510/titles?format=json\"\n
+        \       },\n        \"type\": \"S\",\n        \"updateDate\": \"2026-10-07T15:06:31Z\",\n
+        \       \"updateDateIncludingText\": \"2026-10-07T15:06:31Z\"\n    },\n    \"request\":
+        {\n        \"billNumber\": \"5510\",\n        \"billType\": \"s\",\n        \"congress\":
+        \"119\",\n        \"contentType\": \"application/json\",\n        \"format\":
+        \"json\"\n    }\n}"
+    headers:
+      access-control-allow-origin:
+      - '*'
+      age:
+      - '919'
+      cache-control:
+      - public, max-age=1800
+      cf-cache-status:
+      - HIT
+      cf-ray:
+      - a46e02384a1c5332-PDX
+      connection:
+      - keep-alive
+      content-length:
+      - '2179'
+      content-type:
+      - application/json
+      date:
+      - Wed, 07 Oct 2026 15:41:12 GMT
+      expires:
+      - Wed, 07 Oct 2026 16:11:12 GMT
+      last-modified:
+      - Wed, 07 Oct 2026 15:25:52 GMT
+      link:
+      - <https://api.congress.gov/v3/bill/119/s/5510>; rel="canonical"
+      set-cookie:
+      - __cf_bm=TzsAQykatN331IWvdmNDrCWXtSJ6qnIE.1lm5Tmm89M-1791387672.3616066-1.0.1.1-XtKuNUQ91vfNvmoP9uT.s0Z3N3fZvzcDIoxpkf4YhHwtW3C5P.18f1NhMrchrOW4x8FSQrPoaArAjtU6bcdavKOayhKxqb2kJcj5.6C2R08LqtLC9qEhTlk153EIBZpJ;
+        HttpOnly; SameSite=None; Secure; Path=/; Domain=congress.gov; Expires=Wed,
+        07 Oct 2026 16:11:12 GMT
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      - Accept
+      via:
+      - https/1.1 api-umbrella (ApacheTrafficServer [cMsSf ])
+      x-api-umbrella-request-id:
+      - d12s39uaqkaesi49ulb0
+      x-cache:
+      - MISS
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-ratelimit-limit:
+      - '20000'
+      x-ratelimit-remaining:
+      - '19990'
+      x-vcap-request-id:
+      - 6da6b7c3-018a-4c08-4685-88d0c0a922c5
+    status:
+      code: 200
+      message: OK
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - __cf_bm=TzsAQykatN331IWvdmNDrCWXtSJ6qnIE.1lm5Tmm89M-1791387672.3616066-1.0.1.1-XtKuNUQ91vfNvmoP9uT.s0Z3N3fZvzcDIoxpkf4YhHwtW3C5P.18f1NhMrchrOW4x8FSQrPoaArAjtU6bcdavKOayhKxqb2kJcj5.6C2R08LqtLC9qEhTlk153EIBZpJ
+      host:
+      - api.congress.gov
+      user-agent:
+      - brokeberg/0.1 (political-economic research; +https://github.com/Aarush2801/brokeberg)
+    method: GET
+    uri: https://api.congress.gov/v3/bill/119/s/5600?api_key=REDACTED&format=json
+  response:
+    body:
+      string: "{\n    \"bill\": {\n        \"actions\": {\n            \"count\":
+        6,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/5600/actions?format=json\"\n
+        \       },\n        \"congress\": 119,\n        \"cosponsors\": {\n            \"count\":
+        3,\n            \"countIncludingWithdrawnCosponsors\": 3,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/5600/cosponsors?format=json\"\n        },\n
+        \       \"introducedDate\": \"2026-09-29\",\n        \"latestAction\": {\n
+        \           \"actionDate\": \"2026-10-05\",\n            \"actionTime\": \"16:55:22\",\n
+        \           \"text\": \"Held at the desk.\"\n        },\n        \"legislationUrl\":
+        \"https://www.congress.gov/bill/119th-congress/senate-bill/5600\",\n        \"number\":
+        \"5600\",\n        \"originChamber\": \"Senate\",\n        \"originChamberCode\":
+        \"S\",\n        \"policyArea\": {\n            \"name\": \"Health\"\n        },\n
+        \       \"sponsors\": [\n            {\n                \"bioguideId\": \"A000383\",\n
+        \               \"firstName\": \"Alan\",\n                \"fullName\": \"Sen.
+        Armstrong, Alan [R-OK]\",\n                \"isByRequest\": \"N\",\n                \"lastName\":
+        \"Armstrong\",\n                \"middleName\": \"Stuart\",\n                \"party\":
+        \"R\",\n                \"state\": \"OK\",\n                \"url\": \"https://api.congress.gov/v3/member/A000383?format=json\"\n
+        \           }\n        ],\n        \"subjects\": {\n            \"count\":
+        10,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/5600/subjects?format=json\"\n
+        \       },\n        \"textVersions\": {\n            \"count\": 2,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/5600/text?format=json\"\n        },\n
+        \       \"title\": \"Dennis John Benigno Traumatic Brain Injury Program Reauthorization
+        Act of 2026\",\n        \"titles\": {\n            \"count\": 3,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/5600/titles?format=json\"\n        },\n
+        \       \"type\": \"S\",\n        \"updateDate\": \"2026-10-07T11:43:59Z\",\n
+        \       \"updateDateIncludingText\": \"2026-10-07T11:43:59Z\"\n    },\n    \"request\":
+        {\n        \"billNumber\": \"5600\",\n        \"billType\": \"s\",\n        \"congress\":
+        \"119\",\n        \"contentType\": \"application/json\",\n        \"format\":
+        \"json\"\n    }\n}"
+    headers:
+      access-control-allow-origin:
+      - '*'
+      age:
+      - '3228'
+      cache-control:
+      - public, max-age=1800
+      cf-cache-status:
+      - HIT
+      cf-ray:
+      - a46e023b8ea74518-PDX
+      connection:
+      - keep-alive
+      content-length:
+      - '2113'
+      content-type:
+      - application/json
+      date:
+      - Wed, 07 Oct 2026 15:41:12 GMT
+      expires:
+      - Wed, 07 Oct 2026 16:11:12 GMT
+      last-modified:
+      - Wed, 07 Oct 2026 14:47:24 GMT
+      link:
+      - <https://api.congress.gov/v3/bill/119/s/5600>; rel="canonical"
+      set-cookie:
+      - __cf_bm=5u7IpSwclTu0ZHQA4KQCR_0jG9gno2Eswub9b18R1cU-1791387672.8854587-1.0.1.1-i0NrzQ1BJRcu9yRywyZS5MR10BdJ5S1WblsBI9qd7Tf65KxbwVgX.HjxdasB7Nio2GAvMk2K_5mAbNTTzpbzv05esIAskMbyJ1ZedCOzmUTlf6uJYsRoKdIu53kDjv7Z;
+        HttpOnly; SameSite=None; Secure; Path=/; Domain=congress.gov; Expires=Wed,
+        07 Oct 2026 16:11:12 GMT
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      - Accept
+      via:
+      - https/1.1 api-umbrella (ApacheTrafficServer [cMsSf ])
+      x-api-umbrella-request-id:
+      - d12s3a2dphblq2es5idg
+      x-cache:
+      - MISS
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-ratelimit-limit:
+      - '20000'
+      x-ratelimit-remaining:
+      - '19989'
+      x-vcap-request-id:
+      - 4523577f-e24b-452e-7bee-dc2785f68fec
+    status:
+      code: 200
+      message: OK
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - __cf_bm=5u7IpSwclTu0ZHQA4KQCR_0jG9gno2Eswub9b18R1cU-1791387672.8854587-1.0.1.1-i0NrzQ1BJRcu9yRywyZS5MR10BdJ5S1WblsBI9qd7Tf65KxbwVgX.HjxdasB7Nio2GAvMk2K_5mAbNTTzpbzv05esIAskMbyJ1ZedCOzmUTlf6uJYsRoKdIu53kDjv7Z
+      host:
+      - api.congress.gov
+      user-agent:
+      - brokeberg/0.1 (political-economic research; +https://github.com/Aarush2801/brokeberg)
+    method: GET
+    uri: https://api.congress.gov/v3/bill/119/s/5249?api_key=REDACTED&format=json
+  response:
+    body:
+      string: "{\n    \"bill\": {\n        \"actions\": {\n            \"count\":
+        11,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/5249/actions?format=json\"\n
+        \       },\n        \"committees\": {\n            \"count\": 1,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/5249/committees?format=json\"\n        },\n
+        \       \"congress\": 119,\n        \"cosponsors\": {\n            \"count\":
+        3,\n            \"countIncludingWithdrawnCosponsors\": 3,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/5249/cosponsors?format=json\"\n        },\n
+        \       \"introducedDate\": \"2026-08-05\",\n        \"latestAction\": {\n
+        \           \"actionDate\": \"2026-10-05\",\n            \"actionTime\": \"16:54:45\",\n
+        \           \"text\": \"Held at the desk.\"\n        },\n        \"legislationUrl\":
+        \"https://www.congress.gov/bill/119th-congress/senate-bill/5249\",\n        \"number\":
+        \"5249\",\n        \"originChamber\": \"Senate\",\n        \"originChamberCode\":
+        \"S\",\n        \"policyArea\": {\n            \"name\": \"Energy\"\n        },\n
+        \       \"sponsors\": [\n            {\n                \"bioguideId\": \"K000377\",\n
+        \               \"firstName\": \"Mark\",\n                \"fullName\": \"Sen.
+        Kelly, Mark [D-AZ]\",\n                \"isByRequest\": \"N\",\n                \"lastName\":
+        \"Kelly\",\n                \"party\": \"D\",\n                \"state\":
+        \"AZ\",\n                \"url\": \"https://api.congress.gov/v3/member/K000377?format=json\"\n
+        \           }\n        ],\n        \"subjects\": {\n            \"count\":
+        5,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/5249/subjects?format=json\"\n
+        \       },\n        \"textVersions\": {\n            \"count\": 3,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/5249/text?format=json\"\n        },\n
+        \       \"title\": \"MORE American Fuel Act of 2026\",\n        \"titles\":
+        {\n            \"count\": 8,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/5249/titles?format=json\"\n
+        \       },\n        \"type\": \"S\",\n        \"updateDate\": \"2026-10-07T11:43:36Z\",\n
+        \       \"updateDateIncludingText\": \"2026-10-07T11:43:36Z\"\n    },\n    \"request\":
+        {\n        \"billNumber\": \"5249\",\n        \"billType\": \"s\",\n        \"congress\":
+        \"119\",\n        \"contentType\": \"application/json\",\n        \"format\":
+        \"json\"\n    }\n}"
+    headers:
+      access-control-allow-origin:
+      - '*'
+      age:
+      - '1208'
+      cache-control:
+      - public, max-age=1800
+      cf-cache-status:
+      - HIT
+      cf-ray:
+      - a46e023e49616e09-PDX
+      connection:
+      - keep-alive
+      content-length:
+      - '2164'
+      content-type:
+      - application/json
+      date:
+      - Wed, 07 Oct 2026 15:41:13 GMT
+      expires:
+      - Wed, 07 Oct 2026 16:11:13 GMT
+      last-modified:
+      - Wed, 07 Oct 2026 15:21:04 GMT
+      link:
+      - <https://api.congress.gov/v3/bill/119/s/5249>; rel="canonical"
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      - Accept
+      via:
+      - https/1.1 api-umbrella (ApacheTrafficServer [cMsSf ])
+      x-api-umbrella-request-id:
+      - d12s3a5rdqf35nb0g810
+      x-cache:
+      - MISS
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-ratelimit-limit:
+      - '20000'
+      x-ratelimit-remaining:
+      - '19988'
+      x-vcap-request-id:
+      - b664f6e5-25b6-42c3-5574-4ad8daeb92c5
+    status:
+      code: 200
+      message: OK
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - __cf_bm=5u7IpSwclTu0ZHQA4KQCR_0jG9gno2Eswub9b18R1cU-1791387672.8854587-1.0.1.1-i0NrzQ1BJRcu9yRywyZS5MR10BdJ5S1WblsBI9qd7Tf65KxbwVgX.HjxdasB7Nio2GAvMk2K_5mAbNTTzpbzv05esIAskMbyJ1ZedCOzmUTlf6uJYsRoKdIu53kDjv7Z
+      host:
+      - api.congress.gov
+      user-agent:
+      - brokeberg/0.1 (political-economic research; +https://github.com/Aarush2801/brokeberg)
+    method: GET
+    uri: https://api.congress.gov/v3/bill/119/s/5045?api_key=REDACTED&format=json
+  response:
+    body:
+      string: "{\n    \"bill\": {\n        \"actions\": {\n            \"count\":
+        11,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/5045/actions?format=json\"\n
+        \       },\n        \"committees\": {\n            \"count\": 1,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/5045/committees?format=json\"\n        },\n
+        \       \"congress\": 119,\n        \"cosponsors\": {\n            \"count\":
+        7,\n            \"countIncludingWithdrawnCosponsors\": 7,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/5045/cosponsors?format=json\"\n        },\n
+        \       \"introducedDate\": \"2026-07-21\",\n        \"latestAction\": {\n
+        \           \"actionDate\": \"2026-10-05\",\n            \"actionTime\": \"16:54:36\",\n
+        \           \"text\": \"Held at the desk.\"\n        },\n        \"legislationUrl\":
+        \"https://www.congress.gov/bill/119th-congress/senate-bill/5045\",\n        \"number\":
+        \"5045\",\n        \"originChamber\": \"Senate\",\n        \"originChamberCode\":
+        \"S\",\n        \"policyArea\": {\n            \"name\": \"Environmental Protection\"\n
+        \       },\n        \"sponsors\": [\n            {\n                \"bioguideId\":
+        \"C001114\",\n                \"firstName\": \"John\",\n                \"fullName\":
+        \"Sen. Curtis, John R. [R-UT]\",\n                \"isByRequest\": \"N\",\n
+        \               \"lastName\": \"Curtis\",\n                \"party\": \"R\",\n
+        \               \"state\": \"UT\",\n                \"url\": \"https://api.congress.gov/v3/member/C001114?format=json\"\n
+        \           }\n        ],\n        \"subjects\": {\n            \"count\":
+        1,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/5045/subjects?format=json\"\n
+        \       },\n        \"textVersions\": {\n            \"count\": 3,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/5045/text?format=json\"\n        },\n
+        \       \"title\": \"Wildfire Emissions Prevention Act of 2026\",\n        \"titles\":
+        {\n            \"count\": 5,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/5045/titles?format=json\"\n
+        \       },\n        \"type\": \"S\",\n        \"updateDate\": \"2026-10-07T11:43:08Z\",\n
+        \       \"updateDateIncludingText\": \"2026-10-07T11:43:08Z\"\n    },\n    \"request\":
+        {\n        \"billNumber\": \"5045\",\n        \"billType\": \"s\",\n        \"congress\":
+        \"119\",\n        \"contentType\": \"application/json\",\n        \"format\":
+        \"json\"\n    }\n}"
+    headers:
+      access-control-allow-origin:
+      - '*'
+      age:
+      - '1862'
+      cache-control:
+      - public, max-age=1800
+      cf-cache-status:
+      - HIT
+      cf-ray:
+      - a46e02417a3ab84b-PDX
+      connection:
+      - keep-alive
+      content-length:
+      - '2198'
+      content-type:
+      - application/json
+      date:
+      - Wed, 07 Oct 2026 15:41:13 GMT
+      expires:
+      - Wed, 07 Oct 2026 16:11:13 GMT
+      last-modified:
+      - Wed, 07 Oct 2026 15:10:11 GMT
+      link:
+      - <https://api.congress.gov/v3/bill/119/s/5045>; rel="canonical"
+      set-cookie:
+      - __cf_bm=Xbv6F2DXZlIxmoJ7CW1qEgPeXaAIX6j5mGftCNZ6nQs-1791387673.833585-1.0.1.1-DMla5ekBe0LV_oQQGeOSTs2h3DQq9gkslnHmO.AbfPyrckBqNZnT9OXSbZNIjUlX131.TScyMuU0q4lCGFtwyGdrlpWfithuOTWnZz7YG7BcHfszbojac9GZsntB_j1K;
+        HttpOnly; SameSite=None; Secure; Path=/; Domain=congress.gov; Expires=Wed,
+        07 Oct 2026 16:11:13 GMT
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      - Accept
+      via:
+      - https/1.1 api-umbrella (ApacheTrafficServer [cMsSf ])
+      x-api-umbrella-request-id:
+      - d12s3a9psmlc34rvqcug
+      x-cache:
+      - MISS
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-ratelimit-limit:
+      - '20000'
+      x-ratelimit-remaining:
+      - '19987'
+      x-vcap-request-id:
+      - ac2e7f09-d876-403d-427c-d45c744bc88a
+    status:
+      code: 200
+      message: OK
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - __cf_bm=Xbv6F2DXZlIxmoJ7CW1qEgPeXaAIX6j5mGftCNZ6nQs-1791387673.833585-1.0.1.1-DMla5ekBe0LV_oQQGeOSTs2h3DQq9gkslnHmO.AbfPyrckBqNZnT9OXSbZNIjUlX131.TScyMuU0q4lCGFtwyGdrlpWfithuOTWnZz7YG7BcHfszbojac9GZsntB_j1K
+      host:
+      - api.congress.gov
+      user-agent:
+      - brokeberg/0.1 (political-economic research; +https://github.com/Aarush2801/brokeberg)
+    method: GET
+    uri: https://api.congress.gov/v3/bill/119/s/4974?api_key=REDACTED&format=json
+  response:
+    body:
+      string: "{\n    \"bill\": {\n        \"actions\": {\n            \"count\":
+        11,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/4974/actions?format=json\"\n
+        \       },\n        \"committees\": {\n            \"count\": 1,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/4974/committees?format=json\"\n        },\n
+        \       \"congress\": 119,\n        \"cosponsors\": {\n            \"count\":
+        2,\n            \"countIncludingWithdrawnCosponsors\": 2,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/4974/cosponsors?format=json\"\n        },\n
+        \       \"introducedDate\": \"2026-07-14\",\n        \"latestAction\": {\n
+        \           \"actionDate\": \"2026-10-05\",\n            \"actionTime\": \"16:54:29\",\n
+        \           \"text\": \"Held at the desk.\"\n        },\n        \"legislationUrl\":
+        \"https://www.congress.gov/bill/119th-congress/senate-bill/4974\",\n        \"number\":
+        \"4974\",\n        \"originChamber\": \"Senate\",\n        \"originChamberCode\":
+        \"S\",\n        \"policyArea\": {\n            \"name\": \"Health\"\n        },\n
+        \       \"sponsors\": [\n            {\n                \"bioguideId\": \"T000278\",\n
+        \               \"firstName\": \"Tommy\",\n                \"fullName\": \"Sen.
+        Tuberville, Tommy [R-AL]\",\n                \"isByRequest\": \"N\",\n                \"lastName\":
+        \"Tuberville\",\n                \"party\": \"R\",\n                \"state\":
+        \"AL\",\n                \"url\": \"https://api.congress.gov/v3/member/T000278?format=json\"\n
+        \           }\n        ],\n        \"subjects\": {\n            \"count\":
+        6,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/4974/subjects?format=json\"\n
+        \       },\n        \"summaries\": {\n            \"count\": 1,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/4974/summaries?format=json\"\n        },\n
+        \       \"textVersions\": {\n            \"count\": 3,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/4974/text?format=json\"\n        },\n
+        \       \"title\": \"Making America's Food Safer Act\",\n        \"titles\":
+        {\n            \"count\": 5,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/4974/titles?format=json\"\n
+        \       },\n        \"type\": \"S\",\n        \"updateDate\": \"2026-10-07T11:42:45Z\",\n
+        \       \"updateDateIncludingText\": \"2026-10-07T11:42:45Z\"\n    },\n    \"request\":
+        {\n        \"billNumber\": \"4974\",\n        \"billType\": \"s\",\n        \"congress\":
+        \"119\",\n        \"contentType\": \"application/json\",\n        \"format\":
+        \"json\"\n    }\n}"
+    headers:
+      access-control-allow-origin:
+      - '*'
+      age:
+      - '3354'
+      cache-control:
+      - public, max-age=1800
+      cf-cache-status:
+      - HIT
+      cf-ray:
+      - a46e02449b698d3a-PDX
+      connection:
+      - keep-alive
+      content-length:
+      - '2322'
+      content-type:
+      - application/json
+      date:
+      - Wed, 07 Oct 2026 15:41:14 GMT
+      expires:
+      - Wed, 07 Oct 2026 16:11:14 GMT
+      last-modified:
+      - Wed, 07 Oct 2026 14:45:19 GMT
+      link:
+      - <https://api.congress.gov/v3/bill/119/s/4974>; rel="canonical"
+      set-cookie:
+      - __cf_bm=RkibmlJbxZ18wS7N4Vp70N8tyvC1134myLnoW00SsGk-1791387674.3329628-1.0.1.1-nzDVHU8BOVUcxEeGXZQ5d.qe__txUhR3S_KUH0nseyGz_SqTiT1VfFTOiB8MrQFENIHKmYHYN8VtQoYYB4dAqtX7dlV2uES2UEiVGJrF8m23ztuH5zcXHpvFIBbcsr6M;
+        HttpOnly; SameSite=None; Secure; Path=/; Domain=congress.gov; Expires=Wed,
+        07 Oct 2026 16:11:14 GMT
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      - Accept
+      via:
+      - https/1.1 api-umbrella (ApacheTrafficServer [cMsSf ])
+      x-api-umbrella-request-id:
+      - d12s3adlo1mb9bjc3mf0
+      x-cache:
+      - MISS
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-ratelimit-limit:
+      - '20000'
+      x-ratelimit-remaining:
+      - '19986'
+      x-vcap-request-id:
+      - e85e9a13-3335-4f6f-5317-f719d45ff950
+    status:
+      code: 200
+      message: OK
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - __cf_bm=RkibmlJbxZ18wS7N4Vp70N8tyvC1134myLnoW00SsGk-1791387674.3329628-1.0.1.1-nzDVHU8BOVUcxEeGXZQ5d.qe__txUhR3S_KUH0nseyGz_SqTiT1VfFTOiB8MrQFENIHKmYHYN8VtQoYYB4dAqtX7dlV2uES2UEiVGJrF8m23ztuH5zcXHpvFIBbcsr6M
+      host:
+      - api.congress.gov
+      user-agent:
+      - brokeberg/0.1 (political-economic research; +https://github.com/Aarush2801/brokeberg)
+    method: GET
+    uri: https://api.congress.gov/v3/bill/119/s/4668?api_key=REDACTED&format=json
+  response:
+    body:
+      string: "{\n    \"bill\": {\n        \"actions\": {\n            \"count\":
+        28,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/4668/actions?format=json\"\n
+        \       },\n        \"amendments\": {\n            \"count\": 74,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/4668/amendments?format=json\"\n        },\n
+        \       \"cboCostEstimates\": [\n            {\n                \"description\":
+        \"As reported by the Senate Committee on Commerce, Science, and Transportation
+        on \\nJune 24, 2026\\n\",\n                \"pubDate\": \"2026-07-31T18:43:00Z\",\n
+        \               \"title\": \"S. 4668, Protect College Sports Act of 2026\",\n
+        \               \"url\": \"https://www.cbo.gov/publication/62630\"\n            }\n
+        \       ],\n        \"committees\": {\n            \"count\": 1,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/4668/committees?format=json\"\n        },\n
+        \       \"congress\": 119,\n        \"cosponsors\": {\n            \"count\":
+        9,\n            \"countIncludingWithdrawnCosponsors\": 9,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/4668/cosponsors?format=json\"\n        },\n
+        \       \"introducedDate\": \"2026-06-02\",\n        \"latestAction\": {\n
+        \           \"actionDate\": \"2026-10-05\",\n            \"actionTime\": \"16:54:13\",\n
+        \           \"text\": \"Held at the desk.\"\n        },\n        \"legislationUrl\":
+        \"https://www.congress.gov/bill/119th-congress/senate-bill/4668\",\n        \"number\":
+        \"4668\",\n        \"originChamber\": \"Senate\",\n        \"originChamberCode\":
+        \"S\",\n        \"policyArea\": {\n            \"name\": \"Sports and Recreation\"\n
+        \       },\n        \"relatedBills\": {\n            \"count\": 1,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/4668/relatedbills?format=json\"\n
+        \       },\n        \"sponsors\": [\n            {\n                \"bioguideId\":
+        \"C001098\",\n                \"firstName\": \"Ted\",\n                \"fullName\":
+        \"Sen. Cruz, Ted [R-TX]\",\n                \"isByRequest\": \"N\",\n                \"lastName\":
+        \"Cruz\",\n                \"party\": \"R\",\n                \"state\": \"TX\",\n
+        \               \"url\": \"https://api.congress.gov/v3/member/C001098?format=json\"\n
+        \           }\n        ],\n        \"subjects\": {\n            \"count\":
+        13,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/4668/subjects?format=json\"\n
+        \       },\n        \"summaries\": {\n            \"count\": 2,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/4668/summaries?format=json\"\n        },\n
+        \       \"textVersions\": {\n            \"count\": 3,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/4668/text?format=json\"\n        },\n
+        \       \"title\": \"Protect College Sports Act of 2026\",\n        \"titles\":
+        {\n            \"count\": 6,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/4668/titles?format=json\"\n
+        \       },\n        \"type\": \"S\",\n        \"updateDate\": \"2026-10-07T11:42:24Z\",\n
+        \       \"updateDateIncludingText\": \"2026-10-07T11:42:24Z\"\n    },\n    \"request\":
+        {\n        \"billNumber\": \"4668\",\n        \"billType\": \"s\",\n        \"congress\":
+        \"119\",\n        \"contentType\": \"application/json\",\n        \"format\":
+        \"json\"\n    }\n}"
+    headers:
+      access-control-allow-origin:
+      - '*'
+      age:
+      - '428'
+      cache-control:
+      - public, max-age=1800
+      cf-cache-status:
+      - HIT
+      cf-ray:
+      - a46e0247bbcd1c37-PDX
+      connection:
+      - keep-alive
+      content-length:
+      - '3011'
+      content-type:
+      - application/json
+      date:
+      - Wed, 07 Oct 2026 15:41:14 GMT
+      expires:
+      - Wed, 07 Oct 2026 16:11:14 GMT
+      last-modified:
+      - Wed, 07 Oct 2026 15:34:06 GMT
+      link:
+      - <https://api.congress.gov/v3/bill/119/s/4668>; rel="canonical"
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      - Accept
+      via:
+      - https/1.1 api-umbrella (ApacheTrafficServer [cMsSf ])
+      x-api-umbrella-request-id:
+      - d12s3ahlgfkekqo69sag
+      x-cache:
+      - MISS
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-ratelimit-limit:
+      - '20000'
+      x-ratelimit-remaining:
+      - '19985'
+      x-vcap-request-id:
+      - 5e0a9231-8060-4bb9-5cc4-3bda4cc3ea5e
+    status:
+      code: 200
+      message: OK
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - __cf_bm=RkibmlJbxZ18wS7N4Vp70N8tyvC1134myLnoW00SsGk-1791387674.3329628-1.0.1.1-nzDVHU8BOVUcxEeGXZQ5d.qe__txUhR3S_KUH0nseyGz_SqTiT1VfFTOiB8MrQFENIHKmYHYN8VtQoYYB4dAqtX7dlV2uES2UEiVGJrF8m23ztuH5zcXHpvFIBbcsr6M
+      host:
+      - api.congress.gov
+      user-agent:
+      - brokeberg/0.1 (political-economic research; +https://github.com/Aarush2801/brokeberg)
+    method: GET
+    uri: https://api.congress.gov/v3/bill/119/s/4395?api_key=REDACTED&format=json
+  response:
+    body:
+      string: "{\n    \"bill\": {\n        \"actions\": {\n            \"count\":
+        11,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/4395/actions?format=json\"\n
+        \       },\n        \"committees\": {\n            \"count\": 1,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/4395/committees?format=json\"\n        },\n
+        \       \"congress\": 119,\n        \"cosponsors\": {\n            \"count\":
+        42,\n            \"countIncludingWithdrawnCosponsors\": 42,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/4395/cosponsors?format=json\"\n        },\n
+        \       \"introducedDate\": \"2026-04-27\",\n        \"latestAction\": {\n
+        \           \"actionDate\": \"2026-10-05\",\n            \"actionTime\": \"16:54:07\",\n
+        \           \"text\": \"Held at the desk.\"\n        },\n        \"legislationUrl\":
+        \"https://www.congress.gov/bill/119th-congress/senate-bill/4395\",\n        \"number\":
+        \"4395\",\n        \"originChamber\": \"Senate\",\n        \"originChamberCode\":
+        \"S\",\n        \"policyArea\": {\n            \"name\": \"Finance and Financial
+        Sector\"\n        },\n        \"relatedBills\": {\n            \"count\":
+        2,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/4395/relatedbills?format=json\"\n
+        \       },\n        \"sponsors\": [\n            {\n                \"bioguideId\":
+        \"M001243\",\n                \"firstName\": \"David\",\n                \"fullName\":
+        \"Sen. McCormick, David [R-PA]\",\n                \"isByRequest\": \"N\",\n
+        \               \"lastName\": \"McCormick\",\n                \"middleName\":
+        \"H.\",\n                \"party\": \"R\",\n                \"state\": \"PA\",\n
+        \               \"url\": \"https://api.congress.gov/v3/member/M001243?format=json\"\n
+        \           }\n        ],\n        \"subjects\": {\n            \"count\":
+        3,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/4395/subjects?format=json\"\n
+        \       },\n        \"textVersions\": {\n            \"count\": 3,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/4395/text?format=json\"\n        },\n
+        \       \"title\": \"Terrorism Risk Insurance Program Reauthorization Act
+        of 2026\",\n        \"titles\": {\n            \"count\": 5,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/4395/titles?format=json\"\n        },\n
+        \       \"type\": \"S\",\n        \"updateDate\": \"2026-10-07T11:41:45Z\",\n
+        \       \"updateDateIncludingText\": \"2026-10-07T11:41:45Z\"\n    },\n    \"request\":
+        {\n        \"billNumber\": \"4395\",\n        \"billType\": \"s\",\n        \"congress\":
+        \"119\",\n        \"contentType\": \"application/json\",\n        \"format\":
+        \"json\"\n    }\n}"
+    headers:
+      access-control-allow-origin:
+      - '*'
+      age:
+      - '733'
+      cache-control:
+      - public, max-age=1800
+      cf-cache-status:
+      - HIT
+      cf-ray:
+      - a46e024add4baee3-PDX
+      connection:
+      - keep-alive
+      content-length:
+      - '2415'
+      content-type:
+      - application/json
+      date:
+      - Wed, 07 Oct 2026 15:41:15 GMT
+      expires:
+      - Wed, 07 Oct 2026 16:11:15 GMT
+      last-modified:
+      - Wed, 07 Oct 2026 15:29:01 GMT
+      link:
+      - <https://api.congress.gov/v3/bill/119/s/4395>; rel="canonical"
+      set-cookie:
+      - __cf_bm=kIc6PiNSegjU_hN6DWVBvtRKpxQ0rGRQhPgOWIugZ80-1791387675.3377717-1.0.1.1-SzeEJrJzMA6mpnE1DHKHBM7VOA2apm33vhCB46lgy_ZiftVuGrsDW93ji13jDh4HJofumjRptCA_0yi3Mrkn2L_o.jUKyAnOK2Pm97qIQUOt6a1dlYElSUX1P1AgcOo1;
+        HttpOnly; SameSite=None; Secure; Path=/; Domain=congress.gov; Expires=Wed,
+        07 Oct 2026 16:11:15 GMT
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      - Accept
+      via:
+      - https/1.1 api-umbrella (ApacheTrafficServer [cMsSf ])
+      x-api-umbrella-request-id:
+      - d12s3aliopsuhfrecli0
+      x-cache:
+      - MISS
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-ratelimit-limit:
+      - '20000'
+      x-ratelimit-remaining:
+      - '19984'
+      x-vcap-request-id:
+      - d061235c-50c2-4453-5eb9-4a952e2e92a6
+    status:
+      code: 200
+      message: OK
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - __cf_bm=kIc6PiNSegjU_hN6DWVBvtRKpxQ0rGRQhPgOWIugZ80-1791387675.3377717-1.0.1.1-SzeEJrJzMA6mpnE1DHKHBM7VOA2apm33vhCB46lgy_ZiftVuGrsDW93ji13jDh4HJofumjRptCA_0yi3Mrkn2L_o.jUKyAnOK2Pm97qIQUOt6a1dlYElSUX1P1AgcOo1
+      host:
+      - api.congress.gov
+      user-agent:
+      - brokeberg/0.1 (political-economic research; +https://github.com/Aarush2801/brokeberg)
+    method: GET
+    uri: https://api.congress.gov/v3/bill/119/s/4009?api_key=REDACTED&format=json
+  response:
+    body:
+      string: "{\n    \"bill\": {\n        \"actions\": {\n            \"count\":
+        11,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/4009/actions?format=json\"\n
+        \       },\n        \"cboCostEstimates\": [\n            {\n                \"description\":
+        \"As reported by the Senate Committee on Foreign Relations on July 27, 2026\",\n
+        \               \"pubDate\": \"2026-07-30T14:33:00Z\",\n                \"title\":
+        \"S. 4009, Falun Gong and Victims of Forced Organ Harvesting Protection Act\",\n
+        \               \"url\": \"https://www.cbo.gov/publication/62605\"\n            }\n
+        \       ],\n        \"committees\": {\n            \"count\": 1,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/4009/committees?format=json\"\n        },\n
+        \       \"congress\": 119,\n        \"cosponsors\": {\n            \"count\":
+        11,\n            \"countIncludingWithdrawnCosponsors\": 11,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/4009/cosponsors?format=json\"\n        },\n
+        \       \"introducedDate\": \"2026-03-05\",\n        \"latestAction\": {\n
+        \           \"actionDate\": \"2026-10-05\",\n            \"actionTime\": \"16:53:58\",\n
+        \           \"text\": \"Held at the desk.\"\n        },\n        \"legislationUrl\":
+        \"https://www.congress.gov/bill/119th-congress/senate-bill/4009\",\n        \"number\":
+        \"4009\",\n        \"originChamber\": \"Senate\",\n        \"originChamberCode\":
+        \"S\",\n        \"policyArea\": {\n            \"name\": \"International Affairs\"\n
+        \       },\n        \"relatedBills\": {\n            \"count\": 1,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/4009/relatedbills?format=json\"\n
+        \       },\n        \"sponsors\": [\n            {\n                \"bioguideId\":
+        \"C001098\",\n                \"firstName\": \"Ted\",\n                \"fullName\":
+        \"Sen. Cruz, Ted [R-TX]\",\n                \"isByRequest\": \"N\",\n                \"lastName\":
+        \"Cruz\",\n                \"party\": \"R\",\n                \"state\": \"TX\",\n
+        \               \"url\": \"https://api.congress.gov/v3/member/C001098?format=json\"\n
+        \           }\n        ],\n        \"subjects\": {\n            \"count\":
+        13,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/4009/subjects?format=json\"\n
+        \       },\n        \"textVersions\": {\n            \"count\": 3,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/4009/text?format=json\"\n        },\n
+        \       \"title\": \"Falun Gong and Victims of Forced Organ Harvesting Protection
+        Act\",\n        \"titles\": {\n            \"count\": 5,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/4009/titles?format=json\"\n        },\n
+        \       \"type\": \"S\",\n        \"updateDate\": \"2026-10-07T11:41:25Z\",\n
+        \       \"updateDateIncludingText\": \"2026-10-07T11:41:25Z\"\n    },\n    \"request\":
+        {\n        \"billNumber\": \"4009\",\n        \"billType\": \"s\",\n        \"congress\":
+        \"119\",\n        \"contentType\": \"application/json\",\n        \"format\":
+        \"json\"\n    }\n}"
+    headers:
+      access-control-allow-origin:
+      - '*'
+      age:
+      - '3289'
+      cache-control:
+      - public, max-age=1800
+      cf-cache-status:
+      - HIT
+      cf-ray:
+      - a46e024e0c00503f-PDX
+      connection:
+      - keep-alive
+      content-length:
+      - '2756'
+      content-type:
+      - application/json
+      date:
+      - Wed, 07 Oct 2026 15:41:15 GMT
+      expires:
+      - Wed, 07 Oct 2026 16:11:15 GMT
+      last-modified:
+      - Wed, 07 Oct 2026 14:46:26 GMT
+      link:
+      - <https://api.congress.gov/v3/bill/119/s/4009>; rel="canonical"
+      set-cookie:
+      - __cf_bm=aFcNNtVxiME0ibJZt5_JSuFxMGNcgew5TcAA0DUxlhk-1791387675.8424287-1.0.1.1-b3QVpEljBrnHB8ytr7kLMPDgLM718vqcNAE9PPfX001SmmAtEAEd73FhwV6N_60PBTqiR2Mh63Ya79LwUdX6dS5AsAvPx5ZPfYlKfG2oSVaou6_RcolWgIVvs1jRYVTS;
+        HttpOnly; SameSite=None; Secure; Path=/; Domain=congress.gov; Expires=Wed,
+        07 Oct 2026 16:11:15 GMT
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      - Accept
+      via:
+      - https/1.1 api-umbrella (ApacheTrafficServer [cMsSf ])
+      x-api-umbrella-request-id:
+      - d12s3apgnfdvkf3qdme0
+      x-cache:
+      - MISS
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-ratelimit-limit:
+      - '20000'
+      x-ratelimit-remaining:
+      - '19983'
+      x-vcap-request-id:
+      - d2bd3b7f-c1d6-479a-4cd8-9dd93f4aab10
+    status:
+      code: 200
+      message: OK
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - __cf_bm=aFcNNtVxiME0ibJZt5_JSuFxMGNcgew5TcAA0DUxlhk-1791387675.8424287-1.0.1.1-b3QVpEljBrnHB8ytr7kLMPDgLM718vqcNAE9PPfX001SmmAtEAEd73FhwV6N_60PBTqiR2Mh63Ya79LwUdX6dS5AsAvPx5ZPfYlKfG2oSVaou6_RcolWgIVvs1jRYVTS
+      host:
+      - api.congress.gov
+      user-agent:
+      - brokeberg/0.1 (political-economic research; +https://github.com/Aarush2801/brokeberg)
+    method: GET
+    uri: https://api.congress.gov/v3/bill/119/s/3798?api_key=REDACTED&format=json
+  response:
+    body:
+      string: "{\n    \"bill\": {\n        \"actions\": {\n            \"count\":
+        11,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/3798/actions?format=json\"\n
+        \       },\n        \"cboCostEstimates\": [\n            {\n                \"description\":
+        \"As reported by the Senate Committee on the Judiciary on March 5, 2026\",\n
+        \               \"pubDate\": \"2026-04-09T19:00:00Z\",\n                \"title\":
+        \"S. 3798, Safe Access to Cash Act of 2026\",\n                \"url\": \"https://www.cbo.gov/publication/62323\"\n
+        \           }\n        ],\n        \"committees\": {\n            \"count\":
+        1,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/3798/committees?format=json\"\n
+        \       },\n        \"congress\": 119,\n        \"cosponsors\": {\n            \"count\":
+        2,\n            \"countIncludingWithdrawnCosponsors\": 2,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/3798/cosponsors?format=json\"\n        },\n
+        \       \"introducedDate\": \"2026-02-05\",\n        \"latestAction\": {\n
+        \           \"actionDate\": \"2026-10-05\",\n            \"actionTime\": \"16:53:20\",\n
+        \           \"text\": \"Held at the desk.\"\n        },\n        \"legislationUrl\":
+        \"https://www.congress.gov/bill/119th-congress/senate-bill/3798\",\n        \"number\":
+        \"3798\",\n        \"originChamber\": \"Senate\",\n        \"originChamberCode\":
+        \"S\",\n        \"policyArea\": {\n            \"name\": \"Crime and Law Enforcement\"\n
+        \       },\n        \"relatedBills\": {\n            \"count\": 2,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/3798/relatedbills?format=json\"\n
+        \       },\n        \"sponsors\": [\n            {\n                \"bioguideId\":
+        \"C001098\",\n                \"firstName\": \"Ted\",\n                \"fullName\":
+        \"Sen. Cruz, Ted [R-TX]\",\n                \"isByRequest\": \"N\",\n                \"lastName\":
+        \"Cruz\",\n                \"party\": \"R\",\n                \"state\": \"TX\",\n
+        \               \"url\": \"https://api.congress.gov/v3/member/C001098?format=json\"\n
+        \           }\n        ],\n        \"subjects\": {\n            \"count\":
+        4,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/3798/subjects?format=json\"\n
+        \       },\n        \"textVersions\": {\n            \"count\": 3,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/3798/text?format=json\"\n        },\n
+        \       \"title\": \"Safe Access to Cash Act of 2026\",\n        \"titles\":
+        {\n            \"count\": 5,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/3798/titles?format=json\"\n
+        \       },\n        \"type\": \"S\",\n        \"updateDate\": \"2026-10-07T11:41:02Z\",\n
+        \       \"updateDateIncludingText\": \"2026-10-07T11:41:02Z\"\n    },\n    \"request\":
+        {\n        \"billNumber\": \"3798\",\n        \"billType\": \"s\",\n        \"congress\":
+        \"119\",\n        \"contentType\": \"application/json\",\n        \"format\":
+        \"json\"\n    }\n}"
+    headers:
+      access-control-allow-origin:
+      - '*'
+      age:
+      - '1115'
+      cache-control:
+      - public, max-age=1800
+      cf-cache-status:
+      - HIT
+      cf-ray:
+      - a46e02512e7e3abd-PDX
+      connection:
+      - keep-alive
+      content-length:
+      - '2687'
+      content-type:
+      - application/json
+      date:
+      - Wed, 07 Oct 2026 15:41:16 GMT
+      expires:
+      - Wed, 07 Oct 2026 16:11:16 GMT
+      last-modified:
+      - Wed, 07 Oct 2026 15:22:40 GMT
+      link:
+      - <https://api.congress.gov/v3/bill/119/s/3798>; rel="canonical"
+      set-cookie:
+      - __cf_bm=qWV14jcTi56NsCFRSiHRSm_TiZ658YWRJL4DsYfJaI4-1791387676.3462906-1.0.1.1-p1uPNi5xT_j1HUJp7b3Z.dGSj_WKS6iibblzyciryYm8sC7NvECFt2NKtQcr13B46TGxtW1L_sbqubkhlIWvt7pZjip23Jt_oX8jcZoxMCUBQ8NaaQRBKdNpzQRIeOhE;
+        HttpOnly; SameSite=None; Secure; Path=/; Domain=congress.gov; Expires=Wed,
+        07 Oct 2026 16:11:16 GMT
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      - Accept
+      via:
+      - https/1.1 api-umbrella (ApacheTrafficServer [cMsSf ])
+      x-api-umbrella-request-id:
+      - d12s3atejou43n7m1ccg
+      x-cache:
+      - MISS
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-ratelimit-limit:
+      - '20000'
+      x-ratelimit-remaining:
+      - '19982'
+      x-vcap-request-id:
+      - ca80ebe5-7fcb-4922-6a38-458c4c731734
+    status:
+      code: 200
+      message: OK
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - __cf_bm=qWV14jcTi56NsCFRSiHRSm_TiZ658YWRJL4DsYfJaI4-1791387676.3462906-1.0.1.1-p1uPNi5xT_j1HUJp7b3Z.dGSj_WKS6iibblzyciryYm8sC7NvECFt2NKtQcr13B46TGxtW1L_sbqubkhlIWvt7pZjip23Jt_oX8jcZoxMCUBQ8NaaQRBKdNpzQRIeOhE
+      host:
+      - api.congress.gov
+      user-agent:
+      - brokeberg/0.1 (political-economic research; +https://github.com/Aarush2801/brokeberg)
+    method: GET
+    uri: https://api.congress.gov/v3/bill/119/s/3383?api_key=REDACTED&format=json
+  response:
+    body:
+      string: "{\n    \"bill\": {\n        \"actions\": {\n            \"count\":
+        12,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/3383/actions?format=json\"\n
+        \       },\n        \"amendments\": {\n            \"count\": 1,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/3383/amendments?format=json\"\n        },\n
+        \       \"cboCostEstimates\": [\n            {\n                \"description\":
+        \"As ordered reported by the Senate Committee on Indian Affairs on December
+        17, 2025\",\n                \"pubDate\": \"2026-04-14T19:14:00Z\",\n                \"title\":
+        \"S. 3383, Unlocking Native Lands and Opportunities for Commerce and Key Economic
+        Developments Act of 2025\",\n                \"url\": \"https://www.cbo.gov/publication/62341\"\n
+        \           }\n        ],\n        \"committeeReports\": [\n            {\n
+        \               \"citation\": \"S. Rept. 119-130\",\n                \"url\":
+        \"https://api.congress.gov/v3/committee-report/119/SRPT/130?format=json\"\n
+        \           }\n        ],\n        \"committees\": {\n            \"count\":
+        1,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/3383/committees?format=json\"\n
+        \       },\n        \"congress\": 119,\n        \"cosponsors\": {\n            \"count\":
+        2,\n            \"countIncludingWithdrawnCosponsors\": 2,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/3383/cosponsors?format=json\"\n        },\n
+        \       \"introducedDate\": \"2025-12-08\",\n        \"latestAction\": {\n
+        \           \"actionDate\": \"2026-10-05\",\n            \"actionTime\": \"16:53:09\",\n
+        \           \"text\": \"Held at the desk.\"\n        },\n        \"legislationUrl\":
+        \"https://www.congress.gov/bill/119th-congress/senate-bill/3383\",\n        \"number\":
+        \"3383\",\n        \"originChamber\": \"Senate\",\n        \"originChamberCode\":
+        \"S\",\n        \"policyArea\": {\n            \"name\": \"Native Americans\"\n
+        \       },\n        \"relatedBills\": {\n            \"count\": 1,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/3383/relatedbills?format=json\"\n
+        \       },\n        \"sponsors\": [\n            {\n                \"bioguideId\":
+        \"S001194\",\n                \"firstName\": \"Brian\",\n                \"fullName\":
+        \"Sen. Schatz, Brian [D-HI]\",\n                \"isByRequest\": \"N\",\n
+        \               \"lastName\": \"Schatz\",\n                \"party\": \"D\",\n
+        \               \"state\": \"HI\",\n                \"url\": \"https://api.congress.gov/v3/member/S001194?format=json\"\n
+        \           }\n        ],\n        \"subjects\": {\n            \"count\":
+        4,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/3383/subjects?format=json\"\n
+        \       },\n        \"textVersions\": {\n            \"count\": 3,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/3383/text?format=json\"\n        },\n
+        \       \"title\": \"Unlocking Native Lands and Opportunities for Commerce
+        and Key Economic Developments Act of 2025\",\n        \"titles\": {\n            \"count\":
+        5,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/3383/titles?format=json\"\n
+        \       },\n        \"type\": \"S\",\n        \"updateDate\": \"2026-10-07T11:40:37Z\",\n
+        \       \"updateDateIncludingText\": \"2026-10-07T11:40:37Z\"\n    },\n    \"request\":
+        {\n        \"billNumber\": \"3383\",\n        \"billType\": \"s\",\n        \"congress\":
+        \"119\",\n        \"contentType\": \"application/json\",\n        \"format\":
+        \"json\"\n    }\n}"
+    headers:
+      access-control-allow-origin:
+      - '*'
+      age:
+      - '2347'
+      cache-control:
+      - public, max-age=1800
+      cf-cache-status:
+      - HIT
+      cf-ray:
+      - a46e02544deec4ac-PDX
+      connection:
+      - keep-alive
+      content-length:
+      - '3186'
+      content-type:
+      - application/json
+      date:
+      - Wed, 07 Oct 2026 15:41:16 GMT
+      expires:
+      - Wed, 07 Oct 2026 16:11:16 GMT
+      last-modified:
+      - Wed, 07 Oct 2026 15:02:09 GMT
+      link:
+      - <https://api.congress.gov/v3/bill/119/s/3383>; rel="canonical"
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      - Accept
+      via:
+      - https/1.1 api-umbrella (ApacheTrafficServer [cMsSf ])
+      x-api-umbrella-request-id:
+      - d12s3b1busfj09k2isrg
+      x-cache:
+      - MISS
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-ratelimit-limit:
+      - '20000'
+      x-ratelimit-remaining:
+      - '19981'
+      x-vcap-request-id:
+      - 5b9841f5-08f7-40f3-6a8c-dbc67e1019f0
+    status:
+      code: 200
+      message: OK
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - __cf_bm=qWV14jcTi56NsCFRSiHRSm_TiZ658YWRJL4DsYfJaI4-1791387676.3462906-1.0.1.1-p1uPNi5xT_j1HUJp7b3Z.dGSj_WKS6iibblzyciryYm8sC7NvECFt2NKtQcr13B46TGxtW1L_sbqubkhlIWvt7pZjip23Jt_oX8jcZoxMCUBQ8NaaQRBKdNpzQRIeOhE
+      host:
+      - api.congress.gov
+      user-agent:
+      - brokeberg/0.1 (political-economic research; +https://github.com/Aarush2801/brokeberg)
+    method: GET
+    uri: https://api.congress.gov/v3/bill/119/s/3315?api_key=REDACTED&format=json
+  response:
+    body:
+      string: "{\n    \"bill\": {\n        \"actions\": {\n            \"count\":
+        13,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/3315/actions?format=json\"\n
+        \       },\n        \"amendments\": {\n            \"count\": 1,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/3315/amendments?format=json\"\n        },\n
+        \       \"cboCostEstimates\": [\n            {\n                \"description\":
+        \"As ordered reported by the Senate Committee on Health, Education, Labor,
+        and Pensions \\non February 26, 2026\\n\",\n                \"pubDate\": \"2026-04-20T12:46:00Z\",\n
+        \               \"title\": \"S. 3315, Health Care Cybersecurity and Resiliency
+        Act of 2026\",\n                \"url\": \"https://www.cbo.gov/publication/62241\"\n
+        \           }\n        ],\n        \"committees\": {\n            \"count\":
+        1,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/3315/committees?format=json\"\n
+        \       },\n        \"congress\": 119,\n        \"cosponsors\": {\n            \"count\":
+        5,\n            \"countIncludingWithdrawnCosponsors\": 5,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/3315/cosponsors?format=json\"\n        },\n
+        \       \"introducedDate\": \"2025-12-02\",\n        \"latestAction\": {\n
+        \           \"actionDate\": \"2026-10-05\",\n            \"actionTime\": \"17:02:10\",\n
+        \           \"text\": \"Held at the desk.\"\n        },\n        \"legislationUrl\":
+        \"https://www.congress.gov/bill/119th-congress/senate-bill/3315\",\n        \"number\":
+        \"3315\",\n        \"originChamber\": \"Senate\",\n        \"originChamberCode\":
+        \"S\",\n        \"policyArea\": {\n            \"name\": \"Health\"\n        },\n
+        \       \"sponsors\": [\n            {\n                \"bioguideId\": \"C001075\",\n
+        \               \"firstName\": \"Bill\",\n                \"fullName\": \"Sen.
+        Cassidy, Bill [R-LA]\",\n                \"isByRequest\": \"N\",\n                \"lastName\":
+        \"Cassidy\",\n                \"party\": \"R\",\n                \"state\":
+        \"LA\",\n                \"url\": \"https://api.congress.gov/v3/member/C001075?format=json\"\n
+        \           }\n        ],\n        \"subjects\": {\n            \"count\":
+        12,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/3315/subjects?format=json\"\n
+        \       },\n        \"summaries\": {\n            \"count\": 1,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/3315/summaries?format=json\"\n        },\n
+        \       \"textVersions\": {\n            \"count\": 3,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/3315/text?format=json\"\n        },\n
+        \       \"title\": \"Health Care Cybersecurity and Resiliency Act of 2026\",\n
+        \       \"titles\": {\n            \"count\": 5,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/3315/titles?format=json\"\n
+        \       },\n        \"type\": \"S\",\n        \"updateDate\": \"2026-10-07T11:40:18Z\",\n
+        \       \"updateDateIncludingText\": \"2026-10-07T11:40:18Z\"\n    },\n    \"request\":
+        {\n        \"billNumber\": \"3315\",\n        \"billType\": \"s\",\n        \"congress\":
+        \"119\",\n        \"contentType\": \"application/json\",\n        \"format\":
+        \"json\"\n    }\n}"
+    headers:
+      access-control-allow-origin:
+      - '*'
+      age:
+      - '2655'
+      cache-control:
+      - public, max-age=1800
+      cf-cache-status:
+      - HIT
+      cf-ray:
+      - a46e02577a95b18c-PDX
+      connection:
+      - keep-alive
+      content-length:
+      - '2901'
+      content-type:
+      - application/json
+      date:
+      - Wed, 07 Oct 2026 15:41:17 GMT
+      expires:
+      - Wed, 07 Oct 2026 16:11:17 GMT
+      last-modified:
+      - Wed, 07 Oct 2026 14:57:02 GMT
+      link:
+      - <https://api.congress.gov/v3/bill/119/s/3315>; rel="canonical"
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      - Accept
+      via:
+      - https/1.1 api-umbrella (ApacheTrafficServer [cMsSf ])
+      x-api-umbrella-request-id:
+      - d12s3b5btfgg2u16fd90
+      x-cache:
+      - MISS
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-ratelimit-limit:
+      - '20000'
+      x-ratelimit-remaining:
+      - '19980'
+      x-vcap-request-id:
+      - 18fd7f59-e1a7-4c1b-78a7-5075593ca105
+    status:
+      code: 200
+      message: OK
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - __cf_bm=qWV14jcTi56NsCFRSiHRSm_TiZ658YWRJL4DsYfJaI4-1791387676.3462906-1.0.1.1-p1uPNi5xT_j1HUJp7b3Z.dGSj_WKS6iibblzyciryYm8sC7NvECFt2NKtQcr13B46TGxtW1L_sbqubkhlIWvt7pZjip23Jt_oX8jcZoxMCUBQ8NaaQRBKdNpzQRIeOhE
+      host:
+      - api.congress.gov
+      user-agent:
+      - brokeberg/0.1 (political-economic research; +https://github.com/Aarush2801/brokeberg)
+    method: GET
+    uri: https://api.congress.gov/v3/bill/119/s/3219?api_key=REDACTED&format=json
+  response:
+    body:
+      string: "{\n    \"bill\": {\n        \"actions\": {\n            \"count\":
+        12,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/3219/actions?format=json\"\n
+        \       },\n        \"committeeReports\": [\n            {\n                \"citation\":
+        \"S. Rept. 119-153\",\n                \"url\": \"https://api.congress.gov/v3/committee-report/119/SRPT/153?format=json\"\n
+        \           }\n        ],\n        \"committees\": {\n            \"count\":
+        1,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/3219/committees?format=json\"\n
+        \       },\n        \"congress\": 119,\n        \"cosponsors\": {\n            \"count\":
+        1,\n            \"countIncludingWithdrawnCosponsors\": 1,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/3219/cosponsors?format=json\"\n        },\n
+        \       \"introducedDate\": \"2025-11-19\",\n        \"latestAction\": {\n
+        \           \"actionDate\": \"2026-10-05\",\n            \"actionTime\": \"16:53:03\",\n
+        \           \"text\": \"Held at the desk.\"\n        },\n        \"legislationUrl\":
+        \"https://www.congress.gov/bill/119th-congress/senate-bill/3219\",\n        \"number\":
+        \"3219\",\n        \"originChamber\": \"Senate\",\n        \"originChamberCode\":
+        \"S\",\n        \"policyArea\": {\n            \"name\": \"Native Americans\"\n
+        \       },\n        \"relatedBills\": {\n            \"count\": 2,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/3219/relatedbills?format=json\"\n
+        \       },\n        \"sponsors\": [\n            {\n                \"bioguideId\":
+        \"H001046\",\n                \"firstName\": \"Martin\",\n                \"fullName\":
+        \"Sen. Heinrich, Martin [D-NM]\",\n                \"isByRequest\": \"N\",\n
+        \               \"lastName\": \"Heinrich\",\n                \"party\": \"D\",\n
+        \               \"state\": \"NM\",\n                \"url\": \"https://api.congress.gov/v3/member/H001046?format=json\"\n
+        \           }\n        ],\n        \"subjects\": {\n            \"count\":
+        6,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/3219/subjects?format=json\"\n
+        \       },\n        \"summaries\": {\n            \"count\": 1,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/3219/summaries?format=json\"\n        },\n
+        \       \"textVersions\": {\n            \"count\": 3,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/3219/text?format=json\"\n        },\n
+        \       \"title\": \"Albuquerque Indian School Act of 2026\",\n        \"titles\":
+        {\n            \"count\": 5,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/3219/titles?format=json\"\n
+        \       },\n        \"type\": \"S\",\n        \"updateDate\": \"2026-10-07T11:39:48Z\",\n
+        \       \"updateDateIncludingText\": \"2026-10-07T11:39:48Z\"\n    },\n    \"request\":
+        {\n        \"billNumber\": \"3219\",\n        \"billType\": \"s\",\n        \"congress\":
+        \"119\",\n        \"contentType\": \"application/json\",\n        \"format\":
+        \"json\"\n    }\n}"
+    headers:
+      access-control-allow-origin:
+      - '*'
+      age:
+      - '2827'
+      cache-control:
+      - public, max-age=1800
+      cf-cache-status:
+      - HIT
+      cf-ray:
+      - a46e025a9b1fef6f-PDX
+      connection:
+      - keep-alive
+      content-length:
+      - '2699'
+      content-type:
+      - application/json
+      date:
+      - Wed, 07 Oct 2026 15:41:17 GMT
+      expires:
+      - Wed, 07 Oct 2026 16:11:17 GMT
+      last-modified:
+      - Wed, 07 Oct 2026 14:54:10 GMT
+      link:
+      - <https://api.congress.gov/v3/bill/119/s/3219>; rel="canonical"
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      - Accept
+      via:
+      - https/1.1 api-umbrella (ApacheTrafficServer [cMsSf ])
+      x-api-umbrella-request-id:
+      - d12s3b98eqca2idql9u0
+      x-cache:
+      - MISS
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-ratelimit-limit:
+      - '20000'
+      x-ratelimit-remaining:
+      - '19979'
+      x-vcap-request-id:
+      - fb85f8b6-b710-4dce-49df-fc6da2f6699a
+    status:
+      code: 200
+      message: OK
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - __cf_bm=qWV14jcTi56NsCFRSiHRSm_TiZ658YWRJL4DsYfJaI4-1791387676.3462906-1.0.1.1-p1uPNi5xT_j1HUJp7b3Z.dGSj_WKS6iibblzyciryYm8sC7NvECFt2NKtQcr13B46TGxtW1L_sbqubkhlIWvt7pZjip23Jt_oX8jcZoxMCUBQ8NaaQRBKdNpzQRIeOhE
+      host:
+      - api.congress.gov
+      user-agent:
+      - brokeberg/0.1 (political-economic research; +https://github.com/Aarush2801/brokeberg)
+    method: GET
+    uri: https://api.congress.gov/v3/bill/119/s/2754?api_key=REDACTED&format=json
+  response:
+    body:
+      string: "{\n    \"bill\": {\n        \"actions\": {\n            \"count\":
+        12,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/2754/actions?format=json\"\n
+        \       },\n        \"committees\": {\n            \"count\": 1,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/2754/committees?format=json\"\n        },\n
+        \       \"congress\": 119,\n        \"cosponsors\": {\n            \"count\":
+        1,\n            \"countIncludingWithdrawnCosponsors\": 1,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/2754/cosponsors?format=json\"\n        },\n
+        \       \"introducedDate\": \"2025-09-10\",\n        \"latestAction\": {\n
+        \           \"actionDate\": \"2026-10-05\",\n            \"actionTime\": \"16:52:51\",\n
+        \           \"text\": \"Held at the desk.\"\n        },\n        \"legislationUrl\":
+        \"https://www.congress.gov/bill/119th-congress/senate-bill/2754\",\n        \"number\":
+        \"2754\",\n        \"originChamber\": \"Senate\",\n        \"originChamberCode\":
+        \"S\",\n        \"policyArea\": {\n            \"name\": \"Public Lands and
+        Natural Resources\"\n        },\n        \"relatedBills\": {\n            \"count\":
+        2,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/2754/relatedbills?format=json\"\n
+        \       },\n        \"sponsors\": [\n            {\n                \"bioguideId\":
+        \"B001267\",\n                \"firstName\": \"Michael\",\n                \"fullName\":
+        \"Sen. Bennet, Michael F. [D-CO]\",\n                \"isByRequest\": \"N\",\n
+        \               \"lastName\": \"Bennet\",\n                \"party\": \"D\",\n
+        \               \"state\": \"CO\",\n                \"url\": \"https://api.congress.gov/v3/member/B001267?format=json\"\n
+        \           }\n        ],\n        \"subjects\": {\n            \"count\":
+        6,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/2754/subjects?format=json\"\n
+        \       },\n        \"textVersions\": {\n            \"count\": 3,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/2754/text?format=json\"\n        },\n
+        \       \"title\": \"Crystal Reservoir Conveyance Act\",\n        \"titles\":
+        {\n            \"count\": 5,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/2754/titles?format=json\"\n
+        \       },\n        \"type\": \"S\",\n        \"updateDate\": \"2026-10-07T11:39:25Z\",\n
+        \       \"updateDateIncludingText\": \"2026-10-07T11:39:25Z\"\n    },\n    \"request\":
+        {\n        \"billNumber\": \"2754\",\n        \"billType\": \"s\",\n        \"congress\":
+        \"119\",\n        \"contentType\": \"application/json\",\n        \"format\":
+        \"json\"\n    }\n}"
+    headers:
+      access-control-allow-origin:
+      - '*'
+      age:
+      - '2426'
+      cache-control:
+      - public, max-age=1800
+      cf-cache-status:
+      - HIT
+      cf-ray:
+      - a46e025dcb1eda91-PDX
+      connection:
+      - keep-alive
+      content-length:
+      - '2356'
+      content-type:
+      - application/json
+      date:
+      - Wed, 07 Oct 2026 15:41:18 GMT
+      expires:
+      - Wed, 07 Oct 2026 16:11:18 GMT
+      last-modified:
+      - Wed, 07 Oct 2026 15:00:51 GMT
+      link:
+      - <https://api.congress.gov/v3/bill/119/s/2754>; rel="canonical"
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      - Accept
+      via:
+      - https/1.1 api-umbrella (ApacheTrafficServer [cMsSf ])
+      x-api-umbrella-request-id:
+      - d12s3bd6lncbav5urkj0
+      x-cache:
+      - MISS
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-ratelimit-limit:
+      - '20000'
+      x-ratelimit-remaining:
+      - '19978'
+      x-vcap-request-id:
+      - 2a4d27e9-6381-4678-4861-ab1eea280c9a
+    status:
+      code: 200
+      message: OK
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - __cf_bm=qWV14jcTi56NsCFRSiHRSm_TiZ658YWRJL4DsYfJaI4-1791387676.3462906-1.0.1.1-p1uPNi5xT_j1HUJp7b3Z.dGSj_WKS6iibblzyciryYm8sC7NvECFt2NKtQcr13B46TGxtW1L_sbqubkhlIWvt7pZjip23Jt_oX8jcZoxMCUBQ8NaaQRBKdNpzQRIeOhE
+      host:
+      - api.congress.gov
+      user-agent:
+      - brokeberg/0.1 (political-economic research; +https://github.com/Aarush2801/brokeberg)
+    method: GET
+    uri: https://api.congress.gov/v3/bill/119/s/2498?api_key=REDACTED&format=json
+  response:
+    body:
+      string: "{\n    \"bill\": {\n        \"actions\": {\n            \"count\":
+        12,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/2498/actions?format=json\"\n
+        \       },\n        \"committees\": {\n            \"count\": 1,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/2498/committees?format=json\"\n        },\n
+        \       \"congress\": 119,\n        \"cosponsors\": {\n            \"count\":
+        1,\n            \"countIncludingWithdrawnCosponsors\": 1,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/2498/cosponsors?format=json\"\n        },\n
+        \       \"introducedDate\": \"2025-07-29\",\n        \"latestAction\": {\n
+        \           \"actionDate\": \"2026-10-05\",\n            \"actionTime\": \"16:52:43\",\n
+        \           \"text\": \"Held at the desk.\"\n        },\n        \"legislationUrl\":
+        \"https://www.congress.gov/bill/119th-congress/senate-bill/2498\",\n        \"number\":
+        \"2498\",\n        \"originChamber\": \"Senate\",\n        \"originChamberCode\":
+        \"S\",\n        \"policyArea\": {\n            \"name\": \"Public Lands and
+        Natural Resources\"\n        },\n        \"relatedBills\": {\n            \"count\":
+        2,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/2498/relatedbills?format=json\"\n
+        \       },\n        \"sponsors\": [\n            {\n                \"bioguideId\":
+        \"T000476\",\n                \"firstName\": \"Thomas\",\n                \"fullName\":
+        \"Sen. Tillis, Thomas [R-NC]\",\n                \"isByRequest\": \"N\",\n
+        \               \"lastName\": \"Tillis\",\n                \"middleName\":
+        \"Roland\",\n                \"party\": \"R\",\n                \"state\":
+        \"NC\",\n                \"url\": \"https://api.congress.gov/v3/member/T000476?format=json\"\n
+        \           }\n        ],\n        \"subjects\": {\n            \"count\":
+        3,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/2498/subjects?format=json\"\n
+        \       },\n        \"textVersions\": {\n            \"count\": 3,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/2498/text?format=json\"\n        },\n
+        \       \"title\": \"National Park System Long-Term Lease Investment Act\",\n
+        \       \"titles\": {\n            \"count\": 5,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/2498/titles?format=json\"\n
+        \       },\n        \"type\": \"S\",\n        \"updateDate\": \"2026-10-07T11:38:09Z\",\n
+        \       \"updateDateIncludingText\": \"2026-10-07T11:38:09Z\"\n    },\n    \"request\":
+        {\n        \"billNumber\": \"2498\",\n        \"billType\": \"s\",\n        \"congress\":
+        \"119\",\n        \"contentType\": \"application/json\",\n        \"format\":
+        \"json\"\n    }\n}"
+    headers:
+      access-control-allow-origin:
+      - '*'
+      age:
+      - '542'
+      cache-control:
+      - public, max-age=1800
+      cf-cache-status:
+      - HIT
+      cf-ray:
+      - a46e0260eaaab642-PDX
+      connection:
+      - keep-alive
+      content-length:
+      - '2410'
+      content-type:
+      - application/json
+      date:
+      - Wed, 07 Oct 2026 15:41:18 GMT
+      expires:
+      - Wed, 07 Oct 2026 16:11:18 GMT
+      last-modified:
+      - Wed, 07 Oct 2026 15:32:16 GMT
+      link:
+      - <https://api.congress.gov/v3/bill/119/s/2498>; rel="canonical"
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      - Accept
+      via:
+      - https/1.1 api-umbrella (ApacheTrafficServer [cMsSf ])
+      x-api-umbrella-request-id:
+      - d12s3bh3p16bklut6ig0
+      x-cache:
+      - MISS
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-ratelimit-limit:
+      - '20000'
+      x-ratelimit-remaining:
+      - '19977'
+      x-vcap-request-id:
+      - 56142cc3-badf-4bfd-76f4-7d41a13419af
+    status:
+      code: 200
+      message: OK
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - __cf_bm=qWV14jcTi56NsCFRSiHRSm_TiZ658YWRJL4DsYfJaI4-1791387676.3462906-1.0.1.1-p1uPNi5xT_j1HUJp7b3Z.dGSj_WKS6iibblzyciryYm8sC7NvECFt2NKtQcr13B46TGxtW1L_sbqubkhlIWvt7pZjip23Jt_oX8jcZoxMCUBQ8NaaQRBKdNpzQRIeOhE
+      host:
+      - api.congress.gov
+      user-agent:
+      - brokeberg/0.1 (political-economic research; +https://github.com/Aarush2801/brokeberg)
+    method: GET
+    uri: https://api.congress.gov/v3/bill/119/s/2437?api_key=REDACTED&format=json
+  response:
+    body:
+      string: "{\n    \"bill\": {\n        \"actions\": {\n            \"count\":
+        12,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/2437/actions?format=json\"\n
+        \       },\n        \"cboCostEstimates\": [\n            {\n                \"description\":
+        \"As reported by the Senate Committee on Energy and Natural Resources on September
+        17, 2026\",\n                \"pubDate\": \"2026-09-22T17:53:00Z\",\n                \"title\":
+        \"S. 2437, Snow Water Supply Forecasting Program Reauthorization Act  of 2026\",\n
+        \               \"url\": \"https://www.cbo.gov/publication/62784\"\n            }\n
+        \       ],\n        \"committees\": {\n            \"count\": 1,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/2437/committees?format=json\"\n        },\n
+        \       \"congress\": 119,\n        \"cosponsors\": {\n            \"count\":
+        1,\n            \"countIncludingWithdrawnCosponsors\": 1,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/2437/cosponsors?format=json\"\n        },\n
+        \       \"introducedDate\": \"2025-07-24\",\n        \"latestAction\": {\n
+        \           \"actionDate\": \"2026-10-05\",\n            \"actionTime\": \"16:51:28\",\n
+        \           \"text\": \"Held at the desk.\"\n        },\n        \"legislationUrl\":
+        \"https://www.congress.gov/bill/119th-congress/senate-bill/2437\",\n        \"number\":
+        \"2437\",\n        \"originChamber\": \"Senate\",\n        \"originChamberCode\":
+        \"S\",\n        \"policyArea\": {\n            \"name\": \"Water Resources
+        Development\"\n        },\n        \"relatedBills\": {\n            \"count\":
+        1,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/2437/relatedbills?format=json\"\n
+        \       },\n        \"sponsors\": [\n            {\n                \"bioguideId\":
+        \"H000273\",\n                \"firstName\": \"John\",\n                \"fullName\":
+        \"Sen. Hickenlooper, John W. [D-CO]\",\n                \"isByRequest\": \"N\",\n
+        \               \"lastName\": \"Hickenlooper\",\n                \"middleName\":
+        \"W.\",\n                \"party\": \"D\",\n                \"state\": \"CO\",\n
+        \               \"url\": \"https://api.congress.gov/v3/member/H000273?format=json\"\n
+        \           }\n        ],\n        \"subjects\": {\n            \"count\":
+        6,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/2437/subjects?format=json\"\n
+        \       },\n        \"textVersions\": {\n            \"count\": 3,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/2437/text?format=json\"\n        },\n
+        \       \"title\": \"Snow Water Supply Forecasting Program Reauthorization
+        Act of 2026\",\n        \"titles\": {\n            \"count\": 5,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/2437/titles?format=json\"\n        },\n
+        \       \"type\": \"S\",\n        \"updateDate\": \"2026-10-07T11:37:42Z\",\n
+        \       \"updateDateIncludingText\": \"2026-10-07T11:37:42Z\"\n    },\n    \"request\":
+        {\n        \"billNumber\": \"2437\",\n        \"billType\": \"s\",\n        \"congress\":
+        \"119\",\n        \"contentType\": \"application/json\",\n        \"format\":
+        \"json\"\n    }\n}"
+    headers:
+      access-control-allow-origin:
+      - '*'
+      age:
+      - '1270'
+      cache-control:
+      - public, max-age=1800
+      cf-cache-status:
+      - HIT
+      cf-ray:
+      - a46e02640e26efde-PDX
+      connection:
+      - keep-alive
+      content-length:
+      - '2835'
+      content-type:
+      - application/json
+      date:
+      - Wed, 07 Oct 2026 15:41:19 GMT
+      expires:
+      - Wed, 07 Oct 2026 16:11:19 GMT
+      last-modified:
+      - Wed, 07 Oct 2026 15:20:08 GMT
+      link:
+      - <https://api.congress.gov/v3/bill/119/s/2437>; rel="canonical"
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      - Accept
+      via:
+      - https/1.1 api-umbrella (ApacheTrafficServer [cMsSf ])
+      x-api-umbrella-request-id:
+      - d12s3bl0ndrrgckpc05g
+      x-cache:
+      - MISS
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-ratelimit-limit:
+      - '20000'
+      x-ratelimit-remaining:
+      - '19976'
+      x-vcap-request-id:
+      - 947ef9a4-0e63-48a5-43b2-2d48c5449e2c
+    status:
+      code: 200
+      message: OK
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - __cf_bm=qWV14jcTi56NsCFRSiHRSm_TiZ658YWRJL4DsYfJaI4-1791387676.3462906-1.0.1.1-p1uPNi5xT_j1HUJp7b3Z.dGSj_WKS6iibblzyciryYm8sC7NvECFt2NKtQcr13B46TGxtW1L_sbqubkhlIWvt7pZjip23Jt_oX8jcZoxMCUBQ8NaaQRBKdNpzQRIeOhE
+      host:
+      - api.congress.gov
+      user-agent:
+      - brokeberg/0.1 (political-economic research; +https://github.com/Aarush2801/brokeberg)
+    method: GET
+    uri: https://api.congress.gov/v3/bill/119/s/2339?api_key=REDACTED&format=json
+  response:
+    body:
+      string: "{\n    \"bill\": {\n        \"actions\": {\n            \"count\":
+        11,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/2339/actions?format=json\"\n
+        \       },\n        \"committees\": {\n            \"count\": 1,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/2339/committees?format=json\"\n        },\n
+        \       \"congress\": 119,\n        \"cosponsors\": {\n            \"count\":
+        1,\n            \"countIncludingWithdrawnCosponsors\": 1,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/2339/cosponsors?format=json\"\n        },\n
+        \       \"introducedDate\": \"2025-07-17\",\n        \"latestAction\": {\n
+        \           \"actionDate\": \"2026-10-05\",\n            \"actionTime\": \"16:51:17\",\n
+        \           \"text\": \"Held at the desk.\"\n        },\n        \"legislationUrl\":
+        \"https://www.congress.gov/bill/119th-congress/senate-bill/2339\",\n        \"number\":
+        \"2339\",\n        \"originChamber\": \"Senate\",\n        \"originChamberCode\":
+        \"S\",\n        \"policyArea\": {\n            \"name\": \"Health\"\n        },\n
+        \       \"relatedBills\": {\n            \"count\": 1,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/2339/relatedbills?format=json\"\n
+        \       },\n        \"sponsors\": [\n            {\n                \"bioguideId\":
+        \"K000367\",\n                \"firstName\": \"Amy\",\n                \"fullName\":
+        \"Sen. Klobuchar, Amy [D-MN]\",\n                \"isByRequest\": \"N\",\n
+        \               \"lastName\": \"Klobuchar\",\n                \"party\": \"D\",\n
+        \               \"state\": \"MN\",\n                \"url\": \"https://api.congress.gov/v3/member/K000367?format=json\"\n
+        \           }\n        ],\n        \"subjects\": {\n            \"count\":
+        7,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/2339/subjects?format=json\"\n
+        \       },\n        \"summaries\": {\n            \"count\": 1,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/2339/summaries?format=json\"\n        },\n
+        \       \"textVersions\": {\n            \"count\": 3,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/2339/text?format=json\"\n        },\n
+        \       \"title\": \"EARLY Act Reauthorization of 2025\",\n        \"titles\":
+        {\n            \"count\": 5,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/2339/titles?format=json\"\n
+        \       },\n        \"type\": \"S\",\n        \"updateDate\": \"2026-10-07T11:35:02Z\",\n
+        \       \"updateDateIncludingText\": \"2026-10-07T11:35:02Z\"\n    },\n    \"request\":
+        {\n        \"billNumber\": \"2339\",\n        \"billType\": \"s\",\n        \"congress\":
+        \"119\",\n        \"contentType\": \"application/json\",\n        \"format\":
+        \"json\"\n    }\n}"
+    headers:
+      access-control-allow-origin:
+      - '*'
+      age:
+      - '2767'
+      cache-control:
+      - public, max-age=1800
+      cf-cache-status:
+      - HIT
+      cf-ray:
+      - a46e02672d0cc4ac-PDX
+      connection:
+      - keep-alive
+      content-length:
+      - '2469'
+      content-type:
+      - application/json
+      date:
+      - Wed, 07 Oct 2026 15:41:19 GMT
+      expires:
+      - Wed, 07 Oct 2026 16:11:19 GMT
+      last-modified:
+      - Wed, 07 Oct 2026 14:55:12 GMT
+      link:
+      - <https://api.congress.gov/v3/bill/119/s/2339>; rel="canonical"
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      - Accept
+      via:
+      - https/1.1 api-umbrella (ApacheTrafficServer [cMsSf ])
+      x-api-umbrella-request-id:
+      - d12s3bovcnebdg0ks1vg
+      x-cache:
+      - MISS
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-ratelimit-limit:
+      - '20000'
+      x-ratelimit-remaining:
+      - '19975'
+      x-vcap-request-id:
+      - 188ac662-b347-46ed-5bca-7808bed5afef
+    status:
+      code: 200
+      message: OK
+- request:
+    body: ''
+    headers:
+      accept:
+      - '*/*'
+      accept-encoding:
+      - gzip, deflate
+      connection:
+      - keep-alive
+      cookie:
+      - __cf_bm=qWV14jcTi56NsCFRSiHRSm_TiZ658YWRJL4DsYfJaI4-1791387676.3462906-1.0.1.1-p1uPNi5xT_j1HUJp7b3Z.dGSj_WKS6iibblzyciryYm8sC7NvECFt2NKtQcr13B46TGxtW1L_sbqubkhlIWvt7pZjip23Jt_oX8jcZoxMCUBQ8NaaQRBKdNpzQRIeOhE
+      host:
+      - api.congress.gov
+      user-agent:
+      - brokeberg/0.1 (political-economic research; +https://github.com/Aarush2801/brokeberg)
+    method: GET
+    uri: https://api.congress.gov/v3/bill/119/s/2273?api_key=REDACTED&format=json
+  response:
+    body:
+      string: "{\n    \"bill\": {\n        \"actions\": {\n            \"count\":
+        12,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/2273/actions?format=json\"\n
+        \       },\n        \"cboCostEstimates\": [\n            {\n                \"description\":
+        \"As ordered reported by the Senate Committee on Energy and Natural Resources
+        on December 17, 2025\",\n                \"pubDate\": \"2026-04-30T16:09:00Z\",\n
+        \               \"title\": \"S. 2273, Wyoming Education Trust Modernization
+        Act\",\n                \"url\": \"https://www.cbo.gov/publication/62398\"\n
+        \           }\n        ],\n        \"committees\": {\n            \"count\":
+        1,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/2273/committees?format=json\"\n
+        \       },\n        \"congress\": 119,\n        \"cosponsors\": {\n            \"count\":
+        1,\n            \"countIncludingWithdrawnCosponsors\": 1,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/2273/cosponsors?format=json\"\n        },\n
+        \       \"introducedDate\": \"2025-07-14\",\n        \"latestAction\": {\n
+        \           \"actionDate\": \"2026-10-05\",\n            \"actionTime\": \"16:50:45\",\n
+        \           \"text\": \"Held at the desk.\"\n        },\n        \"legislationUrl\":
+        \"https://www.congress.gov/bill/119th-congress/senate-bill/2273\",\n        \"number\":
+        \"2273\",\n        \"originChamber\": \"Senate\",\n        \"originChamberCode\":
+        \"S\",\n        \"policyArea\": {\n            \"name\": \"Public Lands and
+        Natural Resources\"\n        },\n        \"relatedBills\": {\n            \"count\":
+        1,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/2273/relatedbills?format=json\"\n
+        \       },\n        \"sponsors\": [\n            {\n                \"bioguideId\":
+        \"L000571\",\n                \"firstName\": \"Cynthia\",\n                \"fullName\":
+        \"Sen. Lummis, Cynthia M. [R-WY]\",\n                \"isByRequest\": \"N\",\n
+        \               \"lastName\": \"Lummis\",\n                \"middleName\":
+        \"M.\",\n                \"party\": \"R\",\n                \"state\": \"WY\",\n
+        \               \"url\": \"https://api.congress.gov/v3/member/L000571?format=json\"\n
+        \           }\n        ],\n        \"subjects\": {\n            \"count\":
+        5,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/2273/subjects?format=json\"\n
+        \       },\n        \"summaries\": {\n            \"count\": 1,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/2273/summaries?format=json\"\n        },\n
+        \       \"textVersions\": {\n            \"count\": 3,\n            \"url\":
+        \"https://api.congress.gov/v3/bill/119/s/2273/text?format=json\"\n        },\n
+        \       \"title\": \"Wyoming Education Trust Modernization Act\",\n        \"titles\":
+        {\n            \"count\": 5,\n            \"url\": \"https://api.congress.gov/v3/bill/119/s/2273/titles?format=json\"\n
+        \       },\n        \"type\": \"S\",\n        \"updateDate\": \"2026-10-07T11:34:20Z\",\n
+        \       \"updateDateIncludingText\": \"2026-10-07T11:34:20Z\"\n    },\n    \"request\":
+        {\n        \"billNumber\": \"2273\",\n        \"billType\": \"s\",\n        \"congress\":
+        \"119\",\n        \"contentType\": \"application/json\",\n        \"format\":
+        \"json\"\n    }\n}"
+    headers:
+      access-control-allow-origin:
+      - '*'
+      age:
+      - '3360'
+      cache-control:
+      - public, max-age=1800
+      cf-cache-status:
+      - HIT
+      cf-ray:
+      - a46e026a4ea1fef0-PDX
+      connection:
+      - keep-alive
+      content-length:
+      - '2939'
+      content-type:
+      - application/json
+      date:
+      - Wed, 07 Oct 2026 15:41:20 GMT
+      expires:
+      - Wed, 07 Oct 2026 16:11:20 GMT
+      last-modified:
+      - Wed, 07 Oct 2026 14:45:19 GMT
+      link:
+      - <https://api.congress.gov/v3/bill/119/s/2273>; rel="canonical"
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains; preload
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      - Accept
+      via:
+      - https/1.1 api-umbrella (ApacheTrafficServer [cMsSf ])
+      x-api-umbrella-request-id:
+      - d12s3bssptt29uf20e60
+      x-cache:
+      - MISS
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - DENY
+      x-ratelimit-limit:
+      - '20000'
+      x-ratelimit-remaining:
+      - '19974'
+      x-vcap-request-id:
+      - 5109796c-67c9-402a-4676-736e01502bd7
+    status:
+      code: 200
+      message: OK
+version: 1
