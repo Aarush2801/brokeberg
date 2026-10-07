@@ -1,18 +1,18 @@
 """Recent posts from the curated account list (`ingest/x_accounts.yaml`) -> raw_items (social_post).
 
 Read-only, `/2/users/:id/tweets`. X bills per post read, so every pull logs and prints its read
-count; the budget is ~100-200 reads/day (18 live accounts x `max_results`=10 <= 180).
+count; the budget is ~100-200 reads/day (20 live accounts x `max_results`=10 <= 200).
 """
 
 import logging
 from collections.abc import Iterator
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any
+from typing import Any, Literal
 
 import httpx
 import yaml
-from pydantic import BaseModel
+from pydantic import BaseModel, model_validator
 from sqlalchemy.orm import Session
 
 from brokeberg.config import get_settings
@@ -35,7 +35,16 @@ RECORDED_MAX_RESULTS = 5
 class Account(BaseModel):
     handle: str | None
     user_id: str | None
-    bioguide: str
+    # member: a senator, linked to their bioguide node. media: a news outlet's account; there is
+    # no canonical-ID registry for outlets yet, so its posts link to no entity.
+    kind: Literal["member", "media"] = "member"
+    bioguide: str | None = None
+
+    @model_validator(mode="after")
+    def _member_has_bioguide(self) -> "Account":
+        if self.kind == "member" and not self.bioguide:
+            raise ValueError(f"member account {self.handle!r} needs a bioguide ID")
+        return self
 
 
 def load_accounts(path: Path = ACCOUNTS_FILE) -> list[Account]:
@@ -47,15 +56,18 @@ def load_accounts(path: Path = ACCOUNTS_FILE) -> list[Account]:
 
 
 def post_record(session: Session, account: Account, tweet: dict[str, Any]) -> RawRecord:
-    entity = bioguide.by_bioguide(session, account.bioguide)
+    entity = bioguide.by_bioguide(session, account.bioguide) if account.bioguide else None
+    # The author is a source, not a mention: only an unresolvable *member* goes to review.
+    unresolved = [f"@{account.handle}"] if account.kind == "member" and entity is None else []
     created = tweet.get("created_at")
     return RawRecord(
         url=f"https://x.com/{account.handle or 'i'}/status/{tweet['id']}",
         text=tweet["text"],
         event_time=datetime.fromisoformat(created.replace("Z", "+00:00")) if created else None,
-        raw_payload={"author": account.model_dump(), "tweet": tweet},
+        # exclude_defaults keeps member payloads (and so their content hashes) as before `kind`.
+        raw_payload={"author": account.model_dump(exclude_defaults=True), "tweet": tweet},
         entity_ids=[entity.canonical_id] if entity else [],
-        unresolved=[] if entity else [f"@{account.handle}"],
+        unresolved=unresolved,
     )
 
 

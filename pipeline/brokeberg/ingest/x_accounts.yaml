@@ -1,6 +1,7 @@
-# Curated X accounts (<= 20): both senators from each MVP race state.
-# user_id comes from unitedstates/congress-legislators (legislators-social-media.json), so no
-# billed X lookups are needed. Entries with user_id: null are skipped until an ID is added.
+# Curated X accounts (<= 20): both senators from each MVP race state, plus news outlets.
+# Senator user_ids come from unitedstates/congress-legislators (legislators-social-media.json), so
+# no billed X lookups are needed. Not listed (no public X ID yet): Husted (H001104), Moreno
+# (M001242, @berniemoreno); add them back with a user_id when one is known.
 accounts:
   - {handle: LisaMurkowski, user_id: "18061669", bioguide: M001153}
   - {handle: SenDanSullivan, user_id: "2891210047", bioguide: S001198}
@@ -20,5 +21,6 @@ accounts:
   - {handle: SenatorShaheen, user_id: "109287731", bioguide: S001181}
   - {handle: JohnCornyn, user_id: "13218102", bioguide: C001056}
   - {handle: SenTedCruz, user_id: "1074480192", bioguide: C001098}
-  - {handle: null, user_id: null, bioguide: H001104}  # Husted: no public X ID yet
-  - {handle: berniemoreno, user_id: null, bioguide: M001242}  # Moreno: no public X ID yet
+  # News outlets: kind media, no bioguide; their posts link to no entity.
+  - {handle: FT, user_id: "18949452", kind: media}
+  - {handle: nytimes, user_id: "807095", kind: media}
