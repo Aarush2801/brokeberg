@@ -1,0 +1,1852 @@
+{
+  "source_urls": [
+    "https://unitedstates.github.io/congress-legislators/legislators-current.json",
+    "https://unitedstates.github.io/congress-legislators/legislators-social-media.json"
+  ],
+  "fetched_at": "2026-10-07T14:07:35+00:00",
+  "senators": [
+    {
+      "bioguide": "M001153",
+      "fec": [
+        "S4AK00099"
+      ],
+      "ballotpedia": "Lisa Murkowski",
+      "first": "Lisa",
+      "middle": "A.",
+      "last": "Murkowski",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Lisa Murkowski",
+      "state": "AK",
+      "party": "R",
+      "senate_class": 3,
+      "term_end": "2029-01-03",
+      "twitter": "LisaMurkowski"
+    },
+    {
+      "bioguide": "S001198",
+      "fec": [
+        "S4AK00214"
+      ],
+      "ballotpedia": "Daniel S. Sullivan",
+      "first": "Dan",
+      "middle": null,
+      "last": "Sullivan",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Dan Sullivan",
+      "state": "AK",
+      "party": "R",
+      "senate_class": 2,
+      "term_end": "2027-01-03",
+      "twitter": "SenDanSullivan"
+    },
+    {
+      "bioguide": "B001319",
+      "fec": [
+        "S2AL00145"
+      ],
+      "ballotpedia": "Katie Britt",
+      "first": "Katie",
+      "middle": "Elizabeth",
+      "last": "Britt",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Katie Boyd Britt",
+      "state": "AL",
+      "party": "R",
+      "senate_class": 3,
+      "term_end": "2029-01-03",
+      "twitter": "SenKatieBritt"
+    },
+    {
+      "bioguide": "T000278",
+      "fec": [
+        "S0AL00230"
+      ],
+      "ballotpedia": "Tommy Tuberville",
+      "first": "Tommy",
+      "middle": "Hawley",
+      "last": "Tuberville",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Tommy Tuberville",
+      "state": "AL",
+      "party": "R",
+      "senate_class": 2,
+      "term_end": "2027-01-03",
+      "twitter": "SenTuberville"
+    },
+    {
+      "bioguide": "B001236",
+      "fec": [
+        "H2AR03176",
+        "S0AR00150"
+      ],
+      "ballotpedia": "John Boozman",
+      "first": "John",
+      "middle": null,
+      "last": "Boozman",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "John Boozman",
+      "state": "AR",
+      "party": "R",
+      "senate_class": 3,
+      "term_end": "2029-01-03",
+      "twitter": "JohnBoozman"
+    },
+    {
+      "bioguide": "C001095",
+      "fec": [
+        "H2AR04083",
+        "S4AR00103"
+      ],
+      "ballotpedia": "Tom Cotton",
+      "first": "Tom",
+      "middle": null,
+      "last": "Cotton",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Tom Cotton",
+      "state": "AR",
+      "party": "R",
+      "senate_class": 2,
+      "term_end": "2027-01-03",
+      "twitter": "SenTomCotton"
+    },
+    {
+      "bioguide": "G000574",
+      "fec": [
+        "H4AZ07043",
+        "S4AZ00139"
+      ],
+      "ballotpedia": "Ruben Gallego",
+      "first": "Ruben",
+      "middle": null,
+      "last": "Gallego",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Ruben Gallego",
+      "state": "AZ",
+      "party": "D",
+      "senate_class": 1,
+      "term_end": "2031-01-03",
+      "twitter": "RepRubenGallego"
+    },
+    {
+      "bioguide": "K000377",
+      "fec": [
+        "S0AZ00350"
+      ],
+      "ballotpedia": "Mark Kelly",
+      "first": "Mark",
+      "middle": null,
+      "last": "Kelly",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Mark Kelly",
+      "state": "AZ",
+      "party": "D",
+      "senate_class": 3,
+      "term_end": "2029-01-03",
+      "twitter": "SenMarkKelly"
+    },
+    {
+      "bioguide": "P000145",
+      "fec": [
+        "S2CA00955"
+      ],
+      "ballotpedia": "Alex Padilla",
+      "first": "Alejandro",
+      "middle": null,
+      "last": "Padilla",
+      "suffix": null,
+      "nickname": "Alex",
+      "official_full": "Alex Padilla",
+      "state": "CA",
+      "party": "D",
+      "senate_class": 3,
+      "term_end": "2029-01-03",
+      "twitter": "SenAlexPadilla"
+    },
+    {
+      "bioguide": "S001150",
+      "fec": [
+        "H0CA27085",
+        "S4CA00555"
+      ],
+      "ballotpedia": "Adam Schiff",
+      "first": "Adam",
+      "middle": "B.",
+      "last": "Schiff",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Adam B. Schiff",
+      "state": "CA",
+      "party": "D",
+      "senate_class": 1,
+      "term_end": "2031-01-03",
+      "twitter": "SenAdamSchiff"
+    },
+    {
+      "bioguide": "B001267",
+      "fec": [
+        "S0CO00211"
+      ],
+      "ballotpedia": "Michael Bennet",
+      "first": "Michael",
+      "middle": "F.",
+      "last": "Bennet",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Michael F. Bennet",
+      "state": "CO",
+      "party": "D",
+      "senate_class": 3,
+      "term_end": "2029-01-03",
+      "twitter": "SenatorBennet"
+    },
+    {
+      "bioguide": "H000273",
+      "fec": [
+        "S0CO00575"
+      ],
+      "ballotpedia": "John Hickenlooper",
+      "first": "John",
+      "middle": "Wright",
+      "last": "Hickenlooper",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "John W. Hickenlooper",
+      "state": "CO",
+      "party": "D",
+      "senate_class": 2,
+      "term_end": "2027-01-03",
+      "twitter": "SenatorHick"
+    },
+    {
+      "bioguide": "B001277",
+      "fec": [
+        "S0CT00177"
+      ],
+      "ballotpedia": "Richard Blumenthal",
+      "first": "Richard",
+      "middle": null,
+      "last": "Blumenthal",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Richard Blumenthal",
+      "state": "CT",
+      "party": "D",
+      "senate_class": 3,
+      "term_end": "2029-01-03",
+      "twitter": "SenBlumenthal"
+    },
+    {
+      "bioguide": "M001169",
+      "fec": [
+        "H6CT05124",
+        "S2CT00132"
+      ],
+      "ballotpedia": "Chris Murphy (Connecticut)",
+      "first": "Christopher",
+      "middle": "S.",
+      "last": "Murphy",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Christopher Murphy",
+      "state": "CT",
+      "party": "D",
+      "senate_class": 1,
+      "term_end": "2031-01-03",
+      "twitter": "SenMurphyOffice"
+    },
+    {
+      "bioguide": "B001303",
+      "fec": [
+        "H6DE00206",
+        "S4DE00060"
+      ],
+      "ballotpedia": "Lisa Blunt Rochester",
+      "first": "Lisa",
+      "middle": null,
+      "last": "Blunt Rochester",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Lisa Blunt Rochester",
+      "state": "DE",
+      "party": "D",
+      "senate_class": 1,
+      "term_end": "2031-01-03",
+      "twitter": "SenLBR"
+    },
+    {
+      "bioguide": "C001088",
+      "fec": [
+        "S0DE00092"
+      ],
+      "ballotpedia": "Chris Coons",
+      "first": "Christopher",
+      "middle": "Andrew",
+      "last": "Coons",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Christopher A. Coons",
+      "state": "DE",
+      "party": "D",
+      "senate_class": 2,
+      "term_end": "2027-01-03",
+      "twitter": "ChrisCoons"
+    },
+    {
+      "bioguide": "M001244",
+      "fec": [
+        "S6FL00640"
+      ],
+      "ballotpedia": "Ashley B. Moody",
+      "first": "Ashley",
+      "middle": "Brooke",
+      "last": "Moody",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Ashley Moody",
+      "state": "FL",
+      "party": "R",
+      "senate_class": 3,
+      "term_end": "2026-11-03",
+      "twitter": null
+    },
+    {
+      "bioguide": "S001217",
+      "fec": [
+        "S8FL00273"
+      ],
+      "ballotpedia": "Rick Scott",
+      "first": "Rick",
+      "middle": null,
+      "last": "Scott",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Rick Scott",
+      "state": "FL",
+      "party": "R",
+      "senate_class": 1,
+      "term_end": "2031-01-03",
+      "twitter": "SenRickScott"
+    },
+    {
+      "bioguide": "O000174",
+      "fec": [
+        "H8GA06195",
+        "S8GA00180"
+      ],
+      "ballotpedia": "Jon Ossoff",
+      "first": "Jon",
+      "middle": null,
+      "last": "Ossoff",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Jon Ossoff",
+      "state": "GA",
+      "party": "D",
+      "senate_class": 2,
+      "term_end": "2027-01-03",
+      "twitter": "SenOssoff"
+    },
+    {
+      "bioguide": "W000790",
+      "fec": [
+        "S0GA00559"
+      ],
+      "ballotpedia": "Raphael Warnock",
+      "first": "Raphael",
+      "middle": "Gamaliel",
+      "last": "Warnock",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Raphael G. Warnock",
+      "state": "GA",
+      "party": "D",
+      "senate_class": 3,
+      "term_end": "2029-01-03",
+      "twitter": "SenatorWarnock"
+    },
+    {
+      "bioguide": "H001042",
+      "fec": [
+        "H6HI02251",
+        "S2HI00106"
+      ],
+      "ballotpedia": "Mazie K. Hirono",
+      "first": "Mazie",
+      "middle": "K.",
+      "last": "Hirono",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Mazie K. Hirono",
+      "state": "HI",
+      "party": "D",
+      "senate_class": 1,
+      "term_end": "2031-01-03",
+      "twitter": "MazieHirono"
+    },
+    {
+      "bioguide": "S001194",
+      "fec": [
+        "S4HI00136",
+        "H6HI02244"
+      ],
+      "ballotpedia": "Brian E. Schatz",
+      "first": "Brian",
+      "middle": "Emanuel",
+      "last": "Schatz",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Brian Schatz",
+      "state": "HI",
+      "party": "D",
+      "senate_class": 3,
+      "term_end": "2029-01-03",
+      "twitter": "SenBrianSchatz"
+    },
+    {
+      "bioguide": "E000295",
+      "fec": [
+        "S4IA00129"
+      ],
+      "ballotpedia": "Joni Ernst",
+      "first": "Joni",
+      "middle": null,
+      "last": "Ernst",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Joni Ernst",
+      "state": "IA",
+      "party": "R",
+      "senate_class": 2,
+      "term_end": "2027-01-03",
+      "twitter": "SenJoniErnst"
+    },
+    {
+      "bioguide": "G000386",
+      "fec": [
+        "S0IA00028"
+      ],
+      "ballotpedia": "Chuck Grassley",
+      "first": "Charles",
+      "middle": "E.",
+      "last": "Grassley",
+      "suffix": null,
+      "nickname": "Chuck",
+      "official_full": "Chuck Grassley",
+      "state": "IA",
+      "party": "R",
+      "senate_class": 3,
+      "term_end": "2029-01-03",
+      "twitter": "ChuckGrassley"
+    },
+    {
+      "bioguide": "C000880",
+      "fec": [
+        "S8ID00027",
+        "H2ID02034"
+      ],
+      "ballotpedia": "Mike Crapo",
+      "first": "Michael",
+      "middle": "D.",
+      "last": "Crapo",
+      "suffix": null,
+      "nickname": "Mike",
+      "official_full": "Mike Crapo",
+      "state": "ID",
+      "party": "R",
+      "senate_class": 3,
+      "term_end": "2029-01-03",
+      "twitter": "MikeCrapo"
+    },
+    {
+      "bioguide": "R000584",
+      "fec": [
+        "S8ID00092"
+      ],
+      "ballotpedia": "Jim Risch",
+      "first": "James",
+      "middle": "E.",
+      "last": "Risch",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "James E. Risch",
+      "state": "ID",
+      "party": "R",
+      "senate_class": 2,
+      "term_end": "2027-01-03",
+      "twitter": "SenatorRisch"
+    },
+    {
+      "bioguide": "D000622",
+      "fec": [
+        "H6IL06141",
+        "S6IL00292"
+      ],
+      "ballotpedia": "Tammy Duckworth",
+      "first": "Tammy",
+      "middle": null,
+      "last": "Duckworth",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Tammy Duckworth",
+      "state": "IL",
+      "party": "D",
+      "senate_class": 3,
+      "term_end": "2029-01-03",
+      "twitter": "SenDuckworth"
+    },
+    {
+      "bioguide": "D000563",
+      "fec": [
+        "S6IL00151",
+        "H2IL20026"
+      ],
+      "ballotpedia": "Dick Durbin",
+      "first": "Richard",
+      "middle": "J.",
+      "last": "Durbin",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Richard J. Durbin",
+      "state": "IL",
+      "party": "D",
+      "senate_class": 2,
+      "term_end": "2027-01-03",
+      "twitter": "SenatorDurbin"
+    },
+    {
+      "bioguide": "B001299",
+      "fec": [
+        "H6IN03229",
+        "S4IN00196"
+      ],
+      "ballotpedia": "Jim Banks",
+      "first": "Jim",
+      "middle": null,
+      "last": "Banks",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Jim Banks",
+      "state": "IN",
+      "party": "R",
+      "senate_class": 1,
+      "term_end": "2031-01-03",
+      "twitter": "RepJimBanks"
+    },
+    {
+      "bioguide": "Y000064",
+      "fec": [
+        "H0IN09070",
+        "S6IN00191"
+      ],
+      "ballotpedia": "Todd Young",
+      "first": "Todd",
+      "middle": "C.",
+      "last": "Young",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Todd Young",
+      "state": "IN",
+      "party": "R",
+      "senate_class": 3,
+      "term_end": "2029-01-03",
+      "twitter": "SenToddYoung"
+    },
+    {
+      "bioguide": "M001198",
+      "fec": [
+        "H6KS01179",
+        "S0KS00315"
+      ],
+      "ballotpedia": "Roger Marshall",
+      "first": "Roger",
+      "middle": null,
+      "last": "Marshall",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Roger Marshall",
+      "state": "KS",
+      "party": "R",
+      "senate_class": 2,
+      "term_end": "2027-01-03",
+      "twitter": "SenatorMarshall"
+    },
+    {
+      "bioguide": "M000934",
+      "fec": [
+        "H6KS01096",
+        "S0KS00091"
+      ],
+      "ballotpedia": "Jerry Moran",
+      "first": "Jerry",
+      "middle": null,
+      "last": "Moran",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Jerry Moran",
+      "state": "KS",
+      "party": "R",
+      "senate_class": 3,
+      "term_end": "2029-01-03",
+      "twitter": "JerryMoran"
+    },
+    {
+      "bioguide": "M000355",
+      "fec": [
+        "S2KY00012"
+      ],
+      "ballotpedia": "Mitch McConnell",
+      "first": "Mitch",
+      "middle": null,
+      "last": "McConnell",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Mitch McConnell",
+      "state": "KY",
+      "party": "R",
+      "senate_class": 2,
+      "term_end": "2027-01-03",
+      "twitter": "McConnellPress"
+    },
+    {
+      "bioguide": "P000603",
+      "fec": [
+        "S0KY00156"
+      ],
+      "ballotpedia": "Rand Paul",
+      "first": "Rand",
+      "middle": null,
+      "last": "Paul",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Rand Paul",
+      "state": "KY",
+      "party": "R",
+      "senate_class": 3,
+      "term_end": "2029-01-03",
+      "twitter": "SenRandPaul"
+    },
+    {
+      "bioguide": "C001075",
+      "fec": [
+        "H8LA00017",
+        "S4LA00107"
+      ],
+      "ballotpedia": "Bill Cassidy",
+      "first": "Bill",
+      "middle": null,
+      "last": "Cassidy",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Bill Cassidy",
+      "state": "LA",
+      "party": "R",
+      "senate_class": 2,
+      "term_end": "2027-01-03",
+      "twitter": "SenBillCassidy"
+    },
+    {
+      "bioguide": "K000393",
+      "fec": [
+        "S4LA00065"
+      ],
+      "ballotpedia": "John Neely Kennedy",
+      "first": "John",
+      "middle": "Neely",
+      "last": "Kennedy",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "John Kennedy",
+      "state": "LA",
+      "party": "R",
+      "senate_class": 3,
+      "term_end": "2029-01-03",
+      "twitter": "SenJohnKennedy"
+    },
+    {
+      "bioguide": "M000133",
+      "fec": [
+        "H6MA07101",
+        "S4MA00028"
+      ],
+      "ballotpedia": "Ed Markey",
+      "first": "Edward",
+      "middle": "J.",
+      "last": "Markey",
+      "suffix": null,
+      "nickname": "Ed",
+      "official_full": "Edward J. Markey",
+      "state": "MA",
+      "party": "D",
+      "senate_class": 2,
+      "term_end": "2027-01-03",
+      "twitter": "SenMarkey"
+    },
+    {
+      "bioguide": "W000817",
+      "fec": [
+        "S2MA00170"
+      ],
+      "ballotpedia": "Elizabeth Warren",
+      "first": "Elizabeth",
+      "middle": null,
+      "last": "Warren",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Elizabeth Warren",
+      "state": "MA",
+      "party": "D",
+      "senate_class": 1,
+      "term_end": "2031-01-03",
+      "twitter": "SenWarren"
+    },
+    {
+      "bioguide": "A000382",
+      "fec": [
+        "S4MD00327"
+      ],
+      "ballotpedia": "Angela Alsobrooks",
+      "first": "Angela",
+      "middle": "Deneece",
+      "last": "Alsobrooks",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Angela D. Alsobrooks",
+      "state": "MD",
+      "party": "D",
+      "senate_class": 1,
+      "term_end": "2031-01-03",
+      "twitter": null
+    },
+    {
+      "bioguide": "V000128",
+      "fec": [
+        "H2MD08126",
+        "S6MD03441"
+      ],
+      "ballotpedia": "Chris Van Hollen",
+      "first": "Chris",
+      "middle": null,
+      "last": "Van Hollen",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Chris Van Hollen",
+      "state": "MD",
+      "party": "D",
+      "senate_class": 3,
+      "term_end": "2029-01-03",
+      "twitter": "ChrisVanHollen"
+    },
+    {
+      "bioguide": "C001035",
+      "fec": [
+        "S6ME00159"
+      ],
+      "ballotpedia": "Susan Collins",
+      "first": "Susan",
+      "middle": "M.",
+      "last": "Collins",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Susan M. Collins",
+      "state": "ME",
+      "party": "R",
+      "senate_class": 2,
+      "term_end": "2027-01-03",
+      "twitter": "SenatorCollins"
+    },
+    {
+      "bioguide": "K000383",
+      "fec": [
+        "S2ME00109"
+      ],
+      "ballotpedia": "Angus King",
+      "first": "Angus",
+      "middle": "S.",
+      "last": "King",
+      "suffix": "Jr.",
+      "nickname": null,
+      "official_full": "Angus S. King, Jr.",
+      "state": "ME",
+      "party": "I",
+      "senate_class": 1,
+      "term_end": "2031-01-03",
+      "twitter": "SenAngusKing"
+    },
+    {
+      "bioguide": "P000595",
+      "fec": [
+        "H8MI09068",
+        "S4MI00355"
+      ],
+      "ballotpedia": "Gary Peters",
+      "first": "Gary",
+      "middle": "C.",
+      "last": "Peters",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Gary C. Peters",
+      "state": "MI",
+      "party": "D",
+      "senate_class": 2,
+      "term_end": "2027-01-03",
+      "twitter": "SenGaryPeters"
+    },
+    {
+      "bioguide": "S001208",
+      "fec": [
+        "H8MI08102",
+        "S4MI00470"
+      ],
+      "ballotpedia": "Elissa Slotkin",
+      "first": "Elissa",
+      "middle": null,
+      "last": "Slotkin",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Elissa Slotkin",
+      "state": "MI",
+      "party": "D",
+      "senate_class": 1,
+      "term_end": "2031-01-03",
+      "twitter": "RepSlotkin"
+    },
+    {
+      "bioguide": "K000367",
+      "fec": [
+        "S6MN00267"
+      ],
+      "ballotpedia": "Amy Klobuchar",
+      "first": "Amy",
+      "middle": "Jean",
+      "last": "Klobuchar",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Amy Klobuchar",
+      "state": "MN",
+      "party": "D",
+      "senate_class": 1,
+      "term_end": "2031-01-03",
+      "twitter": "SenAmyKlobuchar"
+    },
+    {
+      "bioguide": "S001203",
+      "fec": [
+        "S8MN00578"
+      ],
+      "ballotpedia": "Tina Smith",
+      "first": "Tina",
+      "middle": "Flint",
+      "last": "Smith",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Tina Smith",
+      "state": "MN",
+      "party": "D",
+      "senate_class": 2,
+      "term_end": "2027-01-03",
+      "twitter": "SenTinaSmith"
+    },
+    {
+      "bioguide": "H001089",
+      "fec": [
+        "S8MO00160"
+      ],
+      "ballotpedia": "Josh Hawley",
+      "first": "Joshua",
+      "middle": null,
+      "last": "Hawley",
+      "suffix": null,
+      "nickname": "Josh",
+      "official_full": "Josh Hawley",
+      "state": "MO",
+      "party": "R",
+      "senate_class": 1,
+      "term_end": "2031-01-03",
+      "twitter": "SenHawleyPress"
+    },
+    {
+      "bioguide": "S001227",
+      "fec": [
+        "S2MO00544"
+      ],
+      "ballotpedia": "Eric Schmitt",
+      "first": "Eric",
+      "middle": "Stephen",
+      "last": "Schmitt",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Eric Schmitt",
+      "state": "MO",
+      "party": "R",
+      "senate_class": 3,
+      "term_end": "2029-01-03",
+      "twitter": "SenEricSchmitt"
+    },
+    {
+      "bioguide": "H001079",
+      "fec": [
+        "S8MS00261"
+      ],
+      "ballotpedia": "Cindy Hyde-Smith",
+      "first": "Cindy",
+      "middle": null,
+      "last": "Hyde-Smith",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Cindy Hyde-Smith",
+      "state": "MS",
+      "party": "R",
+      "senate_class": 2,
+      "term_end": "2027-01-03",
+      "twitter": "SenHydeSmith"
+    },
+    {
+      "bioguide": "W000437",
+      "fec": [
+        "H4MS01078",
+        "S8MS00196"
+      ],
+      "ballotpedia": "Roger Wicker",
+      "first": "Roger",
+      "middle": "F.",
+      "last": "Wicker",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Roger F. Wicker",
+      "state": "MS",
+      "party": "R",
+      "senate_class": 1,
+      "term_end": "2031-01-03",
+      "twitter": "SenatorWicker"
+    },
+    {
+      "bioguide": "D000618",
+      "fec": [
+        "H2MT01060",
+        "S2MT00096"
+      ],
+      "ballotpedia": "Steve Daines",
+      "first": "Steve",
+      "middle": null,
+      "last": "Daines",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Steve Daines",
+      "state": "MT",
+      "party": "R",
+      "senate_class": 2,
+      "term_end": "2027-01-03",
+      "twitter": "SteveDaines"
+    },
+    {
+      "bioguide": "S001232",
+      "fec": [
+        "S4MT00183"
+      ],
+      "ballotpedia": "Tim Sheehy",
+      "first": "Tim",
+      "middle": "Patrick",
+      "last": "Sheehy",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Tim Sheehy",
+      "state": "MT",
+      "party": "R",
+      "senate_class": 1,
+      "term_end": "2031-01-03",
+      "twitter": null
+    },
+    {
+      "bioguide": "B001305",
+      "fec": [
+        "H6NC13129",
+        "S2NC00505"
+      ],
+      "ballotpedia": "Ted Budd",
+      "first": "Ted",
+      "middle": null,
+      "last": "Budd",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Ted Budd",
+      "state": "NC",
+      "party": "R",
+      "senate_class": 3,
+      "term_end": "2029-01-03",
+      "twitter": "RepTedBudd"
+    },
+    {
+      "bioguide": "T000476",
+      "fec": [
+        "S4NC00162"
+      ],
+      "ballotpedia": "Thom Tillis (North Carolina)",
+      "first": "Thom",
+      "middle": null,
+      "last": "Tillis",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Thom Tillis",
+      "state": "NC",
+      "party": "R",
+      "senate_class": 2,
+      "term_end": "2027-01-03",
+      "twitter": "SenThomTillis"
+    },
+    {
+      "bioguide": "C001096",
+      "fec": [
+        "H0ND01026",
+        "H6ND00074",
+        "S8ND00120"
+      ],
+      "ballotpedia": "Kevin Cramer",
+      "first": "Kevin",
+      "middle": null,
+      "last": "Cramer",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Kevin Cramer",
+      "state": "ND",
+      "party": "R",
+      "senate_class": 1,
+      "term_end": "2031-01-03",
+      "twitter": "SenKevinCramer"
+    },
+    {
+      "bioguide": "H001061",
+      "fec": [
+        "S0ND00093"
+      ],
+      "ballotpedia": "John Hoeven",
+      "first": "John",
+      "middle": null,
+      "last": "Hoeven",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "John Hoeven",
+      "state": "ND",
+      "party": "R",
+      "senate_class": 3,
+      "term_end": "2029-01-03",
+      "twitter": "SenJohnHoeven"
+    },
+    {
+      "bioguide": "F000463",
+      "fec": [
+        "S2NE00094"
+      ],
+      "ballotpedia": "Deb Fischer",
+      "first": "Deb",
+      "middle": null,
+      "last": "Fischer",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Deb Fischer",
+      "state": "NE",
+      "party": "R",
+      "senate_class": 1,
+      "term_end": "2031-01-03",
+      "twitter": "SenatorFischer"
+    },
+    {
+      "bioguide": "R000618",
+      "fec": [
+        "S6NE00129"
+      ],
+      "ballotpedia": "Pete Ricketts",
+      "first": "Pete",
+      "middle": null,
+      "last": "Ricketts",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Pete Ricketts",
+      "state": "NE",
+      "party": "R",
+      "senate_class": 2,
+      "term_end": "2027-01-03",
+      "twitter": "SenatorRicketts"
+    },
+    {
+      "bioguide": "H001076",
+      "fec": [
+        "S6NH00091"
+      ],
+      "ballotpedia": "Maggie Hassan",
+      "first": "Margaret",
+      "middle": "Wood",
+      "last": "Hassan",
+      "suffix": null,
+      "nickname": "Maggie",
+      "official_full": "Margaret Wood Hassan",
+      "state": "NH",
+      "party": "D",
+      "senate_class": 3,
+      "term_end": "2029-01-03",
+      "twitter": "SenatorHassan"
+    },
+    {
+      "bioguide": "S001181",
+      "fec": [
+        "S0NH00219"
+      ],
+      "ballotpedia": "Jeanne Shaheen",
+      "first": "Jeanne",
+      "middle": null,
+      "last": "Shaheen",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Jeanne Shaheen",
+      "state": "NH",
+      "party": "D",
+      "senate_class": 2,
+      "term_end": "2027-01-03",
+      "twitter": "SenatorShaheen"
+    },
+    {
+      "bioguide": "B001288",
+      "fec": [
+        "S4NJ00185"
+      ],
+      "ballotpedia": "Cory Booker",
+      "first": "Cory",
+      "middle": "Anthony",
+      "last": "Booker",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Cory A. Booker",
+      "state": "NJ",
+      "party": "D",
+      "senate_class": 2,
+      "term_end": "2027-01-03",
+      "twitter": "SenBooker"
+    },
+    {
+      "bioguide": "K000394",
+      "fec": [
+        "H8NJ03206",
+        "S4NJ00466"
+      ],
+      "ballotpedia": "Andrew Kim (New Jersey)",
+      "first": "Andy",
+      "middle": null,
+      "last": "Kim",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Andy Kim",
+      "state": "NJ",
+      "party": "D",
+      "senate_class": 1,
+      "term_end": "2031-01-03",
+      "twitter": null
+    },
+    {
+      "bioguide": "H001046",
+      "fec": [
+        "H8NM01224",
+        "S2NM00088"
+      ],
+      "ballotpedia": "Martin Heinrich",
+      "first": "Martin",
+      "middle": null,
+      "last": "Heinrich",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Martin Heinrich",
+      "state": "NM",
+      "party": "D",
+      "senate_class": 1,
+      "term_end": "2031-01-03",
+      "twitter": "MartinHeinrich"
+    },
+    {
+      "bioguide": "L000570",
+      "fec": [
+        "H8NM03196",
+        "S0NM00058"
+      ],
+      "ballotpedia": "Ben Ray Luján",
+      "first": "Ben",
+      "middle": "Ray",
+      "last": "Luján",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Ben Ray Luján",
+      "state": "NM",
+      "party": "D",
+      "senate_class": 2,
+      "term_end": "2027-01-03",
+      "twitter": "SenatorLujan"
+    },
+    {
+      "bioguide": "C001113",
+      "fec": [
+        "S6NV00200"
+      ],
+      "ballotpedia": "Catherine Cortez Masto",
+      "first": "Catherine",
+      "middle": null,
+      "last": "Cortez Masto",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Catherine Cortez Masto",
+      "state": "NV",
+      "party": "D",
+      "senate_class": 3,
+      "term_end": "2029-01-03",
+      "twitter": "SenCortezMasto"
+    },
+    {
+      "bioguide": "R000608",
+      "fec": [
+        "H6NV03139",
+        "S8NV00156"
+      ],
+      "ballotpedia": "Jacky Rosen",
+      "first": "Jacky",
+      "middle": null,
+      "last": "Rosen",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Jacky Rosen",
+      "state": "NV",
+      "party": "D",
+      "senate_class": 1,
+      "term_end": "2031-01-03",
+      "twitter": "SenJackyRosen"
+    },
+    {
+      "bioguide": "G000555",
+      "fec": [
+        "H6NY20167",
+        "S0NY00410"
+      ],
+      "ballotpedia": "Kirsten Gillibrand",
+      "first": "Kirsten",
+      "middle": "E.",
+      "last": "Gillibrand",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Kirsten E. Gillibrand",
+      "state": "NY",
+      "party": "D",
+      "senate_class": 1,
+      "term_end": "2031-01-03",
+      "twitter": "GillibrandNY"
+    },
+    {
+      "bioguide": "S000148",
+      "fec": [
+        "S8NY00082",
+        "H0NY16010"
+      ],
+      "ballotpedia": "Chuck Schumer",
+      "first": "Charles",
+      "middle": "E.",
+      "last": "Schumer",
+      "suffix": null,
+      "nickname": "Chuck",
+      "official_full": "Charles E. Schumer",
+      "state": "NY",
+      "party": "D",
+      "senate_class": 3,
+      "term_end": "2029-01-03",
+      "twitter": "SenSchumer"
+    },
+    {
+      "bioguide": "H001104",
+      "fec": [
+        "S6OH00304"
+      ],
+      "ballotpedia": "Jon Husted",
+      "first": "Jon",
+      "middle": "Allen",
+      "last": "Husted",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Jon Husted",
+      "state": "OH",
+      "party": "R",
+      "senate_class": 3,
+      "term_end": "2026-11-03",
+      "twitter": null
+    },
+    {
+      "bioguide": "M001242",
+      "fec": [
+        "S4OH00192"
+      ],
+      "ballotpedia": "Bernie Moreno",
+      "first": "Bernie",
+      "middle": null,
+      "last": "Moreno",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Bernie Moreno",
+      "state": "OH",
+      "party": "R",
+      "senate_class": 1,
+      "term_end": "2031-01-03",
+      "twitter": "berniemoreno"
+    },
+    {
+      "bioguide": "A000383",
+      "fec": [],
+      "ballotpedia": "Alan Armstrong",
+      "first": "Alan",
+      "middle": null,
+      "last": "Armstrong",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Alan Armstrong",
+      "state": "OK",
+      "party": "R",
+      "senate_class": 2,
+      "term_end": "2027-01-03",
+      "twitter": null
+    },
+    {
+      "bioguide": "L000575",
+      "fec": [
+        "H0OK05114",
+        "S4OK00232"
+      ],
+      "ballotpedia": "James Lankford",
+      "first": "James",
+      "middle": null,
+      "last": "Lankford",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "James Lankford",
+      "state": "OK",
+      "party": "R",
+      "senate_class": 3,
+      "term_end": "2029-01-03",
+      "twitter": "SenatorLankford"
+    },
+    {
+      "bioguide": "M001176",
+      "fec": [
+        "S8OR00207"
+      ],
+      "ballotpedia": "Jeff Merkley",
+      "first": "Jeff",
+      "middle": null,
+      "last": "Merkley",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Jeff Merkley",
+      "state": "OR",
+      "party": "D",
+      "senate_class": 2,
+      "term_end": "2027-01-03",
+      "twitter": "SenJeffMerkley"
+    },
+    {
+      "bioguide": "W000779",
+      "fec": [
+        "S6OR00110",
+        "H0OR03026"
+      ],
+      "ballotpedia": "Ron Wyden",
+      "first": "Ron",
+      "middle": null,
+      "last": "Wyden",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Ron Wyden",
+      "state": "OR",
+      "party": "D",
+      "senate_class": 3,
+      "term_end": "2029-01-03",
+      "twitter": "RonWyden"
+    },
+    {
+      "bioguide": "F000479",
+      "fec": [
+        "S6PA00274"
+      ],
+      "ballotpedia": "John Fetterman",
+      "first": "John",
+      "middle": "Karl",
+      "last": "Fetterman",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "John Fetterman",
+      "state": "PA",
+      "party": "D",
+      "senate_class": 3,
+      "term_end": "2029-01-03",
+      "twitter": null
+    },
+    {
+      "bioguide": "M001243",
+      "fec": [
+        "S2PA00661"
+      ],
+      "ballotpedia": "David McCormick (Pennsylvania)",
+      "first": "Dave",
+      "middle": "Harold",
+      "last": "McCormick",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "David McCormick",
+      "state": "PA",
+      "party": "R",
+      "senate_class": 1,
+      "term_end": "2031-01-03",
+      "twitter": null
+    },
+    {
+      "bioguide": "R000122",
+      "fec": [
+        "S6RI00163",
+        "H0RI02071"
+      ],
+      "ballotpedia": "Jack Reed",
+      "first": "John",
+      "middle": "F.",
+      "last": "Reed",
+      "suffix": null,
+      "nickname": "Jack",
+      "official_full": "Jack Reed",
+      "state": "RI",
+      "party": "D",
+      "senate_class": 2,
+      "term_end": "2027-01-03",
+      "twitter": "SenJackReed"
+    },
+    {
+      "bioguide": "W000802",
+      "fec": [
+        "S6RI00221"
+      ],
+      "ballotpedia": "Sheldon Whitehouse",
+      "first": "Sheldon",
+      "middle": null,
+      "last": "Whitehouse",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Sheldon Whitehouse",
+      "state": "RI",
+      "party": "D",
+      "senate_class": 1,
+      "term_end": "2031-01-03",
+      "twitter": "SenWhitehouse"
+    },
+    {
+      "bioguide": "G000608",
+      "fec": [],
+      "ballotpedia": null,
+      "first": "Darline",
+      "middle": null,
+      "last": "Graham Nordone",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Darline Graham",
+      "state": "SC",
+      "party": "R",
+      "senate_class": 2,
+      "term_end": "2027-01-03",
+      "twitter": null
+    },
+    {
+      "bioguide": "S001184",
+      "fec": [
+        "H0SC01279",
+        "S4SC00240"
+      ],
+      "ballotpedia": "Tim Scott",
+      "first": "Tim",
+      "middle": null,
+      "last": "Scott",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Tim Scott",
+      "state": "SC",
+      "party": "R",
+      "senate_class": 3,
+      "term_end": "2029-01-03",
+      "twitter": "SenatorTimScott"
+    },
+    {
+      "bioguide": "R000605",
+      "fec": [
+        "S4SD00049"
+      ],
+      "ballotpedia": "Mike Rounds",
+      "first": "Mike",
+      "middle": null,
+      "last": "Rounds",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Mike Rounds",
+      "state": "SD",
+      "party": "R",
+      "senate_class": 2,
+      "term_end": "2027-01-03",
+      "twitter": "SenatorRounds"
+    },
+    {
+      "bioguide": "T000250",
+      "fec": [
+        "S2SD00068",
+        "H6SD00085"
+      ],
+      "ballotpedia": "John Thune",
+      "first": "John",
+      "middle": null,
+      "last": "Thune",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "John Thune",
+      "state": "SD",
+      "party": "R",
+      "senate_class": 3,
+      "term_end": "2029-01-03",
+      "twitter": "SenJohnThune"
+    },
+    {
+      "bioguide": "B001243",
+      "fec": [
+        "H2TN06030",
+        "S8TN00337"
+      ],
+      "ballotpedia": "Marsha Blackburn",
+      "first": "Marsha",
+      "middle": "W.",
+      "last": "Blackburn",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Marsha Blackburn",
+      "state": "TN",
+      "party": "R",
+      "senate_class": 1,
+      "term_end": "2031-01-03",
+      "twitter": "MarshaBlackburn"
+    },
+    {
+      "bioguide": "H000601",
+      "fec": [
+        "S0TN00169"
+      ],
+      "ballotpedia": "Bill Hagerty",
+      "first": "Bill",
+      "middle": "Francis",
+      "last": "Hagerty",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Bill Hagerty",
+      "state": "TN",
+      "party": "R",
+      "senate_class": 2,
+      "term_end": "2027-01-03",
+      "twitter": "SenatorHagerty"
+    },
+    {
+      "bioguide": "C001056",
+      "fec": [
+        "S2TX00106"
+      ],
+      "ballotpedia": "John Cornyn",
+      "first": "John",
+      "middle": null,
+      "last": "Cornyn",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "John Cornyn",
+      "state": "TX",
+      "party": "R",
+      "senate_class": 2,
+      "term_end": "2027-01-03",
+      "twitter": "JohnCornyn"
+    },
+    {
+      "bioguide": "C001098",
+      "fec": [
+        "S2TX00312"
+      ],
+      "ballotpedia": "Ted Cruz",
+      "first": "Ted",
+      "middle": null,
+      "last": "Cruz",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Ted Cruz",
+      "state": "TX",
+      "party": "R",
+      "senate_class": 1,
+      "term_end": "2031-01-03",
+      "twitter": "SenTedCruz"
+    },
+    {
+      "bioguide": "C001114",
+      "fec": [
+        "H8UT03238",
+        "S4UT00282"
+      ],
+      "ballotpedia": "John Curtis (Utah)",
+      "first": "John",
+      "middle": "R.",
+      "last": "Curtis",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "John R. Curtis",
+      "state": "UT",
+      "party": "R",
+      "senate_class": 1,
+      "term_end": "2031-01-03",
+      "twitter": "RepJohnCurtis"
+    },
+    {
+      "bioguide": "L000577",
+      "fec": [
+        "S0UT00165"
+      ],
+      "ballotpedia": "Mike Lee",
+      "first": "Mike",
+      "middle": null,
+      "last": "Lee",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Mike Lee",
+      "state": "UT",
+      "party": "R",
+      "senate_class": 3,
+      "term_end": "2029-01-03",
+      "twitter": "SenMikeLee"
+    },
+    {
+      "bioguide": "K000384",
+      "fec": [
+        "S2VA00142"
+      ],
+      "ballotpedia": "Tim Kaine",
+      "first": "Timothy",
+      "middle": null,
+      "last": "Kaine",
+      "suffix": null,
+      "nickname": "Tim",
+      "official_full": "Tim Kaine",
+      "state": "VA",
+      "party": "D",
+      "senate_class": 1,
+      "term_end": "2031-01-03",
+      "twitter": null
+    },
+    {
+      "bioguide": "W000805",
+      "fec": [
+        "S6VA00093",
+        "P80003023"
+      ],
+      "ballotpedia": "Mark Warner",
+      "first": "Mark",
+      "middle": "R.",
+      "last": "Warner",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Mark R. Warner",
+      "state": "VA",
+      "party": "D",
+      "senate_class": 2,
+      "term_end": "2027-01-03",
+      "twitter": "MarkWarner"
+    },
+    {
+      "bioguide": "S000033",
+      "fec": [
+        "H8VT01016",
+        "S4VT00033"
+      ],
+      "ballotpedia": "Bernie Sanders",
+      "first": "Bernard",
+      "middle": null,
+      "last": "Sanders",
+      "suffix": null,
+      "nickname": "Bernie",
+      "official_full": "Bernard Sanders",
+      "state": "VT",
+      "party": "I",
+      "senate_class": 1,
+      "term_end": "2031-01-03",
+      "twitter": "SenSanders"
+    },
+    {
+      "bioguide": "W000800",
+      "fec": [
+        "H6VT00160",
+        "H8VT00034",
+        "S2VT00235"
+      ],
+      "ballotpedia": "Peter Welch",
+      "first": "Peter",
+      "middle": null,
+      "last": "Welch",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Peter Welch",
+      "state": "VT",
+      "party": "D",
+      "senate_class": 3,
+      "term_end": "2029-01-03",
+      "twitter": "PeterWelch"
+    },
+    {
+      "bioguide": "C000127",
+      "fec": [
+        "S8WA00194",
+        "H2WA01054"
+      ],
+      "ballotpedia": "Maria Cantwell",
+      "first": "Maria",
+      "middle": null,
+      "last": "Cantwell",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Maria Cantwell",
+      "state": "WA",
+      "party": "D",
+      "senate_class": 1,
+      "term_end": "2031-01-03",
+      "twitter": "SenatorCantwell"
+    },
+    {
+      "bioguide": "M001111",
+      "fec": [
+        "S2WA00189"
+      ],
+      "ballotpedia": "Patty Murray",
+      "first": "Patty",
+      "middle": null,
+      "last": "Murray",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Patty Murray",
+      "state": "WA",
+      "party": "D",
+      "senate_class": 3,
+      "term_end": "2029-01-03",
+      "twitter": "PattyMurray"
+    },
+    {
+      "bioguide": "B001230",
+      "fec": [
+        "H8WI00018",
+        "S2WI00219"
+      ],
+      "ballotpedia": "Tammy Baldwin",
+      "first": "Tammy",
+      "middle": null,
+      "last": "Baldwin",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Tammy Baldwin",
+      "state": "WI",
+      "party": "D",
+      "senate_class": 1,
+      "term_end": "2031-01-03",
+      "twitter": "SenatorBaldwin"
+    },
+    {
+      "bioguide": "J000293",
+      "fec": [
+        "S0WI00197"
+      ],
+      "ballotpedia": "Ron Johnson (Wisconsin)",
+      "first": "Ron",
+      "middle": null,
+      "last": "Johnson",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Ron Johnson",
+      "state": "WI",
+      "party": "R",
+      "senate_class": 3,
+      "term_end": "2029-01-03",
+      "twitter": "SenRonJohnson"
+    },
+    {
+      "bioguide": "C001047",
+      "fec": [
+        "H0WV02138",
+        "S4WV00159"
+      ],
+      "ballotpedia": "Shelley Moore Capito",
+      "first": "Shelley",
+      "middle": "Moore",
+      "last": "Capito",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Shelley Moore Capito",
+      "state": "WV",
+      "party": "R",
+      "senate_class": 2,
+      "term_end": "2027-01-03",
+      "twitter": "SenCapito"
+    },
+    {
+      "bioguide": "J000312",
+      "fec": [
+        "S4WV00332"
+      ],
+      "ballotpedia": null,
+      "first": "Jim",
+      "middle": "Conley",
+      "last": "Justice",
+      "suffix": "II",
+      "nickname": null,
+      "official_full": "James C. Justice",
+      "state": "WV",
+      "party": "R",
+      "senate_class": 1,
+      "term_end": "2031-01-03",
+      "twitter": null
+    },
+    {
+      "bioguide": "B001261",
+      "fec": [
+        "S6WY00068"
+      ],
+      "ballotpedia": "John Barrasso",
+      "first": "John",
+      "middle": "A.",
+      "last": "Barrasso",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "John Barrasso",
+      "state": "WY",
+      "party": "R",
+      "senate_class": 1,
+      "term_end": "2031-01-03",
+      "twitter": "SenJohnBarrasso"
+    },
+    {
+      "bioguide": "L000571",
+      "fec": [
+        "H8WY00148",
+        "S0WY00137"
+      ],
+      "ballotpedia": "Cynthia Lummis",
+      "first": "Cynthia",
+      "middle": "M.",
+      "last": "Lummis",
+      "suffix": null,
+      "nickname": null,
+      "official_full": "Cynthia M. Lummis",
+      "state": "WY",
+      "party": "R",
+      "senate_class": 2,
+      "term_end": "2027-01-03",
+      "twitter": "SenLummis"
+    }
+  ]
+}

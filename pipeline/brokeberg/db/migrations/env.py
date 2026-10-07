@@ -4,6 +4,7 @@ from alembic import context
 from sqlalchemy import create_engine, pool
 
 from brokeberg.config import get_settings
+from brokeberg.db import models  # noqa: F401  (registers tables on Base.metadata)
 from brokeberg.db.base import Base
 
 config = context.config
