@@ -7,6 +7,7 @@ import anthropic
 from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_exponential
 
 from brokeberg.config import get_settings
+from brokeberg.llm.errors import LLMOutputError
 
 _TRANSIENT = (
     anthropic.APIConnectionError,
@@ -29,28 +30,25 @@ def get_client() -> anthropic.Anthropic:
 def call(
     prompt: str,
     *,
+    model: str,
     system: str | None,
     max_tokens: int,
-    tool: dict[str, Any] | None,
-    tool_name: str,
-) -> str | dict[str, Any]:
-    """Return text, or the forced tool's input dict when `tool` is given."""
+    json_schema: dict[str, Any] | None,
+) -> str:
+    """Return the response text; with `json_schema`, that text is schema-constrained JSON."""
     kwargs: dict[str, Any] = {
-        "model": get_settings().llm_model,
+        "model": model,
         "max_tokens": max_tokens,
         "messages": [{"role": "user", "content": prompt}],
     }
     if system:
         kwargs["system"] = system
-    if tool is not None:
-        kwargs["tools"] = [tool]
-        kwargs["tool_choice"] = {"type": "tool", "name": tool_name}
+    if json_schema is not None:
+        kwargs["output_config"] = {"format": {"type": "json_schema", "schema": json_schema}}
 
     resp = get_client().messages.create(**kwargs)
 
-    if tool is not None:
-        for block in resp.content:
-            if block.type == "tool_use" and block.name == tool_name:
-                return dict(block.input)
-        return ""
+    # A truncated or refused response may not match the schema; never pass it on as valid.
+    if resp.stop_reason in ("max_tokens", "refusal"):
+        raise LLMOutputError(f"model stopped with stop_reason={resp.stop_reason!r}")
     return "".join(block.text for block in resp.content if block.type == "text")

@@ -41,12 +41,32 @@ from brokeberg.taxonomy import (
     RaceType,
     SourceType,
     Stance,
+    Topic,
     TrustTier,
     VerificationStatus,
 )
 
 EMBED_DIM = 1024  # pgvector column width; dev (bge-large) and prod (Titan v2) both emit 1024.
 ENUM_LENGTH = 64
+
+
+# Pipeline workflow states. Not domain vocabulary, so they live here rather than in `taxonomy`.
+class ReviewKind(StrEnum):
+    UNRESOLVED_MENTION = "unresolved_mention"
+    LOW_CONFIDENCE = "low_confidence"
+
+
+class ReviewStatus(StrEnum):
+    OPEN = "open"
+    ACCEPTED = "accepted"
+    REJECTED = "rejected"
+
+
+class ExtractionStatus(StrEnum):
+    DROPPED = "dropped"
+    EXTRACTED = "extracted"
+    FAILED = "failed"
+
 
 # CHECK names (after the `ck_<table>_` prefix) for each enum, used by migrations and the drift test.
 ENUM_CHECKS: dict[str, type[StrEnum]] = {
@@ -59,7 +79,14 @@ ENUM_CHECKS: dict[str, type[StrEnum]] = {
     "edge_type": EdgeType,
     "race_type": RaceType,
     "race_rating": RaceRating,
+    "review_kind": ReviewKind,
+    "review_status": ReviewStatus,
+    "extraction_status": ExtractionStatus,
 }
+
+# `event_entities.topic`: '' for a plain mention row, else the Topic a stance row is about.
+NO_TOPIC = ""
+TOPIC_CHECK = "topic = '' OR topic IN ({})".format(", ".join(f"'{t.value}'" for t in Topic))
 
 
 def _enum(enum_cls: type[StrEnum], name: str) -> Enum:
@@ -188,11 +215,14 @@ class EventSource(Base):
 
 
 class EventEntity(Base):
+    """A mention (`topic=''`) or a per-topic stance of an entity in an event."""
+
     __tablename__ = "event_entities"
     __table_args__ = (
         _unit_range("intensity"),
         _unit_range("confidence"),
         _non_empty("span"),
+        CheckConstraint(TOPIC_CHECK, name="topic_valid"),
     )
 
     event_id: Mapped[int] = mapped_column(
@@ -200,6 +230,9 @@ class EventEntity(Base):
     )
     entity_id: Mapped[int] = mapped_column(ForeignKey("entities.id"), primary_key=True, index=True)
     role: Mapped[str] = mapped_column(String(64), primary_key=True)
+    topic: Mapped[str] = mapped_column(
+        String(64), primary_key=True, server_default=text("''")
+    )
     stance: Mapped[Stance | None] = mapped_column(_enum(Stance, "stance"))
     intensity: Mapped[float | None] = mapped_column(Float)
     span: Mapped[str] = mapped_column(Text, nullable=False)
@@ -317,3 +350,66 @@ class EventEmbedding(Base):
         ForeignKey("events.id", ondelete="CASCADE"), primary_key=True
     )
     embedding: Mapped[list[float]] = mapped_column(Vector(EMBED_DIM), nullable=False)
+
+
+class ReviewQueue(Base):
+    """Everything a human must look at: unresolved mentions and low-confidence extractions.
+
+    A mention that cannot be linked to a canonical ID lands here, never in `entities`.
+    """
+
+    __tablename__ = "review_queue"
+    __table_args__ = (
+        _unit_range("confidence"),
+        UniqueConstraint(
+            "raw_item_id", "kind", "mention", "field",
+            name="uq_review_queue_item_kind_mention_field",
+        ),
+    )
+
+    id: Mapped[int] = _pk()
+    raw_item_id: Mapped[int] = mapped_column(
+        ForeignKey("raw_items.id", ondelete="CASCADE"), nullable=False, index=True
+    )
+    kind: Mapped[ReviewKind] = mapped_column(_enum(ReviewKind, "review_kind"), nullable=False)
+    mention: Mapped[str] = mapped_column(Text, nullable=False)
+    # Which extraction field this is about, e.g. 'entities' or 'stance:healthcare'.
+    field: Mapped[str] = mapped_column(String(64), nullable=False)
+    entity_type_hint: Mapped[EntityType | None] = mapped_column(_enum(EntityType, "entity_type"))
+    candidates: Mapped[list[dict[str, Any]]] = mapped_column(
+        JSONB, nullable=False, server_default=text("'[]'::jsonb")
+    )
+    payload: Mapped[dict[str, Any]] = mapped_column(
+        JSONB, nullable=False, server_default=text("'{}'::jsonb")
+    )
+    confidence: Mapped[float | None] = mapped_column(Float)
+    status: Mapped[ReviewStatus] = mapped_column(
+        _enum(ReviewStatus, "review_status"),
+        nullable=False,
+        server_default=ReviewStatus.OPEN.value,
+        index=True,
+    )
+    created_at: Mapped[datetime] = _created_at()
+
+
+class ExtractionRun(Base):
+    """One extraction attempt per raw item: the idempotency record and the per-pass partials."""
+
+    __tablename__ = "extraction_runs"
+
+    id: Mapped[int] = _pk()
+    raw_item_id: Mapped[int] = mapped_column(
+        ForeignKey("raw_items.id", ondelete="CASCADE"), nullable=False, unique=True
+    )
+    content_hash: Mapped[str] = mapped_column(Text, nullable=False)
+    status: Mapped[ExtractionStatus] = mapped_column(
+        _enum(ExtractionStatus, "extraction_status"), nullable=False
+    )
+    dropped_reason: Mapped[str | None] = mapped_column(Text)
+    error: Mapped[str | None] = mapped_column(Text)
+    pass_outputs: Mapped[dict[str, Any]] = mapped_column(
+        JSONB, nullable=False, server_default=text("'{}'::jsonb")
+    )
+    prompt_version: Mapped[str] = mapped_column(String(32), nullable=False)
+    event_id: Mapped[int | None] = mapped_column(ForeignKey("events.id", ondelete="SET NULL"))
+    created_at: Mapped[datetime] = _created_at()

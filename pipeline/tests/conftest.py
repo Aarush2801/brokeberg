@@ -8,6 +8,7 @@ os.environ["LLM_PROVIDER"] = "anthropic"
 
 from collections.abc import Iterator  # noqa: E402
 from pathlib import Path  # noqa: E402
+from typing import Any  # noqa: E402
 
 import pytest  # noqa: E402
 from alembic import command  # noqa: E402
@@ -83,3 +84,47 @@ def db_session(db_engine: Engine) -> Iterator[Session]:
             session.close()
             trans.rollback()
             clear_cache()
+
+
+# --- extraction: stubbed LLM -----------------------------------------------------------------
+
+
+class FakeLLM:
+    """Stands in for `llm.complete`: returns a canned response per output schema, records calls.
+
+    A response may be a pydantic instance, or a callable `(prompt) -> instance`.
+    """
+
+    def __init__(self) -> None:
+        self.responses: dict[type, Any] = {}
+        self.calls: list[tuple[type | None, str, str | None]] = []
+
+    def set(self, schema: type, response: Any) -> None:
+        self.responses[schema] = response
+
+    def __call__(self, prompt: str, *, schema: type | None = None, **kwargs: Any) -> Any:
+        self.calls.append((schema, prompt, kwargs.get("model")))
+        if schema not in self.responses:
+            raise AssertionError(f"unexpected LLM call for {schema}")
+        r = self.responses[schema]
+        return r(prompt) if callable(r) else r
+
+    def schemas_called(self) -> list[type | None]:
+        return [c[0] for c in self.calls]
+
+
+@pytest.fixture
+def fake_llm(monkeypatch: pytest.MonkeyPatch) -> FakeLLM:
+    from brokeberg import llm
+
+    fake = FakeLLM()
+    monkeypatch.setattr(llm, "complete", fake)
+    return fake
+
+
+@pytest.fixture
+def seeded_db(db_session: Session) -> Session:
+    from brokeberg.db.seed import seed
+
+    seed(db_session)
+    return db_session

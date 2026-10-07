@@ -111,7 +111,7 @@ psql postgresql://brokeberg:brokeberg@localhost:5432/brokeberg -c "CREATE EXTENS
 cat > .env <<'EOF'
 LLM_PROVIDER=anthropic
 ANTHROPIC_API_KEY=
-LLM_MODEL=claude-sonnet-4-6
+LLM_MODEL=claude-sonnet-5-5
 EMBED_PROVIDER=local
 EMBED_MODEL=BAAI/bge-large-en-v1.5
 EMBED_DIM=1024

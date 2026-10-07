@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 
 from brokeberg.db.models import Entity
 from brokeberg.db.seed import seed
-from brokeberg.ids import bioguide, fec, fips, fred
+from brokeberg.ids import bill, bioguide, fec, fips, fred
 from brokeberg.ids.canonical import InvalidCanonicalIdError, Namespace, make, split
 from brokeberg.ids.resolve import AliasIndex, AliasRecord, normalize, resolve
 from brokeberg.taxonomy import EntityType
@@ -154,3 +154,15 @@ def test_lookup_by_ids(seeded: Session) -> None:
 def test_fred_registration(seeded: Session) -> None:
     assert fred.is_registered(seeded, "cpiaucsl")
     assert not fred.is_registered(seeded, "NOTASERIES")
+
+
+def test_bill_ids() -> None:
+    assert bill.canonical(119, "S", "877") == "bill:119-s-877"
+    assert bill.canonical(119, "H.R.", 5) == "bill:119-hr-5"
+    assert bill.canonical(119, "XX", 5) is None
+    assert bill.from_voteview(119, "HR9340") == "bill:119-hr-9340"
+    assert bill.from_voteview(119, "SJRES12") == "bill:119-sjres-12"
+    assert bill.from_voteview(119, "PN1129") is None  # a nomination, not a bill
+    assert bill.from_voteview(119, None) is None
+    assert bill.label("bill:119-hr-9340") == "H.R. 9340 (119th)"
+    assert split("bill:119-s-877") == (Namespace.BILL, "119-s-877")

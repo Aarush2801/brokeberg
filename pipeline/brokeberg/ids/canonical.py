@@ -15,6 +15,7 @@ class Namespace(StrEnum):
     FRED = "fred"
     FIPS = "fips"
     RACE = "race"
+    BILL = "bill"
 
 
 _FORMATS: dict[Namespace, re.Pattern[str]] = {
@@ -24,6 +25,8 @@ _FORMATS: dict[Namespace, re.Pattern[str]] = {
     Namespace.FRED: re.compile(r"^[A-Z0-9_]{1,30}$"),
     Namespace.FIPS: re.compile(r"^\d{2}$"),
     Namespace.RACE: re.compile(r"^[A-Z]{2}-[A-Z]+-\d{4}$"),
+    # <congress>-<congress.gov bill type, lowercased>-<number>, e.g. 119-s-1234, 119-hr-9340.
+    Namespace.BILL: re.compile(r"^\d{1,3}-(?:s|hr|sjres|hjres|sconres|hconres|sres|hres)-\d{1,5}$"),
 }
 
 

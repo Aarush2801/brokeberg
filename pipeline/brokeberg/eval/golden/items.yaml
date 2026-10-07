@@ -1,0 +1,1316 @@
+# Brokeberg golden set. Labeling rules: see README.md in this folder.
+# Every item starts verified: false. Flip to true only after checking every label.
+items:
+- id: x-murkowski-uss-stevens
+  source: x
+  source_type: social_post
+  url: https://x.com/LisaMurkowski/status/2107242586108834095
+  text: Senator Stevens was a tireless champion for Alaska and the men and women who serve our nation,
+    and it was an honor to celebrate his name joining one of the most formidable warships of the 21st
+    century. I know Captain Hays and her crew will proudly carry on Uncle Ted’s legacy of https://t.co/xhfRCiC2iw
+  event_time: '2026-10-05T22:52:37+00:00'
+  raw:
+    author:
+      handle: LisaMurkowski
+      user_id: '18061669'
+      bioguide: M001153
+    tweet:
+      id: '2107242586108834095'
+  resolved:
+  - bioguide:M001153
+  synthetic: false
+  verified: true
+  notes: 'Borderline relevance: ceremonial, but defense-related. Ted Stevens (deceased) is not in the
+    registry.'
+  expected:
+    relevant: true
+    event_type: statement
+    entities:
+    - fips:02
+    topics:
+    - foreign_policy_defense
+    stances: []
+- id: x-murkowski-fat-bear
+  source: x
+  source_type: social_post
+  url: https://x.com/LisaMurkowski/status/2105738197368238324
+  text: 'Congrats to Backpack on becoming the 2026 Fat Bear Week Champion and showing the world how Alaskans
+    get through the winter: eating a lot of salmon! https://t.co/1FsxytsNzh'
+  event_time: '2026-10-01T19:14:43+00:00'
+  raw:
+    author:
+      handle: LisaMurkowski
+      user_id: '18061669'
+      bioguide: M001153
+    tweet:
+      id: '2105738197368238324'
+  resolved:
+  - bioguide:M001153
+  synthetic: false
+  verified: true
+  notes: 'Off-topic: Fat Bear Week.'
+  expected:
+    relevant: false
+    event_type: null
+    entities: []
+    topics: []
+    stances: []
+- id: x-murkowski-gasline
+  source: x
+  source_type: social_post
+  url: https://x.com/LisaMurkowski/status/2105440368166596960
+  text: This unprecedented announcement moves our long-sought Alaska natural gas pipeline closer than
+    ever to construction and operation. South Korea’s commitment to invest $54 billion to build the gasline
+    will deliver significant benefits for Alaskans, from good jobs to affordable
+  event_time: '2026-09-30T23:31:15+00:00'
+  raw:
+    author:
+      handle: LisaMurkowski
+      user_id: '18061669'
+      bioguide: M001153
+    tweet:
+      id: '2105440368166596960'
+  resolved:
+  - bioguide:M001153
+  synthetic: false
+  verified: true
+  notes: South Korea is a Country with no registry yet -> review queue, not expected.
+  expected:
+    relevant: true
+    event_type: statement
+    entities:
+    - fips:02
+    topics:
+    - energy_climate
+    - labor_jobs
+    stances:
+    - canonical_id: bioguide:M001153
+      topic: energy_climate
+      position: support
+- id: x-murkowski-orange-shirt
+  source: x
+  source_type: social_post
+  url: https://x.com/LisaMurkowski/status/2105374331161235848
+  text: On Orange Shirt Day, the National Day of Remembrance for Indian Boarding School Survivors, we
+    honor the children who returned home and remember those who never did. 🧡 https://t.co/uwLMreGWAE
+  event_time: '2026-09-30T19:08:51+00:00'
+  raw:
+    author:
+      handle: LisaMurkowski
+      user_id: '18061669'
+      bioguide: M001153
+    tweet:
+      id: '2105374331161235848'
+  resolved:
+  - bioguide:M001153
+  synthetic: false
+  verified: true
+  notes: 'Borderline: commemoration with no policy claim; labeled not relevant.'
+  expected:
+    relevant: false
+    event_type: null
+    entities: []
+    topics: []
+    stances: []
+- id: x-sullivan-right-to-produce
+  source: x
+  source_type: social_post
+  url: https://x.com/SenDanSullivan/status/2107621847928029445
+  text: Alaskans have a right to produce our own energy and grow our economy. That’s why I put forward
+    the Alaska’s Right to Produce Act 2.0 last week—legislation to protect the gains we’ve made in unlocking
+    the ANWR Coastal Plain and NPR-A from a future lock-up, as was done under https://t.co/lvxf4wRTHp
+  event_time: '2026-10-06T23:59:40+00:00'
+  raw:
+    author:
+      handle: SenDanSullivan
+      user_id: '2891210047'
+      bioguide: S001198
+    tweet:
+      id: '2107621847928029445'
+  resolved:
+  - bioguide:S001198
+  synthetic: false
+  verified: true
+  notes: '''Alaska'' appears inside the bill name; the act itself has no bill number, so it is not linkable.'
+  expected:
+    relevant: true
+    event_type: statement
+    entities:
+    - fips:02
+    topics:
+    - energy_climate
+    stances:
+    - canonical_id: bioguide:S001198
+      topic: energy_climate
+      position: support
+- id: x-sullivan-uss-stevens
+  source: x
+  source_type: social_post
+  url: https://x.com/SenDanSullivan/status/2107548591497904268
+  text: On Saturday in Whittier, Alaskans gathered to commission the USS Ted Stevens—a state-of-the-art
+    Navy warship fittingly named after our tenacious, late great Senator who served his country in so
+    many different ways. Ted Stevens understood, perhaps better than anyone else, how https://t.co/HkE7L8sHwd
+  event_time: '2026-10-06T19:08:35+00:00'
+  raw:
+    author:
+      handle: SenDanSullivan
+      user_id: '2891210047'
+      bioguide: S001198
+    tweet:
+      id: '2107548591497904268'
+  resolved:
+  - bioguide:S001198
+  synthetic: false
+  verified: true
+  notes: Borderline relevance, as 362.
+  expected:
+    relevant: true
+    event_type: statement
+    entities: []
+    topics:
+    - foreign_policy_defense
+    stances: []
+- id: x-sullivan-ketchikan-health
+  source: x
+  source_type: social_post
+  url: https://x.com/SenDanSullivan/status/2106146833328136214
+  text: "I had a great time meeting with the Ketchikan Wellness Coalition earlier this week and was able\
+    \ to congratulate them on receiving Rural Health Transformation Program funding! \n\nThe funding will\
+    \ expand their Malasakit Matters: Filipino Healthy Community Project, to build health https://t.co/GbgH1tOx7L"
+  event_time: '2026-10-02T22:18:30+00:00'
+  raw:
+    author:
+      handle: SenDanSullivan
+      user_id: '2891210047'
+      bioguide: S001198
+    tweet:
+      id: '2106146833328136214'
+  resolved:
+  - bioguide:S001198
+  synthetic: false
+  verified: true
+  notes: 'Congratulation, not a position: no stance expected.'
+  expected:
+    relevant: true
+    event_type: statement
+    entities: []
+    topics:
+    - healthcare
+    stances: []
+- id: x-sullivan-wrangell-grant
+  source: x
+  source_type: social_post
+  url: https://x.com/SenDanSullivan/status/2105842778764632207
+  text: 'Big news for Wrangell! The U.S. Department of Commerce is awarding the City and Borough more
+    than $43 million to support three projects: a deep water port and shipyard, a downtown waterfront
+    expansion and marine infrastructure improvements, and a replacement for the Wrangell https://t.co/wHDAkTXz3g'
+  event_time: '2026-10-02T02:10:17+00:00'
+  raw:
+    author:
+      handle: SenDanSullivan
+      user_id: '2891210047'
+      bioguide: S001198
+    tweet:
+      id: '2105842778764632207'
+  resolved:
+  - bioguide:S001198
+  synthetic: false
+  verified: true
+  notes: Commerce Dept grant; no taxonomy topic fits port infrastructure. Agency not in registry.
+  expected:
+    relevant: true
+    event_type: executive_action
+    entities: []
+    topics: []
+    stances: []
+- id: x-sullivan-lngmaxxing
+  source: x
+  source_type: social_post
+  url: https://x.com/SenDanSullivan/status/2105474077053886721
+  text: '#LNGmaxxing https://t.co/DapPEW414Z'
+  event_time: '2026-10-01T01:45:12+00:00'
+  raw:
+    author:
+      handle: SenDanSullivan
+      user_id: '2891210047'
+      bioguide: S001198
+    tweet:
+      id: '2105474077053886721'
+  resolved:
+  - bioguide:S001198
+  synthetic: false
+  verified: true
+  notes: No content beyond a hashtag.
+  expected:
+    relevant: false
+    event_type: null
+    entities: []
+    topics: []
+    stances: []
+- id: bill-s877-clemente-coin
+  source: congress
+  source_type: government_primary
+  url: https://www.congress.gov/bill/119th-congress/senate-bill/877
+  text: 'S. 877 (119th Congress): Roberto Clemente Commemorative Coin Act
+
+    Latest action (2025-03-06): Read twice and referred to the Committee on Banking, Housing, and Urban
+    Affairs. (text: CR S1605-1606)'
+  event_time: '2025-03-06T00:00:00+00:00'
+  raw:
+    kind: bill
+    type: S
+    title: Roberto Clemente Commemorative Coin Act
+    number: '877'
+    congress: 119
+    sponsors:
+    - party: D
+      state: NY
+      fullName: Sen. Schumer, Charles E. [D-NY]
+      bioguideId: S000148
+    policyArea: Finance and Financial Sector
+    latestAction:
+      text: 'Read twice and referred to the Committee on Banking, Housing, and Urban Affairs. (text: CR
+        S1605-1606)'
+      actionDate: '2025-03-06'
+    introducedDate: '2025-03-06'
+  resolved:
+  - bioguide:S000148
+  synthetic: false
+  verified: true
+  notes: null
+  expected:
+    relevant: true
+    event_type: legislative_action
+    entities:
+    - bill:119-s-877
+    topics: []
+    stances: []
+- id: bill-s2938-ai-risk
+  source: congress
+  source_type: government_primary
+  url: https://www.congress.gov/bill/119th-congress/senate-bill/2938
+  text: 'S. 2938 (119th Congress): Artificial Intelligence Risk Evaluation Act of 2025
+
+    Latest action (2026-09-30): Committee on Homeland Security and Governmental Affairs. Hearings held.'
+  event_time: '2026-09-30T00:00:00+00:00'
+  raw:
+    kind: bill
+    type: S
+    title: Artificial Intelligence Risk Evaluation Act of 2025
+    number: '2938'
+    congress: 119
+    sponsors:
+    - party: R
+      state: MO
+      fullName: Sen. Hawley, Josh [R-MO]
+      bioguideId: H001089
+    policyArea: Science, Technology, Communications
+    latestAction:
+      text: Committee on Homeland Security and Governmental Affairs. Hearings held.
+      actionDate: '2026-09-30'
+    introducedDate: '2025-09-29'
+  resolved:
+  - bioguide:H001089
+  synthetic: false
+  verified: true
+  notes: null
+  expected:
+    relevant: true
+    event_type: legislative_action
+    entities:
+    - bill:119-s-2938
+    topics:
+    - tech_ai_regulation
+    stances: []
+- id: bill-s5547-screen-act
+  source: congress
+  source_type: government_primary
+  url: https://www.congress.gov/bill/119th-congress/senate-bill/5547
+  text: 'S. 5547 (119th Congress): SCREEN Act of 2026
+
+    Latest action (2026-09-24): Read twice and referred to the Committee on the Judiciary.'
+  event_time: '2026-09-24T00:00:00+00:00'
+  raw:
+    kind: bill
+    type: S
+    title: SCREEN Act of 2026
+    number: '5547'
+    congress: 119
+    sponsors:
+    - party: R
+      state: FL
+      fullName: Sen. Scott, Rick [R-FL]
+      bioguideId: S001217
+    policyArea: Crime and Law Enforcement
+    latestAction:
+      text: Read twice and referred to the Committee on the Judiciary.
+      actionDate: '2026-09-24'
+    introducedDate: '2026-09-24'
+  resolved:
+  - bioguide:S001217
+  synthetic: false
+  verified: true
+  notes: Title alone does not reveal the topic; any topic is a guess.
+  expected:
+    relevant: true
+    event_type: legislative_action
+    entities:
+    - bill:119-s-5547
+    topics: []
+    stances: []
+- id: bill-s5510-anti-bribery
+  source: congress
+  source_type: government_primary
+  url: https://www.congress.gov/bill/119th-congress/senate-bill/5510
+  text: 'S. 5510 (119th Congress): Anti-Bribery Improvement Act
+
+    Latest action (2026-09-24): Read twice and referred to the Committee on the Judiciary.'
+  event_time: '2026-09-24T00:00:00+00:00'
+  raw:
+    kind: bill
+    type: S
+    title: Anti-Bribery Improvement Act
+    number: '5510'
+    congress: 119
+    sponsors:
+    - party: D
+      state: NJ
+      fullName: Sen. Kim, Andy [D-NJ]
+      bioguideId: K000394
+    policyArea: Crime and Law Enforcement
+    latestAction:
+      text: Read twice and referred to the Committee on the Judiciary.
+      actionDate: '2026-09-24'
+    introducedDate: '2026-09-24'
+  resolved:
+  - bioguide:K000394
+  synthetic: false
+  verified: true
+  notes: null
+  expected:
+    relevant: true
+    event_type: legislative_action
+    entities:
+    - bill:119-s-5510
+    topics:
+    - crime_justice
+    stances: []
+- id: bill-s5249-american-fuel
+  source: congress
+  source_type: government_primary
+  url: https://www.congress.gov/bill/119th-congress/senate-bill/5249
+  text: 'S. 5249 (119th Congress): MORE American Fuel Act of 2026
+
+    Latest action (2026-10-05): Held at the desk.'
+  event_time: '2026-10-05T00:00:00+00:00'
+  raw:
+    kind: bill
+    type: S
+    title: MORE American Fuel Act of 2026
+    number: '5249'
+    congress: 119
+    sponsors:
+    - party: D
+      state: AZ
+      fullName: Sen. Kelly, Mark [D-AZ]
+      bioguideId: K000377
+    policyArea: Energy
+    latestAction:
+      text: Held at the desk.
+      actionDate: '2026-10-05'
+      actionTime: '16:54:45'
+    introducedDate: '2026-08-05'
+  resolved:
+  - bioguide:K000377
+  synthetic: false
+  verified: true
+  notes: null
+  expected:
+    relevant: true
+    event_type: legislative_action
+    entities:
+    - bill:119-s-5249
+    topics:
+    - energy_climate
+    stances: []
+- id: bill-s5045-wildfire-emissions
+  source: congress
+  source_type: government_primary
+  url: https://www.congress.gov/bill/119th-congress/senate-bill/5045
+  text: 'S. 5045 (119th Congress): Wildfire Emissions Prevention Act of 2026
+
+    Latest action (2026-10-05): Held at the desk.'
+  event_time: '2026-10-05T00:00:00+00:00'
+  raw:
+    kind: bill
+    type: S
+    title: Wildfire Emissions Prevention Act of 2026
+    number: '5045'
+    congress: 119
+    sponsors:
+    - party: R
+      state: UT
+      fullName: Sen. Curtis, John R. [R-UT]
+      bioguideId: C001114
+    policyArea: Environmental Protection
+    latestAction:
+      text: Held at the desk.
+      actionDate: '2026-10-05'
+      actionTime: '16:54:36'
+    introducedDate: '2026-07-21'
+  resolved:
+  - bioguide:C001114
+  synthetic: false
+  verified: true
+  notes: null
+  expected:
+    relevant: true
+    event_type: legislative_action
+    entities:
+    - bill:119-s-5045
+    topics:
+    - energy_climate
+    stances: []
+- id: bill-s4974-food-safer
+  source: congress
+  source_type: government_primary
+  url: https://www.congress.gov/bill/119th-congress/senate-bill/4974
+  text: 'S. 4974 (119th Congress): Making America''s Food Safer Act
+
+    Latest action (2026-10-05): Held at the desk.'
+  event_time: '2026-10-05T00:00:00+00:00'
+  raw:
+    kind: bill
+    type: S
+    title: Making America's Food Safer Act
+    number: '4974'
+    congress: 119
+    sponsors:
+    - party: R
+      state: AL
+      fullName: Sen. Tuberville, Tommy [R-AL]
+      bioguideId: T000278
+    policyArea: Health
+    latestAction:
+      text: Held at the desk.
+      actionDate: '2026-10-05'
+      actionTime: '16:54:29'
+    introducedDate: '2026-07-14'
+  resolved:
+  - bioguide:T000278
+  synthetic: false
+  verified: true
+  notes: null
+  expected:
+    relevant: true
+    event_type: legislative_action
+    entities:
+    - bill:119-s-4974
+    topics:
+    - agriculture
+    stances: []
+- id: bill-s4395-tria
+  source: congress
+  source_type: government_primary
+  url: https://www.congress.gov/bill/119th-congress/senate-bill/4395
+  text: 'S. 4395 (119th Congress): Terrorism Risk Insurance Program Reauthorization Act of 2026
+
+    Latest action (2026-10-05): Held at the desk.'
+  event_time: '2026-10-05T00:00:00+00:00'
+  raw:
+    kind: bill
+    type: S
+    title: Terrorism Risk Insurance Program Reauthorization Act of 2026
+    number: '4395'
+    congress: 119
+    sponsors:
+    - party: R
+      state: PA
+      fullName: Sen. McCormick, David [R-PA]
+      bioguideId: M001243
+    policyArea: Finance and Financial Sector
+    latestAction:
+      text: Held at the desk.
+      actionDate: '2026-10-05'
+      actionTime: '16:54:07'
+    introducedDate: '2026-04-27'
+  resolved:
+  - bioguide:M001243
+  synthetic: false
+  verified: true
+  notes: 'Terrorism risk insurance: no clean taxonomy topic.'
+  expected:
+    relevant: true
+    event_type: legislative_action
+    entities:
+    - bill:119-s-4395
+    topics: []
+    stances: []
+- id: bill-s3798-cash-access
+  source: congress
+  source_type: government_primary
+  url: https://www.congress.gov/bill/119th-congress/senate-bill/3798
+  text: 'S. 3798 (119th Congress): Safe Access to Cash Act of 2026
+
+    Latest action (2026-10-05): Held at the desk.'
+  event_time: '2026-10-05T00:00:00+00:00'
+  raw:
+    kind: bill
+    type: S
+    title: Safe Access to Cash Act of 2026
+    number: '3798'
+    congress: 119
+    sponsors:
+    - party: R
+      state: TX
+      fullName: Sen. Cruz, Ted [R-TX]
+      bioguideId: C001098
+    policyArea: Crime and Law Enforcement
+    latestAction:
+      text: Held at the desk.
+      actionDate: '2026-10-05'
+      actionTime: '16:53:20'
+    introducedDate: '2026-02-05'
+  resolved:
+  - bioguide:C001098
+  synthetic: false
+  verified: true
+  notes: 'Cash access / payments: no clean taxonomy topic.'
+  expected:
+    relevant: true
+    event_type: legislative_action
+    entities:
+    - bill:119-s-3798
+    topics: []
+    stances: []
+- id: bill-s3315-health-cyber
+  source: congress
+  source_type: government_primary
+  url: https://www.congress.gov/bill/119th-congress/senate-bill/3315
+  text: 'S. 3315 (119th Congress): Health Care Cybersecurity and Resiliency Act of 2026
+
+    Latest action (2026-10-05): Held at the desk.'
+  event_time: '2026-10-05T00:00:00+00:00'
+  raw:
+    kind: bill
+    type: S
+    title: Health Care Cybersecurity and Resiliency Act of 2026
+    number: '3315'
+    congress: 119
+    sponsors:
+    - party: R
+      state: LA
+      fullName: Sen. Cassidy, Bill [R-LA]
+      bioguideId: C001075
+    policyArea: Health
+    latestAction:
+      text: Held at the desk.
+      actionDate: '2026-10-05'
+      actionTime: '17:02:10'
+    introducedDate: '2025-12-02'
+  resolved:
+  - bioguide:C001075
+  synthetic: false
+  verified: true
+  notes: null
+  expected:
+    relevant: true
+    event_type: legislative_action
+    entities:
+    - bill:119-s-3315
+    topics:
+    - healthcare
+    - tech_ai_regulation
+    stances: []
+- id: bill-s2339-early-act
+  source: congress
+  source_type: government_primary
+  url: https://www.congress.gov/bill/119th-congress/senate-bill/2339
+  text: 'S. 2339 (119th Congress): EARLY Act Reauthorization of 2025
+
+    Latest action (2026-10-05): Held at the desk.'
+  event_time: '2026-10-05T00:00:00+00:00'
+  raw:
+    kind: bill
+    type: S
+    title: EARLY Act Reauthorization of 2025
+    number: '2339'
+    congress: 119
+    sponsors:
+    - party: D
+      state: MN
+      fullName: Sen. Klobuchar, Amy [D-MN]
+      bioguideId: K000367
+    policyArea: Health
+    latestAction:
+      text: Held at the desk.
+      actionDate: '2026-10-05'
+      actionTime: '16:51:17'
+    introducedDate: '2025-07-17'
+  resolved:
+  - bioguide:K000367
+  synthetic: false
+  verified: true
+  notes: Acronym title; topic not inferable from text.
+  expected:
+    relevant: true
+    event_type: legislative_action
+    entities:
+    - bill:119-s-2339
+    topics: []
+    stances: []
+- id: bill-s2273-wyoming-education
+  source: congress
+  source_type: government_primary
+  url: https://www.congress.gov/bill/119th-congress/senate-bill/2273
+  text: 'S. 2273 (119th Congress): Wyoming Education Trust Modernization Act
+
+    Latest action (2026-10-05): Held at the desk.'
+  event_time: '2026-10-05T00:00:00+00:00'
+  raw:
+    kind: bill
+    type: S
+    title: Wyoming Education Trust Modernization Act
+    number: '2273'
+    congress: 119
+    sponsors:
+    - party: R
+      state: WY
+      fullName: Sen. Lummis, Cynthia M. [R-WY]
+      bioguideId: L000571
+    policyArea: Public Lands and Natural Resources
+    latestAction:
+      text: Held at the desk.
+      actionDate: '2026-10-05'
+      actionTime: '16:50:45'
+    introducedDate: '2025-07-14'
+  resolved:
+  - bioguide:L000571
+  synthetic: false
+  verified: true
+  notes: null
+  expected:
+    relevant: true
+    event_type: legislative_action
+    entities:
+    - bill:119-s-2273
+    - fips:56
+    topics:
+    - education
+    stances: []
+- id: vote-256-sonderling-confirm
+  source: senate_votes
+  source_type: government_primary
+  url: https://voteview.com/rollcall/RS1190915
+  text: 'Senate roll call vote 256 (2026-09-30): On the Nomination PN1129 - Keith Sonderling, of Florida,
+    to be Secretary of Labor
+
+    Result: Nomination Confirmed (47-41)'
+  event_time: '2026-09-30T00:00:00+00:00'
+  raw:
+    date: '2026-09-30'
+    kind: vote
+    result: Nomination Confirmed
+    session: 2
+    congress: 119
+    document: Keith Sonderling, of Florida, to be Secretary of Labor
+    question: On the Nomination PN1129
+    nay_count: 41
+    yea_count: 47
+    bill_number: PN1129
+    voteview_id: RS1190915
+    official_url: https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00256.htm
+    clerk_rollnumber: 256
+  resolved: []
+  synthetic: false
+  verified: true
+  notes: '''of Florida'' is a literal state mention; nominee is not in the registry.'
+  expected:
+    relevant: true
+    event_type: nomination
+    entities:
+    - fips:12
+    topics:
+    - labor_jobs
+    stances: []
+- id: vote-255-sonderling-cloture
+  source: senate_votes
+  source_type: government_primary
+  url: https://voteview.com/rollcall/RS1190914
+  text: 'Senate roll call vote 255 (2026-09-30): On the Cloture Motion PN1129 - Keith Sonderling, of Florida,
+    to be Secretary of Labor
+
+    Result: Cloture Motion Agreed to (53-47)'
+  event_time: '2026-09-30T00:00:00+00:00'
+  raw:
+    date: '2026-09-30'
+    kind: vote
+    result: Cloture Motion Agreed to
+    session: 2
+    congress: 119
+    document: Keith Sonderling, of Florida, to be Secretary of Labor
+    question: On the Cloture Motion PN1129
+    nay_count: 47
+    yea_count: 53
+    bill_number: PN1129
+    voteview_id: RS1190914
+    official_url: https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00255.htm
+    clerk_rollnumber: 255
+  resolved: []
+  synthetic: false
+  verified: true
+  notes: null
+  expected:
+    relevant: true
+    event_type: nomination
+    entities:
+    - fips:12
+    topics:
+    - labor_jobs
+    stances: []
+- id: vote-254-hr9340-cloture
+  source: senate_votes
+  source_type: government_primary
+  url: https://voteview.com/rollcall/RS1190913
+  text: 'Senate roll call vote 254 (2026-09-30): On Cloture on the Motion to Proceed H.R. 9340 - A bill
+    to amend the Public Utility Regulatory Policies Act of 1978 to establish a Federal standard relating
+    to the recovery of the full, incremental costs of upgrades that serve large-load customers, and for
+    other purposes.
+
+    Result: Cloture on the Motion to Proceed Rejected (57-43)'
+  event_time: '2026-09-30T00:00:00+00:00'
+  raw:
+    date: '2026-09-30'
+    kind: vote
+    result: Cloture on the Motion to Proceed Rejected
+    session: 2
+    congress: 119
+    document: A bill to amend the Public Utility Regulatory Policies Act of 1978 to establish a Federal
+      standard relating to the recovery of the full, incremental costs of upgrades that serve large-load
+      customers, and for other purposes.
+    question: On Cloture on the Motion to Proceed H.R. 9340
+    nay_count: 43
+    yea_count: 57
+    bill_number: HR9340
+    voteview_id: RS1190913
+    official_url: https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00254.htm
+    clerk_rollnumber: 254
+  resolved: []
+  synthetic: false
+  verified: true
+  notes: null
+  expected:
+    relevant: true
+    event_type: legislative_action
+    entities:
+    - bill:119-hr-9340
+    topics:
+    - energy_climate
+    stances: []
+- id: vote-253-hr7008-cloture
+  source: senate_votes
+  source_type: government_primary
+  url: https://voteview.com/rollcall/RS1190912
+  text: 'Senate roll call vote 253 (2026-09-30): On Cloture on the Motion to Proceed H.R. 7008 - A bill
+    to amend chapter 131 of title 5 to require certain restrictions on stocks for Members of Congress
+    and their spouses and dependents, and for other purposes.
+
+    Result: Cloture on the Motion to Proceed Rejected (53-47)'
+  event_time: '2026-09-30T00:00:00+00:00'
+  raw:
+    date: '2026-09-30'
+    kind: vote
+    result: Cloture on the Motion to Proceed Rejected
+    session: 2
+    congress: 119
+    document: A bill to amend chapter 131 of title 5 to require certain restrictions on stocks for Members
+      of Congress and their spouses and dependents, and for other purposes.
+    question: On Cloture on the Motion to Proceed H.R. 7008
+    nay_count: 47
+    yea_count: 53
+    bill_number: HR7008
+    voteview_id: RS1190912
+    official_url: https://www.senate.gov/legislative/LIS/roll_call_votes/vote1192/vote_119_2_00253.htm
+    clerk_rollnumber: 253
+  resolved: []
+  synthetic: false
+  verified: true
+  notes: 'Congressional stock-trading restrictions: no clean taxonomy topic.'
+  expected:
+    relevant: true
+    event_type: legislative_action
+    entities:
+    - bill:119-hr-7008
+    topics: []
+    stances: []
+- id: fec-ga-box
+  source: fec
+  source_type: data_release
+  url: https://www.fec.gov/data/candidate/S6GA00267/?cycle=2026
+  text: 'BOX, REAGAN (REP, Challenger) in GA-SEN-2026: receipts $33,606, disbursements $26,130, cash on
+    hand $8,043 through 2024-12-31.'
+  event_time: '2024-12-31T00:00:00+00:00'
+  raw:
+    name: BOX, REAGAN
+    party: REP
+    race_id: GA-SEN-2026
+    receipts: 33606.11
+    candidate_id: S6GA00267
+    disbursements: 26130.41
+    last_file_date: '2024-02-21'
+    candidate_status: C
+    coverage_end_date: '2024-12-31'
+    coverage_start_date: '2022-07-01'
+    incumbent_challenge: C
+    cash_on_hand_end_period: '8043.24'
+    debts_owed_by_committee: '0.00'
+  resolved:
+  - fec:S6GA00267
+  - race:GA-SEN-2026
+  synthetic: false
+  verified: true
+  notes: null
+  expected:
+    relevant: true
+    event_type: campaign_finance_filing
+    entities:
+    - race:GA-SEN-2026
+    topics: []
+    stances: []
+- id: fec-me-platner
+  source: fec
+  source_type: data_release
+  url: https://www.fec.gov/data/candidate/S6ME00373/?cycle=2026
+  text: 'PLATNER, GRAHAM (DEM, Challenger) in ME-SEN-2026: receipts $21,050,419, disbursements $19,287,361,
+    cash on hand $1,763,058 through 2026-06-30.'
+  event_time: '2026-06-30T00:00:00+00:00'
+  raw:
+    name: PLATNER, GRAHAM
+    party: DEM
+    race_id: ME-SEN-2026
+    receipts: 21050419.38
+    candidate_id: S6ME00373
+    disbursements: 19287361.26
+    last_file_date: '2025-10-22'
+    candidate_status: C
+    coverage_end_date: '2026-06-30'
+    coverage_start_date: '2025-07-01'
+    incumbent_challenge: C
+    cash_on_hand_end_period: '1763058.12'
+    debts_owed_by_committee: '0.00'
+  resolved:
+  - fec:S6ME00373
+  - race:ME-SEN-2026
+  synthetic: false
+  verified: true
+  notes: null
+  expected:
+    relevant: true
+    event_type: campaign_finance_filing
+    entities:
+    - race:ME-SEN-2026
+    topics: []
+    stances: []
+- id: fec-mi-rogers
+  source: fec
+  source_type: data_release
+  url: https://www.fec.gov/data/candidate/S4MI00595/?cycle=2026
+  text: 'ROGERS, MICHAEL J (REP, Open seat) in MI-SEN-2026: receipts $10,898,177, disbursements $6,680,643,
+    cash on hand $4,473,237 through 2026-07-15.'
+  event_time: '2026-07-15T00:00:00+00:00'
+  raw:
+    name: ROGERS, MICHAEL J
+    party: REP
+    race_id: MI-SEN-2026
+    receipts: 10898177.09
+    candidate_id: S4MI00595
+    disbursements: 6680643.32
+    last_file_date: '2026-07-17'
+    candidate_status: C
+    coverage_end_date: '2026-07-15'
+    coverage_start_date: '2025-01-01'
+    incumbent_challenge: O
+    cash_on_hand_end_period: '4473237.49'
+    debts_owed_by_committee: '0.00'
+  resolved:
+  - fec:S4MI00595
+  - race:MI-SEN-2026
+  synthetic: false
+  verified: true
+  notes: null
+  expected:
+    relevant: true
+    event_type: campaign_finance_filing
+    entities:
+    - race:MI-SEN-2026
+    topics: []
+    stances: []
+- id: fec-mn-flanagan
+  source: fec
+  source_type: data_release
+  url: https://www.fec.gov/data/candidate/S6MN00440/?cycle=2026
+  text: 'FLANAGAN, MARGARET (DFL, Open seat) in MN-SEN-2026: receipts $6,517,348, disbursements $5,458,744,
+    cash on hand $1,058,604 through 2026-07-22.'
+  event_time: '2026-07-22T00:00:00+00:00'
+  raw:
+    name: FLANAGAN, MARGARET
+    party: DFL
+    race_id: MN-SEN-2026
+    receipts: 6517348.17
+    candidate_id: S6MN00440
+    disbursements: 5458744.13
+    last_file_date: '2025-02-14'
+    candidate_status: C
+    coverage_end_date: '2026-07-22'
+    coverage_start_date: '2025-01-01'
+    incumbent_challenge: O
+    cash_on_hand_end_period: '1058604.04'
+    debts_owed_by_committee: '0.00'
+  resolved:
+  - fec:S6MN00440
+  - race:MN-SEN-2026
+  synthetic: false
+  verified: true
+  notes: null
+  expected:
+    relevant: true
+    event_type: campaign_finance_filing
+    entities:
+    - race:MN-SEN-2026
+    topics: []
+    stances: []
+- id: fec-tx-hunt
+  source: fec
+  source_type: data_release
+  url: https://www.fec.gov/data/candidate/S6TX00511/?cycle=2026
+  text: 'HUNT, WESLEY (REP, Challenger) in TX-SEN-2026: receipts $2,129,887, disbursements $4,587,880,
+    cash on hand $29,183 through 2026-06-30.'
+  event_time: '2026-06-30T00:00:00+00:00'
+  raw:
+    name: HUNT, WESLEY
+    party: REP
+    race_id: TX-SEN-2026
+    receipts: 2129887.39
+    candidate_id: S6TX00511
+    disbursements: 4587880.36
+    last_file_date: '2025-10-08'
+    candidate_status: C
+    coverage_end_date: '2026-06-30'
+    coverage_start_date: '2025-01-01'
+    incumbent_challenge: C
+    cash_on_hand_end_period: '29183.19'
+    debts_owed_by_committee: '37718.90'
+  resolved:
+  - fec:S6TX00511
+  - race:TX-SEN-2026
+  synthetic: false
+  verified: true
+  notes: 'Wesley Hunt is a House member: not in the Senate-only registry.'
+  expected:
+    relevant: true
+    event_type: campaign_finance_filing
+    entities:
+    - race:TX-SEN-2026
+    topics: []
+    stances: []
+- id: neg-sports
+  source: x
+  source_type: social_post
+  url: https://x.com/FT/status/golden-1
+  raw:
+    author:
+      handle: FT
+      kind: media
+  resolved: []
+  text: Arsenal beat Chelsea 3-1 in a thrilling north London derby on Saturday, moving three points clear
+    at the top of the Premier League.
+  event_time: '2026-10-01T12:00:00+00:00'
+  synthetic: true
+  verified: false
+  notes: null
+  expected:
+    relevant: false
+    event_type: null
+    entities: []
+    topics: []
+    stances: []
+- id: neg-weather
+  source: x
+  source_type: social_post
+  url: https://x.com/nytimes/status/golden-2
+  raw:
+    author:
+      handle: nytimes
+      kind: media
+  resolved: []
+  text: A powerful nor'easter is expected to bring up to a foot of snow to Boston and coastal New England
+    by Tuesday morning.
+  event_time: '2026-10-01T12:00:00+00:00'
+  synthetic: true
+  verified: false
+  notes: null
+  expected:
+    relevant: false
+    event_type: null
+    entities: []
+    topics: []
+    stances: []
+- id: neg-celebrity
+  source: x
+  source_type: social_post
+  url: https://x.com/nytimes/status/golden-3
+  raw:
+    author:
+      handle: nytimes
+      kind: media
+  resolved: []
+  text: Taylor Swift's new album broke the single-day streaming record on Spotify, the company said.
+  event_time: '2026-10-01T12:00:00+00:00'
+  synthetic: true
+  verified: false
+  notes: null
+  expected:
+    relevant: false
+    event_type: null
+    entities: []
+    topics: []
+    stances: []
+- id: neg-recipe
+  source: x
+  source_type: social_post
+  url: https://x.com/nytimes/status/golden-4
+  raw:
+    author:
+      handle: nytimes
+      kind: media
+  resolved: []
+  text: 'Recipe: the secret to the crispiest roast potatoes is a hot oven and a little semolina.'
+  event_time: '2026-10-01T12:00:00+00:00'
+  synthetic: true
+  verified: false
+  notes: null
+  expected:
+    relevant: false
+    event_type: null
+    entities: []
+    topics: []
+    stances: []
+- id: neg-uk-budget
+  source: x
+  source_type: social_post
+  url: https://x.com/FT/status/golden-5
+  raw:
+    author:
+      handle: FT
+      kind: media
+  resolved: []
+  text: UK chancellor Rachel Reeves outlined a new fiscal rule for the Autumn Budget, aiming to balance
+    day-to-day spending by 2029-30.
+  event_time: '2026-10-01T12:00:00+00:00'
+  synthetic: true
+  verified: false
+  notes: 'Hard negative: fiscal policy, but UK, with no US angle.'
+  expected:
+    relevant: false
+    event_type: null
+    entities: []
+    topics: []
+    stances: []
+- id: neg-gadget
+  source: x
+  source_type: social_post
+  url: https://x.com/FT/status/golden-6
+  raw:
+    author:
+      handle: FT
+      kind: media
+  resolved: []
+  text: Apple unveiled its thinnest iPhone yet at an event in Cupertino, with a starting price of $999.
+  event_time: '2026-10-01T12:00:00+00:00'
+  synthetic: true
+  verified: false
+  notes: null
+  expected:
+    relevant: false
+    event_type: null
+    entities: []
+    topics: []
+    stances: []
+- id: stmt-warren-fed
+  source: golden
+  source_type: news
+  url: https://example.org/golden/7
+  raw: {}
+  resolved: []
+  text: Sen. Elizabeth Warren (D-MA) said Wednesday the Federal Reserve should cut interest rates now.
+    "Families are being crushed by high borrowing costs, and the Fed is moving far too slowly," Warren
+    said.
+  event_time: '2026-10-01T12:00:00+00:00'
+  synthetic: true
+  verified: false
+  notes: Stance direction = support for the action she advocates (a rate cut).
+  expected:
+    relevant: true
+    event_type: statement
+    entities:
+    - bioguide:W000817
+    topics:
+    - monetary_policy
+    stances:
+    - canonical_id: bioguide:W000817
+      topic: monetary_policy
+      position: strongly_support
+- id: stmt-cruz-steel-tariffs
+  source: golden
+  source_type: news
+  url: https://example.org/golden/8
+  raw: {}
+  resolved: []
+  text: Sen. Ted Cruz (R-TX) said Tuesday he would vote against any extension of the steel tariffs, calling
+    them "a tax on Texas manufacturers."
+  event_time: '2026-10-01T12:00:00+00:00'
+  synthetic: true
+  verified: false
+  notes: null
+  expected:
+    relevant: true
+    event_type: statement
+    entities:
+    - bioguide:C001098
+    - fips:48
+    topics:
+    - trade_tariffs
+    stances:
+    - canonical_id: bioguide:C001098
+      topic: trade_tariffs
+      position: oppose
+- id: stmt-collins-scott-housing
+  source: golden
+  source_type: news
+  url: https://example.org/golden/9
+  raw: {}
+  resolved: []
+  text: Sen. Susan Collins (R-ME) said she "strongly supports" the bipartisan bill to expand the low-income
+    housing tax credit, while Sen. Rick Scott (R-FL) said the package "spends money we don't have."
+  event_time: '2026-10-01T12:00:00+00:00'
+  synthetic: true
+  verified: false
+  notes: Scott's objection is fiscal; labeled as opposing the housing bill only.
+  expected:
+    relevant: true
+    event_type: statement
+    entities:
+    - bioguide:C001035
+    - bioguide:S001217
+    topics:
+    - housing
+    - taxation
+    - fiscal_debt
+    stances:
+    - canonical_id: bioguide:C001035
+      topic: housing
+      position: strongly_support
+    - canonical_id: bioguide:S001217
+      topic: housing
+      position: oppose
+- id: stmt-ambiguous-scott
+  source: golden
+  source_type: news
+  url: https://example.org/golden/10
+  raw: {}
+  resolved: []
+  text: Senator Scott criticized the administration's immigration enforcement funding request on Monday.
+  event_time: '2026-10-01T12:00:00+00:00'
+  synthetic: true
+  verified: false
+  notes: 'Ambiguous ''Senator Scott'' (Rick vs Tim) must NOT link: expect a review-queue row and no stance.'
+  expected:
+    relevant: true
+    event_type: statement
+    entities: []
+    topics:
+    - immigration
+    stances: []
+- id: stmt-ossoff-cpi
+  source: golden
+  source_type: news
+  url: https://example.org/golden/11
+  raw: {}
+  resolved: []
+  text: The Consumer Price Index rose 0.4% in September, the Bureau of Labor Statistics said, pushing
+    annual inflation to 3.1%. Sen. Jon Ossoff (D-GA) said the report shows "Georgia families need relief
+    at the grocery store now."
+  event_time: '2026-10-01T12:00:00+00:00'
+  synthetic: true
+  verified: false
+  notes: 'fred:CPIAUCSL is expected but the seeded aliases lack ''Consumer Price Index'': a known alias
+    gap.'
+  expected:
+    relevant: true
+    event_type: economic_release
+    entities:
+    - bioguide:O000174
+    - fips:13
+    - fred:CPIAUCSL
+    topics:
+    - inflation_cost_of_living
+    stances:
+    - canonical_id: bioguide:O000174
+      topic: inflation_cost_of_living
+      position: support
+- id: stmt-grassley-farm-aid
+  source: golden
+  source_type: news
+  url: https://example.org/golden/12
+  raw: {}
+  resolved: []
+  text: Sen. Chuck Grassley (R-IA) urged the administration to restore farm export aid, saying Iowa soybean
+    farmers "are paying the price for the trade war."
+  event_time: '2026-10-01T12:00:00+00:00'
+  synthetic: true
+  verified: false
+  notes: null
+  expected:
+    relevant: true
+    event_type: statement
+    entities:
+    - bioguide:G000386
+    - fips:19
+    topics:
+    - agriculture
+    - trade_tariffs
+    stances:
+    - canonical_id: bioguide:G000386
+      topic: agriculture
+      position: support
+    - canonical_id: bioguide:G000386
+      topic: trade_tariffs
+      position: lean_oppose
+- id: stmt-alaska-npra-rule
+  source: golden
+  source_type: news
+  url: https://example.org/golden/13
+  raw: {}
+  resolved: []
+  text: Alaska's senators, Lisa Murkowski and Dan Sullivan, both said they oppose the proposed Interior
+    Department rule restricting drilling in the National Petroleum Reserve.
+  event_time: '2026-10-01T12:00:00+00:00'
+  synthetic: true
+  verified: false
+  notes: 'They oppose a restriction: ''oppose'' relative to the rule at issue.'
+  expected:
+    relevant: true
+    event_type: statement
+    entities:
+    - bioguide:M001153
+    - bioguide:S001198
+    - fips:02
+    topics:
+    - energy_climate
+    stances:
+    - canonical_id: bioguide:M001153
+      topic: energy_climate
+      position: oppose
+    - canonical_id: bioguide:S001198
+      topic: energy_climate
+      position: oppose

@@ -8,6 +8,7 @@ from sqlalchemy import Engine, Enum, text
 
 from brokeberg.db.base import Base
 from brokeberg.db.models import ENUM_CHECKS
+from brokeberg.taxonomy import Topic
 
 
 def test_upgrade_downgrade_roundtrip(alembic_cfg: Config, db_engine: Engine) -> None:
@@ -45,3 +46,15 @@ def test_enum_checks_match_taxonomy(db_engine: Engine) -> None:
                 assert in_db == expected, f"{name}: taxonomy drifted; add a migration"
                 checked += 1
     assert checked >= len(ENUM_CHECKS)
+
+
+def test_event_entities_topic_check_matches_taxonomy(db_engine: Engine) -> None:
+    """`event_entities.topic` is a plain CHECK (it also allows ''), so diff it separately."""
+    with db_engine.connect() as conn:
+        definition = conn.scalar(
+            text("SELECT pg_get_constraintdef(oid) FROM pg_constraint WHERE conname = :n"),
+            {"n": "ck_event_entities_topic_valid"},
+        )
+    assert definition is not None
+    in_db = set(re.findall(r"'([^']*)'", definition))
+    assert in_db == {t.value for t in Topic} | {""}, "taxonomy drifted; add a migration"

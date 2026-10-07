@@ -6,3 +6,6 @@ __pycache__/
 node_modules/
 .vcr_cassettes/
 .cache/
+
+# eval run outputs (baseline.json is committed)
+pipeline/brokeberg/eval/results/

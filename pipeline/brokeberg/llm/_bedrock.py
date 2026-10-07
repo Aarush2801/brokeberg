@@ -30,40 +30,23 @@ def get_client() -> Any:
 def call(
     prompt: str,
     *,
+    model: str,
     system: str | None,
     max_tokens: int,
-    tool: dict[str, Any] | None,
-    tool_name: str,
-) -> str | dict[str, Any]:
-    """Return text, or the forced tool's input dict when `tool` is given."""
+    json_schema: dict[str, Any] | None,
+) -> str:
+    """Return the response text (Converse API)."""
+    if json_schema is not None:
+        # TODO(day 7): structured outputs on Bedrock. Current Sonnet rejects the forced-tool
+        # pattern Converse would need; move this provider to the Messages-API Bedrock client.
+        raise NotImplementedError("structured output on Bedrock is not wired yet (Day 7)")
     kwargs: dict[str, Any] = {
-        "modelId": get_settings().llm_model,
+        "modelId": model,
         "messages": [{"role": "user", "content": [{"text": prompt}]}],
         "inferenceConfig": {"maxTokens": max_tokens},
     }
     if system:
         kwargs["system"] = [{"text": system}]
-    if tool is not None:
-        kwargs["toolConfig"] = {
-            "tools": [
-                {
-                    "toolSpec": {
-                        "name": tool["name"],
-                        "description": tool["description"],
-                        "inputSchema": {"json": tool["input_schema"]},
-                    }
-                }
-            ],
-            "toolChoice": {"tool": {"name": tool_name}},
-        }
-
     resp = get_client().converse(**kwargs)
     content = resp["output"]["message"]["content"]
-
-    if tool is not None:
-        for block in content:
-            use = block.get("toolUse")
-            if use and use.get("name") == tool_name:
-                return dict(use["input"])
-        return ""
     return "".join(block["text"] for block in content if "text" in block)
