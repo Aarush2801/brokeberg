@@ -56,7 +56,7 @@ def cluster_hash(member_ids: list[int]) -> str:
 # --- rollup ------------------------------------------------------------------------------------
 
 
-def _member_tiers(session: Session, member_ids: list[int]) -> dict[int, TrustTier]:
+def member_tiers(session: Session, member_ids: list[int]) -> dict[int, TrustTier]:
     """Each member's best (lowest-numbered) source tier; T4 if it somehow has none."""
     tiers: dict[int, TrustTier] = {m: TrustTier.T4 for m in member_ids}
     for event_id, tier in session.execute(
@@ -72,7 +72,7 @@ def _member_tiers(session: Session, member_ids: list[int]) -> dict[int, TrustTie
 def rollup(session: Session, head: Event, ms: list[Event]) -> None:
     """Rebuild the head's provenance, entities and summary fields from its members."""
     ids = [m.id for m in ms]
-    tiers = _member_tiers(session, ids)
+    tiers = member_tiers(session, ids)
 
     session.execute(delete(EventSource).where(EventSource.event_id == head.id))
     session.execute(delete(EventEntity).where(EventEntity.event_id == head.id))
@@ -121,9 +121,14 @@ def rollup(session: Session, head: Event, ms: list[Event]) -> None:
     )
     jurisdictions = Counter(m.jurisdiction for m in ms if m.jurisdiction)
     head.jurisdiction = jurisdictions.most_common(1)[0][0] if jurisdictions else None
-    weights = [TRUST_WEIGHT[tiers[m.id]] for m in ms]
-    head.confidence = sum(w * m.confidence for w, m in zip(weights, ms, strict=True)) / sum(weights)
+    head.confidence = rolled_confidence(tiers, ms)
     session.flush()
+
+
+def rolled_confidence(tiers: dict[int, TrustTier], ms: list[Event]) -> float:
+    """Trust-weighted mean of member confidences: the head's pre-verification confidence."""
+    weights = [TRUST_WEIGHT[tiers[m.id]] for m in ms]
+    return sum(w * m.confidence for w, m in zip(weights, ms, strict=True)) / sum(weights)
 
 
 # --- synthesis ---------------------------------------------------------------------------------
@@ -237,7 +242,7 @@ def synthesize(spans: list[str]) -> Synthesis:
 
 
 def _best_member(session: Session, ms: list[Event]) -> Event:
-    tiers = _member_tiers(session, [m.id for m in ms])
+    tiers = member_tiers(session, [m.id for m in ms])
     return min(ms, key=lambda m: (_rank(tiers[m.id]), -m.confidence, m.id))
 
 

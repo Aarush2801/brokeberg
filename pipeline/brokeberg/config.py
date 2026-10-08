@@ -53,6 +53,43 @@ class Settings(BaseSettings):
     related_window_days: float = 30
     related_min_sim: float = 0.70
 
+    # Verification (pass 7). Numeric tolerances are absolute: BLS publishes percentages to 1 dp,
+    # payroll changes in thousands.
+    verify_numeric_tol_pct: float = 0.05
+    verify_numeric_tol_thousands: float = 5.0
+    # A head none of whose numeric claims match the indicator data keeps this share of confidence.
+    verify_numeric_penalty: float = 0.5
+    # Both stances need at least this confidence for a reversal to be marked a stance flip.
+    verify_stance_min_conf: float = 0.6
+    # Heads below this confidence after verification go to the review queue.
+    verify_review_confidence: float = 0.5
+
+    # Event -> race linkage: confidence = rating weight x match weight x head confidence.
+    race_rating_weight: dict[str, float] = {"tossup": 1.0, "lean": 0.8}
+    race_match_weight: dict[str, float] = {"state": 1.0, "politician": 0.9, "federal": 0.6}
+
+    # Feed salience = w1*recency + w2*log(1+sources) + w3*importance + w4*verification
+    # + w5*election proximity. All code; the LLM never ranks.
+    salience_w1: float = 1.0
+    salience_w2: float = 0.5
+    salience_w3: float = 0.5
+    salience_w4: float = 0.5
+    salience_w5: float = 0.75
+    salience_half_life_hours: float = 48
+    salience_election_tau_days: float = 60
+    salience_verification_bonus: dict[str, float] = {
+        "fact_checked": 1.0, "corroborated": 0.8, "single_source": 0.3, "unverified": 0.0,
+        "contradicted": 0.5,
+    }
+    # Entity importance when `entities.importance` is unset: by entity type, plus a top prior
+    # for the incumbent of a seeded race.
+    importance_incumbent: float = 1.0
+    importance_by_type: dict[str, float] = {
+        "Race": 1.0, "Politician": 0.6, "EconomicIndicator": 0.7, "Policy_Bill": 0.5,
+    }
+    importance_default: float = 0.4
+    feed_window_days: float = 14
+
     # AWS
     aws_region: str | None = None
     s3_raw_bucket: str | None = None

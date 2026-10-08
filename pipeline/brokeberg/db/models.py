@@ -14,6 +14,7 @@ from pgvector.sqlalchemy import Vector
 from sqlalchemy import (
     BigInteger,
     CheckConstraint,
+    Column,
     Date,
     DateTime,
     Enum,
@@ -21,16 +22,18 @@ from sqlalchemy import (
     ForeignKey,
     Identity,
     Index,
+    MetaData,
     Numeric,
     SmallInteger,
     String,
+    Table,
     Text,
     UniqueConstraint,
     func,
     text,
 )
 from sqlalchemy.dialects.postgresql import ARRAY, CHAR, JSONB
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, aliased, mapped_column
 
 from brokeberg.db.base import Base
 from brokeberg.taxonomy import (
@@ -55,6 +58,7 @@ ENUM_LENGTH = 64
 class ReviewKind(StrEnum):
     UNRESOLVED_MENTION = "unresolved_mention"
     LOW_CONFIDENCE = "low_confidence"
+    VERIFICATION = "verification"
 
 
 class ReviewStatus(StrEnum):
@@ -204,6 +208,10 @@ class Event(Base):
     jurisdiction: Mapped[str | None] = mapped_column(Text)
     # Heads only: hash of member ids + synthesis version; unchanged -> skip re-materializing.
     cluster_hash: Mapped[str | None] = mapped_column(Text)
+    # Heads only: the verify pass's factual evidence (source count, numeric checks).
+    verification: Mapped[dict[str, Any]] = mapped_column(
+        JSONB, nullable=False, server_default=text("'{}'::jsonb")
+    )
 
 
 class EventSource(Base):
@@ -248,6 +256,8 @@ class EventEntity(Base):
     intensity: Mapped[float | None] = mapped_column(Float)
     span: Mapped[str] = mapped_column(Text, nullable=False)
     confidence: Mapped[float] = mapped_column(Float, nullable=False)
+    # Head stance rows only: the earlier stance this one reverses (set by verify; NULL = none).
+    stance_flip: Mapped[dict[str, Any] | None] = mapped_column(JSONB)
 
 
 class Edge(Base):
@@ -257,6 +267,10 @@ class Edge(Base):
     __table_args__ = (
         _unit_range("confidence"),
         CheckConstraint("src_entity <> dst_entity", name="no_self_loop"),
+        UniqueConstraint(
+            "src_entity", "relation", "dst_entity", "event_id",
+            name="uq_edges_src_relation_dst_event",
+        ),
     )
 
     id: Mapped[int] = _pk()
@@ -406,6 +420,33 @@ class EventLink(Base):
     created_at: Mapped[datetime] = _created_at()
 
 
+class EventRaceEdge(Base):
+    """event -AFFECTS-> race. Never a bare link: every row carries the rule's rationale."""
+
+    __tablename__ = "event_race_edges"
+    __table_args__ = (
+        _unit_range("confidence"),
+        _non_empty("rationale"),
+        CheckConstraint("relation = 'AFFECTS'", name="relation_affects"),
+        UniqueConstraint("event_id", "race_id", name="uq_event_race_edges_event_race"),
+    )
+
+    id: Mapped[int] = _pk()
+    event_id: Mapped[int] = mapped_column(
+        ForeignKey("events.id", ondelete="CASCADE"), nullable=False, index=True
+    )
+    race_id: Mapped[str] = mapped_column(
+        ForeignKey("races.id", ondelete="CASCADE"), nullable=False, index=True
+    )
+    relation: Mapped[EdgeType] = mapped_column(_enum(EdgeType, "edge_type"), nullable=False)
+    rationale: Mapped[str] = mapped_column(Text, nullable=False)
+    confidence: Mapped[float] = mapped_column(Float, nullable=False)
+    matched_topics: Mapped[list[str]] = mapped_column(
+        ARRAY(Text), nullable=False, server_default=text("'{}'")
+    )
+    created_at: Mapped[datetime] = _created_at()
+
+
 class ReviewQueue(Base):
     """Everything a human must look at: unresolved mentions and low-confidence extractions.
 
@@ -467,3 +508,13 @@ class ExtractionRun(Base):
     prompt_version: Mapped[str] = mapped_column(String(32), nullable=False)
     event_id: Mapped[int | None] = mapped_column(ForeignKey("events.id", ondelete="SET NULL"))
     created_at: Mapped[datetime] = _created_at()
+
+
+# The `event_objects` view (cluster heads only), mapped onto `Event` so readers get ORM rows from
+# the view, never from `events`. Its own MetaData: it is a view, not a table migrations manage.
+event_objects_view = Table(
+    "event_objects",
+    MetaData(),
+    *(Column(c.name, c.type, primary_key=c.primary_key) for c in Event.__table__.columns),
+)
+HeadEvent = aliased(Event, event_objects_view, adapt_on_names=True)
