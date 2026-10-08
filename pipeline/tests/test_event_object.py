@@ -16,7 +16,7 @@ from cluster_corpus import (
     entity_id,
     unit_vec,
 )
-from sqlalchemy import func, select
+from sqlalchemy import func, select, text
 from sqlalchemy.orm import Session
 
 from brokeberg.cluster import embed_events
@@ -225,3 +225,34 @@ def test_new_member_rematerializes_only_its_head(
     assert len(obj.member_event_ids) == 4 and len(obj.sources) == 4
     links = seeded_db.scalar(select(func.count()).select_from(EventLink))
     assert links == 2  # relinking replaced, never duplicated
+
+
+def test_one_event_object_per_cluster_with_all_member_sources(
+    seeded_db: Session, corpus: dict[str, Event]
+) -> None:
+    _materialize_all(seeded_db)
+
+    cluster_ids = set(
+        seeded_db.scalars(select(Event.cluster_id).where(Event.cluster_id.is_not(None)))
+    )
+    per_cluster = dict(
+        seeded_db.execute(
+            text("SELECT cluster_id, count(*) FROM event_objects GROUP BY cluster_id")
+        ).all()
+    )
+    assert per_cluster == {cid: 1 for cid in cluster_ids}  # exactly one head per cluster
+
+    for head_id in cluster_ids:
+        member_sources = set(
+            seeded_db.execute(
+                select(EventSource.url, EventSource.span)
+                .join(Event, Event.id == EventSource.event_id)
+                .where(Event.cluster_id == head_id, Event.id != head_id)
+            ).all()
+        )
+        head_sources = set(
+            seeded_db.execute(
+                select(EventSource.url, EventSource.span).where(EventSource.event_id == head_id)
+            ).all()
+        )
+        assert member_sources and head_sources == member_sources
