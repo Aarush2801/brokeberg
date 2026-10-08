@@ -4,6 +4,7 @@ from sqlalchemy.orm import Session
 
 from brokeberg.db.models import Entity
 from brokeberg.db.seed import seed
+from brokeberg.db.seed_data.fred_series import SERIES
 from brokeberg.ids import bill, bioguide, fec, fips, fred
 from brokeberg.ids.canonical import InvalidCanonicalIdError, Namespace, make, split
 from brokeberg.ids.resolve import AliasIndex, AliasRecord, normalize, resolve
@@ -154,6 +155,38 @@ def test_lookup_by_ids(seeded: Session) -> None:
 def test_fred_registration(seeded: Session) -> None:
     assert fred.is_registered(seeded, "cpiaucsl")
     assert not fred.is_registered(seeded, "NOTASERIES")
+
+
+@pytest.mark.parametrize(
+    ("mention", "series_id"),
+    [
+        ("CPI", "CPIAUCSL"),
+        ("inflation", "CPIAUCSL"),
+        ("consumer prices", "CPIAUCSL"),
+        ("core CPI", "CPILFESL"),
+        ("unemployment rate", "UNRATE"),
+        ("jobs", "UNRATE"),
+        ("nonfarm payrolls", "PAYEMS"),
+        ("jobs report", "PAYEMS"),
+        ("fed funds rate", "DFF"),
+        ("interest rates", "DFF"),
+        ("10-year treasury", "DGS10"),
+        ("treasury yield", "DGS10"),
+    ],
+)
+def test_fred_common_aliases_resolve(seeded: Session, mention: str, series_id: str) -> None:
+    r = resolve(seeded, mention, EntityType.ECONOMIC_INDICATOR)
+    assert (r.canonical_id, r.method) == (f"fred:{series_id}", "exact")
+
+
+def test_fred_aliases_are_unambiguous() -> None:
+    # A normalized alias shared by two series would make the resolver return unresolved.
+    owners: dict[str, set[str]] = {}
+    for s in SERIES:
+        for alias in (s.series_id, s.title, *s.aliases):
+            for form in normalize(alias):
+                owners.setdefault(form, set()).add(s.series_id)
+    assert {f: o for f, o in owners.items() if len(o) > 1} == {}
 
 
 def test_bill_ids() -> None:

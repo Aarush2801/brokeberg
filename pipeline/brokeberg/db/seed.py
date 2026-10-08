@@ -152,7 +152,7 @@ def indicator_rows() -> list[dict[str, Any]]:
             "entity_type": EntityType.ECONOMIC_INDICATOR,
             "canonical_id": make(Namespace.FRED, s.series_id),
             "name": s.title,
-            "aliases": [s.series_id, s.title],
+            "aliases": _dedupe([s.series_id, s.title, *s.aliases]),
             "meta": {
                 "source": "FRED",
                 "series_id": s.series_id,
