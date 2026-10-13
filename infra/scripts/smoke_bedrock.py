@@ -20,6 +20,7 @@ os.environ["EMBED_MODEL"] = "amazon.titan-embed-text-v2:0"
 from brokeberg import llm  # noqa: E402
 from brokeberg.embed import embed  # noqa: E402
 
+SONNET = "us.anthropic.claude-sonnet-4-6"
 HAIKU = "us.anthropic.claude-haiku-4-5-20251001-v1:0"
 
 
@@ -38,16 +39,13 @@ def profiles() -> list[str]:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--sonnet", help="Sonnet 5.5 profile ID (default: discovered)")
+    parser.add_argument("--sonnet", default=SONNET)
     parser.add_argument("--haiku", default=HAIKU)
     args = parser.parse_args()
 
     found = profiles()
     print("Anthropic inference profiles:\n  " + "\n  ".join(found))
-    us_sonnet = [i for i in found if i.startswith("us.") and "sonnet-5-5" in i]
-    sonnet = args.sonnet or (us_sonnet[0] if us_sonnet else None)
-    if not sonnet:
-        sys.exit("No us. Sonnet 5.5 profile found; pass --sonnet with the right ID.")
+    sonnet = args.sonnet
 
     ok = True
     for label, model in (("sonnet", sonnet), ("haiku", args.haiku)):

@@ -29,7 +29,7 @@ class Settings(BaseSettings):
 
     # LLM
     llm_provider: Literal["anthropic", "bedrock"] = "anthropic"
-    llm_model: str = "claude-sonnet-5-5"
+    llm_model: str = "claude-sonnet-4-6"
     # Cheap tier for high-volume passes (gate, event core, classify).
     llm_model_cheap: str = "claude-haiku-4-5"
     anthropic_api_key: str | None = None

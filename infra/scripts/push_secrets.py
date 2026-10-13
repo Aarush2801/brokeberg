@@ -1,6 +1,6 @@
 """Write the prod app config to Secrets Manager (`brokeberg/prod/app`).
 
-    cd pipeline && uv run python ../infra/scripts/push_secrets.py --sonnet <Sonnet 5.5 profile ID>
+    cd pipeline && uv run python ../infra/scripts/push_secrets.py
 
 Source API keys come from the repo-root .env (never committed); the provider flip and model IDs
 are set here; S3_RAW_BUCKET comes from the BrokebergData stack output. Prints key names only.
@@ -25,6 +25,7 @@ SOURCE_KEYS = (
     "CENSUS_API_KEY",
     "X_BEARER_TOKEN",
 )
+SONNET = "us.anthropic.claude-sonnet-4-6"
 HAIKU = "us.anthropic.claude-haiku-4-5-20251001-v1:0"
 
 
@@ -36,7 +37,7 @@ def stack_output(name: str) -> str:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--sonnet", required=True, help="Sonnet 5.5 inference-profile ID")
+    parser.add_argument("--sonnet", default=SONNET)
     parser.add_argument("--haiku", default=HAIKU)
     args = parser.parse_args()
 
