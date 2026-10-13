@@ -159,4 +159,5 @@ make web           # cd web && npm run dev
 
 ## Current focus
 
-> Set this line each session: **ACTIVE = tasks/day-3-extraction.md**
+> Set this line each session: **ACTIVE = tasks/day-7-deploy.md**
+

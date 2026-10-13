@@ -1,7 +1,7 @@
 """Recent posts from the curated account list (`ingest/x_accounts.yaml`) -> raw_items (social_post).
 
 Read-only, `/2/users/:id/tweets`. X bills per post read, so every pull logs and prints its read
-count; the budget is ~100-200 reads/day (20 live accounts x `max_results`=10 <= 200).
+count; the budget is ~75 reads/day, hard ceiling 20 live accounts x `x_max_results`=5 = 100.
 """
 
 import logging
@@ -26,7 +26,6 @@ log = logging.getLogger(__name__)
 ACCOUNTS_FILE = Path(__file__).resolve().parents[1] / "x_accounts.yaml"
 TWEETS_URL = "https://api.x.com/2/users/{}/tweets"
 MAX_ACCOUNTS = 20
-DEFAULT_MAX_RESULTS = 10  # X minimum is 5, maximum 100
 # The cassette was recorded with these limits; replay must request exactly the same URLs.
 RECORDED_ACCOUNTS = 2
 RECORDED_MAX_RESULTS = 5
@@ -80,12 +79,12 @@ class XConnector:
         client: httpx.Client | None = None,
         accounts: list[Account] | None = None,
         max_accounts: int | None = None,
-        max_results: int = DEFAULT_MAX_RESULTS,
+        max_results: int | None = None,  # default settings.x_max_results; X allows 5-100
     ) -> None:
         self.client = client or http.make_client()
         self.accounts = accounts if accounts is not None else load_accounts()
         self.max_accounts = max_accounts
-        self.max_results = max_results
+        self.max_results = max_results or get_settings().x_max_results
         self.reads = 0
 
     def fetch(self, session: Session, since: datetime) -> Iterator[RawRecord]:
@@ -114,4 +113,7 @@ class XConnector:
             log.info("x: @%s read %d posts", account.handle, len(tweets))
             for tweet in tweets:
                 yield post_record(session, account, tweet)
-        print(f"x: read count this pull = {self.reads} posts across {len(live)} accounts")
+        print(
+            f"x: read count this pull = {self.reads} posts across {len(live)} accounts"
+            f" (ceiling {len(live) * self.max_results})"
+        )

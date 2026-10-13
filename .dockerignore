@@ -1,0 +1,8 @@
+# Lambda image build context (infra/Dockerfile): allowlist only. Never ship .env or local state.
+*
+!infra/Dockerfile
+!pipeline/pyproject.toml
+!pipeline/uv.lock
+!pipeline/brokeberg
+**/__pycache__
+pipeline/brokeberg/eval/results

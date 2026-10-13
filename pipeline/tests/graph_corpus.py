@@ -7,12 +7,25 @@ stance rows are exactly what clustering would roll up from the members.
 from datetime import date, timedelta
 from decimal import Decimal
 
-from cluster_corpus import CPI, MURKOWSKI, T0, Item, add_member, entity_id
+from cluster_corpus import (
+    CPI,
+    CPI_BLS,
+    CPI_NEWS,
+    CPI_REACTION,
+    MURKOWSKI,
+    NOMINATION,
+    T0,
+    Item,
+    add_member,
+    entity_id,
+)
 from sqlalchemy.orm import Session
 
 from brokeberg.cluster.cluster import new_head
 from brokeberg.cluster.event_object import rollup
-from brokeberg.db.models import Edge, Event, Indicator, Race, RaceRatingHistory
+from brokeberg.config import get_settings
+from brokeberg.db.models import Edge, Event, Indicator, PollAverage, Race, RaceRatingHistory
+from brokeberg.graph.run import head_ids, process_head
 from brokeberg.taxonomy import EdgeType, EventType, RaceRating, SourceType, Stance, Topic
 
 JUL, AUG = date(2026, 7, 1), date(2026, 8, 1)
@@ -96,3 +109,37 @@ def add_member_edge(
         rationale=f"fixture {relation}", confidence=confidence, event_id=member.id,
     ))
     db.flush()
+
+
+GA = "GA-SEN-2026"
+
+
+def build_graph(db: Session) -> dict[str, Event]:
+    """CPI cluster (3 sources, linked to GA), a nomination, Murkowski's earlier stance, a stale
+    event outside the feed window; then the full graph pass over every head."""
+    seed_cpi(db)
+    rate(db, GA, RaceRating.TOSSUP)
+    db.add(PollAverage(
+        race_id=GA, value=1.5, asof=date(2026, 9, 28),
+        source_url="https://example.org/polls/ga-sen-2026", meta={"leader": "D"},
+        content_hash="ga-poll-1",
+    ))
+
+    cpi_members = [add_member(db, it) for it in (CPI_BLS, CPI_NEWS, CPI_REACTION)]
+    # Pass 5 found the same edge in two members: the head must carry it once.
+    for m, conf in ((cpi_members[1], 0.6), (cpi_members[2], 0.8)):
+        add_member_edge(db, m, MURKOWSKI, EdgeType.RESPONDS_TO, CPI, conf)
+    out = {
+        "earlier": make_head(db, add_member(db, MURKOWSKI_EARLIER)),
+        "cpi": make_head(db, *cpi_members),
+        "nomination": make_head(db, add_member(db, NOMINATION)),
+        "stale": make_head(db, add_member(
+            db, NOMINATION, headline="An old vote", event_time=T0 - timedelta(days=40)
+        )),
+    }
+    settings = get_settings()
+    for hid in head_ids(db):
+        head = db.get(Event, hid)
+        assert head is not None
+        process_head(db, head, settings)
+    return out

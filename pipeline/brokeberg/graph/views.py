@@ -5,10 +5,10 @@ none is dropped, never shown bare. Events are read from `event_objects` (cluster
 
 from datetime import UTC, date, datetime, timedelta
 from decimal import Decimal
-from typing import Any
+from typing import Any, Literal, NamedTuple
 
 from pydantic import BaseModel
-from sqlalchemy import and_, select
+from sqlalchemy import and_, func, select
 from sqlalchemy.orm import Session, aliased
 
 from brokeberg.cluster.event_object import EventObject, Reaction, load_event_object
@@ -20,6 +20,7 @@ from brokeberg.db.models import (
     EventRaceEdge,
     EventSource,
     HeadEvent,
+    Indicator,
     PollAverage,
     Race,
     RaceRatingHistory,
@@ -27,6 +28,7 @@ from brokeberg.db.models import (
 from brokeberg.graph import salience as sal
 from brokeberg.graph.edges import Neighbor, neighborhood
 from brokeberg.ids.canonical import Namespace, make
+from brokeberg.ingest.sources.bls import BLS_TO_FRED
 from brokeberg.taxonomy import EventType, RaceRating, Stance, TrustTier, VerificationStatus
 
 # --- shared ------------------------------------------------------------------------------------
@@ -54,6 +56,8 @@ class FeedRow(BaseModel):
     headline: str
     event_type: EventType
     event_time: datetime
+    topics: list[str]
+    source_count: int
     verification_status: VerificationStatus
     confidence: float
     salience: float
@@ -101,6 +105,14 @@ def feed(
         election[event_id] = max(election.get(event_id, 0.0), p)
 
     sources = top_sources(session, ids)
+    source_counts = {
+        event_id: n
+        for event_id, n in session.execute(
+            select(EventSource.event_id, func.count())
+            .where(EventSource.event_id.in_(ids))
+            .group_by(EventSource.event_id)
+        )
+    }
     rows = []
     for h in heads:
         src = sources.get(h.id)
@@ -114,7 +126,8 @@ def feed(
         )
         rows.append(FeedRow(
             event_id=h.id, headline=h.headline, event_type=h.event_type,
-            event_time=h.event_time, verification_status=h.verification_status,
+            event_time=h.event_time, topics=h.topics, source_count=source_counts.get(h.id, 0),
+            verification_status=h.verification_status,
             confidence=h.confidence, salience=round(s.total, 6), components=s.components(),
             source_url=src.url, span=src.span, trust_tier=src.trust_tier,
         ))
@@ -468,3 +481,100 @@ def race_dossier(session: Session, race_id: str, *, events: int = 20) -> RaceDos
         ),
         linked_events=linked,
     )
+
+
+# --- indicator ticker --------------------------------------------------------------------------
+
+
+class TickerSpec(NamedTuple):
+    series_id: str
+    label: str
+    transform: Literal["level", "yoy", "change"]
+
+
+# The ticker strip, left to right. "yoy": % change on the same month a year earlier (index
+# series); "change": latest minus prior observation (payroll levels -> jobs added).
+TICKER: tuple[TickerSpec, ...] = (
+    TickerSpec("CPIAUCSL", "CPI YoY", "yoy"),
+    TickerSpec("CPILFESL", "CORE CPI YoY", "yoy"),
+    TickerSpec("PCEPI", "PCE YoY", "yoy"),
+    TickerSpec("UNRATE", "UNRATE", "level"),
+    TickerSpec("PAYEMS", "PAYROLLS Δk", "change"),
+    TickerSpec("DFF", "FED FUNDS", "level"),
+    TickerSpec("DGS10", "10Y", "level"),
+    TickerSpec("T10Y2Y", "10Y-2Y", "level"),
+)
+SOURCE_PREFERENCE = ("fred", "bls")
+_FRED_TO_BLS = {fred: bls for bls, fred in BLS_TO_FRED.items()}
+
+
+class TickerRow(BaseModel):
+    series_id: str
+    label: str
+    transform: str
+    value: float
+    delta: float | None  # vs the same transform one observation earlier
+    asof: date
+    source: str
+    source_url: str
+    span: str  # the observations the value was computed from
+
+
+def _source_url(series_id: str, source: str) -> str:
+    if source == "bls" and series_id in _FRED_TO_BLS:
+        return f"https://data.bls.gov/timeseries/{_FRED_TO_BLS[series_id]}"
+    return f"https://fred.stlouisfed.org/series/{series_id}"
+
+
+def _year_earlier(d: date) -> date:
+    return d.replace(year=d.year - 1)
+
+
+def _ticker_row(spec: TickerSpec, source: str, obs: list[tuple[date, Decimal]]) -> TickerRow | None:
+    """`obs` oldest first. None when the series is too short for the transform."""
+    by_date = dict(obs)
+    dates = [d for d, _ in obs]
+
+    def value_at(i: int) -> tuple[float, list[date]] | None:
+        if i < 0:
+            return None
+        d = dates[i]
+        if spec.transform == "level":
+            return float(by_date[d]), [d]
+        if spec.transform == "change":
+            return (float(by_date[d] - by_date[dates[i - 1]]), [dates[i - 1], d]) if i else None
+        prior = _year_earlier(d)
+        if prior not in by_date:
+            return None
+        return float((by_date[d] / by_date[prior] - 1) * 100), [prior, d]
+
+    latest = value_at(len(dates) - 1)
+    if latest is None:
+        return None
+    value, used = latest
+    previous = value_at(len(dates) - 2)
+    span = "; ".join(f"{spec.series_id} {d.isoformat()} = {by_date[d]}" for d in used)
+    return TickerRow(
+        series_id=spec.series_id, label=spec.label, transform=spec.transform,
+        value=round(value, 4), delta=round(value - previous[0], 4) if previous else None,
+        asof=used[-1], source=source, source_url=_source_url(spec.series_id, source), span=span,
+    )
+
+
+def ticker(session: Session) -> list[TickerRow]:
+    """Latest value + change for each ticker series. A series with too little data is omitted;
+    for each series the first source in SOURCE_PREFERENCE that supports the transform wins."""
+    obs: dict[tuple[str, str], list[tuple[date, Decimal]]] = {}
+    for series_id, source, asof, value in session.execute(
+        select(Indicator.series_id, Indicator.source, Indicator.asof, Indicator.value)
+        .where(Indicator.series_id.in_([s.series_id for s in TICKER]))
+        .order_by(Indicator.series_id, Indicator.source, Indicator.asof)
+    ):
+        obs.setdefault((series_id, source), []).append((asof, value))
+    out = []
+    for spec in TICKER:
+        for source in SOURCE_PREFERENCE:
+            if (row := _ticker_row(spec, source, obs.get((spec.series_id, source), []))):
+                out.append(row)
+                break
+    return out

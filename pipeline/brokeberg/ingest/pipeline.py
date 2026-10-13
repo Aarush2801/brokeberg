@@ -3,12 +3,14 @@
 import hashlib
 import json
 from collections.abc import Iterable
+from datetime import UTC, datetime
 from typing import Any
 
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.orm import Session
 
 from brokeberg.db.models import RawItem
+from brokeberg.ingest.archive import archive
 from brokeberg.ingest.base import RawRecord, RawSource, Stats
 
 
@@ -63,4 +65,5 @@ def write_raw(session: Session, connector: RawSource, records: Iterable[RawRecor
             stats.skipped += 1
         else:
             stats.inserted += 1
+            archive(row, canonical_json(row), datetime.now(UTC))
     return stats

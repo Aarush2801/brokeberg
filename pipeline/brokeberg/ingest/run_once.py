@@ -14,10 +14,10 @@ from typing import Any
 
 from sqlalchemy.orm import Session
 
+from brokeberg.config import get_settings
 from brokeberg.db.session import session_scope
 from brokeberg.ingest.base import Stats
 from brokeberg.ingest.pipeline import write_raw
-from brokeberg.ingest.replay import REPLAY_SINCE, cassette
 from brokeberg.ingest.sources.bls import BlsLoader
 from brokeberg.ingest.sources.congress import CongressConnector, SenateVotesConnector
 from brokeberg.ingest.sources.fec import FecLoader
@@ -34,12 +34,20 @@ def _connector_job(connector: Any) -> Job:
     return lambda session, since: write_raw(session, connector, connector.fetch(session, since))
 
 
-def jobs(replay: bool) -> dict[str, Job]:
-    x = (
-        XConnector(max_accounts=RECORDED_ACCOUNTS, max_results=RECORDED_MAX_RESULTS)
-        if replay
-        else XConnector()
+def _x_job(replay: bool) -> Job:
+    if replay:
+        return _connector_job(
+            XConnector(max_accounts=RECORDED_ACCOUNTS, max_results=RECORDED_MAX_RESULTS)
+        )
+    # X is billed per read, so live pulls use their own short window, not the shared `since`.
+    x = XConnector()
+    window = timedelta(days=get_settings().x_window_days)
+    return lambda session, _since: write_raw(
+        session, x, x.fetch(session, datetime.now(UTC) - window)
     )
+
+
+def jobs(replay: bool) -> dict[str, Job]:
     return {
         "fred": FredLoader().load,
         "bls": BlsLoader().load,
@@ -48,11 +56,13 @@ def jobs(replay: bool) -> dict[str, Job]:
         "fec": FecLoader().load,
         # Replay must hit the cassette, not a warm on-disk cache.
         "ratings": (RatingsLoader(cache_dir=None) if replay else RatingsLoader()).load,
-        "x": _connector_job(x),
+        "x": _x_job(replay),
     }
 
 
 def run(since: datetime, replay: bool = False, only: list[str] | None = None) -> list[Stats]:
+    if replay:  # vcrpy is a dev dependency; the deployed image never replays.
+        from brokeberg.ingest.replay import cassette
     results = []
     for name, job in jobs(replay).items():
         if only and name not in only:
@@ -78,6 +88,8 @@ def main(argv: list[str] | None = None) -> None:
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
 
     if args.replay:
+        from brokeberg.ingest.replay import REPLAY_SINCE
+
         since = REPLAY_SINCE
     elif args.since:
         since = datetime.fromisoformat(args.since).replace(tzinfo=UTC)

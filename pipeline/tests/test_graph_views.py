@@ -1,4 +1,5 @@
 from datetime import date, timedelta
+from decimal import Decimal
 
 import pytest
 from cluster_corpus import (
@@ -7,58 +8,27 @@ from cluster_corpus import (
     CPI_NEWS,
     CPI_REACTION,
     MURKOWSKI,
-    NOMINATION,
     T0,
-    add_member,
     entity_id,
 )
-from graph_corpus import MURKOWSKI_EARLIER, add_member_edge, make_head, rate, seed_cpi
+from graph_corpus import GA, MURKOWSKI_EARLIER, build_graph
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from brokeberg.config import get_settings
-from brokeberg.db.models import Edge, Event, PollAverage, Race
+from brokeberg.db.models import Edge, Event, Indicator, Race
 from brokeberg.graph import views
 from brokeberg.graph.edges import neighborhood
 from brokeberg.graph.run import head_ids, process_head
 from brokeberg.graph.salience import election_day
 from brokeberg.taxonomy import EdgeType, RaceRating, Stance, Topic, VerificationStatus
 
-GA = "GA-SEN-2026"
 NOW = T0 + timedelta(hours=6)
 
 
 @pytest.fixture
 def graph(seeded_db: Session) -> dict[str, Event]:
-    """CPI cluster (3 sources, linked to GA), a nomination, Murkowski's earlier stance, a stale
-    event outside the feed window; then the full graph pass over every head."""
-    db = seeded_db
-    seed_cpi(db)
-    rate(db, GA, RaceRating.TOSSUP)
-    db.add(PollAverage(
-        race_id=GA, value=1.5, asof=date(2026, 9, 28),
-        source_url="https://example.org/polls/ga-sen-2026", meta={"leader": "D"},
-        content_hash="ga-poll-1",
-    ))
-
-    cpi_members = [add_member(db, it) for it in (CPI_BLS, CPI_NEWS, CPI_REACTION)]
-    # Pass 5 found the same edge in two members: the head must carry it once.
-    for m, conf in ((cpi_members[1], 0.6), (cpi_members[2], 0.8)):
-        add_member_edge(db, m, MURKOWSKI, EdgeType.RESPONDS_TO, CPI, conf)
-    out = {
-        "earlier": make_head(db, add_member(db, MURKOWSKI_EARLIER)),
-        "cpi": make_head(db, *cpi_members),
-        "nomination": make_head(db, add_member(db, NOMINATION)),
-        "stale": make_head(db, add_member(
-            db, NOMINATION, headline="An old vote", event_time=T0 - timedelta(days=40)
-        )),
-    }
-    settings = get_settings()
-    for hid in head_ids(db):
-        head = db.get(Event, hid)
-        assert head is not None
-        process_head(db, head, settings)
-    return out
+    return build_graph(seeded_db)
 
 
 def test_feed_is_salience_ranked_and_sourced(seeded_db: Session, graph: dict[str, Event]) -> None:
@@ -72,6 +42,7 @@ def test_feed_is_salience_ranked_and_sourced(seeded_db: Session, graph: dict[str
         assert r.source_url and r.span
     top = rows[0]
     assert top.components["election"] > 0
+    assert top.source_count == 3 and Topic.INFLATION_COST_OF_LIVING in top.topics
     assert top.source_url == CPI_BLS.url  # best-trust source first
     assert views.feed(seeded_db, limit=1, now=NOW)[0].event_id == top.event_id
 
@@ -179,3 +150,33 @@ def test_graph_pass_is_idempotent(seeded_db: Session, graph: dict[str, Event]) -
 def test_election_day() -> None:
     assert election_day(2026) == date(2026, 11, 3)
     assert election_day(2028) == date(2028, 11, 7)
+
+
+def test_ticker_yoy_level_and_sparse(seeded_db: Session) -> None:
+    db = seeded_db
+    obs = [
+        # FRED has too little CPI history for YoY; BLS has the year-earlier months.
+        ("CPIAUCSL", "fred", date(2026, 8, 1), "321.28"),
+        ("CPIAUCSL", "bls", date(2025, 7, 1), "310.00"),
+        ("CPIAUCSL", "bls", date(2025, 8, 1), "312.00"),
+        ("CPIAUCSL", "bls", date(2026, 7, 1), "320.00"),
+        ("CPIAUCSL", "bls", date(2026, 8, 1), "321.28"),
+        ("UNRATE", "fred", date(2026, 8, 1), "4.1"),
+        ("UNRATE", "fred", date(2026, 9, 1), "4.2"),
+        ("PAYEMS", "fred", date(2026, 9, 1), "159044"),  # one level: no change to report
+    ]
+    for series_id, source, asof, value in obs:
+        db.add(Indicator(series_id=series_id, asof=asof, source=source, value=Decimal(value)))
+    db.flush()
+
+    rows = {r.series_id: r for r in views.ticker(db)}
+    assert set(rows) == {"CPIAUCSL", "UNRATE"}
+    cpi = rows["CPIAUCSL"]
+    assert (cpi.source, cpi.asof, cpi.transform) == ("bls", date(2026, 8, 1), "yoy")
+    assert cpi.value == pytest.approx(round((321.28 / 312 - 1) * 100, 4))
+    assert cpi.delta == pytest.approx(cpi.value - (320 / 310 - 1) * 100, abs=1e-3)
+    assert cpi.source_url == "https://data.bls.gov/timeseries/CUSR0000SA0"
+    assert "2025-08-01 = 312.00" in cpi.span
+    un = rows["UNRATE"]
+    assert (un.value, un.delta, un.source) == (4.2, pytest.approx(0.1), "fred")
+    assert un.source_url == "https://fred.stlouisfed.org/series/UNRATE"

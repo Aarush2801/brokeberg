@@ -5,6 +5,7 @@ os.environ["HF_HUB_OFFLINE"] = "1"
 os.environ["TRANSFORMERS_OFFLINE"] = "1"
 os.environ["EMBED_PROVIDER"] = "local"
 os.environ["LLM_PROVIDER"] = "anthropic"
+os.environ["S3_RAW_BUCKET"] = ""  # no S3 archiving unless a test turns it on
 
 from collections.abc import Iterator  # noqa: E402
 from pathlib import Path  # noqa: E402

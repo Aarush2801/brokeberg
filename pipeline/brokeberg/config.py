@@ -90,6 +90,12 @@ class Settings(BaseSettings):
     importance_default: float = 0.4
     feed_window_days: float = 14
 
+    # RSCH retrieval: at most `rsch_events` heads (question-named entities first, then member
+    # cosine >= rsch_min_sim), at most `rsch_max_records` numbered source spans to the model.
+    rsch_events: int = 8
+    rsch_min_sim: float = 0.5
+    rsch_max_records: int = 30
+
     # AWS
     aws_region: str | None = None
     s3_raw_bucket: str | None = None
@@ -101,6 +107,11 @@ class Settings(BaseSettings):
     data_gov_api_key: str | None = None
     census_api_key: str | None = None
     x_bearer_token: str | None = None
+    # X bills per post read. A pull's hard ceiling is live accounts x x_max_results (20 x 5 = 100);
+    # X's floor for max_results is 5. Backfill by overriding both via env (X_MAX_RESULTS=12,
+    # X_WINDOW_DAYS=14 -> ceiling 240).
+    x_max_results: int = 5
+    x_window_days: float = 1
 
     def require(self, name: str) -> str:
         """Return a setting's value, raising if it is unset or empty."""

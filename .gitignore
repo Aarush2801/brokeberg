@@ -9,3 +9,8 @@ node_modules/
 
 # eval run outputs (baseline.json is committed)
 pipeline/brokeberg/eval/results/
+
+# Next.js build output
+.next/
+*.tsbuildinfo
+cdk.out/

@@ -1,13 +1,15 @@
 from collections.abc import Iterable
 from datetime import UTC, datetime
 
+import boto3
 import httpx
 import pytest
+from botocore.stub import ANY, Stubber
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from brokeberg.db.models import RawItem
-from brokeberg.ingest import http
+from brokeberg.ingest import archive, http
 from brokeberg.ingest.base import RawRecord
 from brokeberg.ingest.pipeline import content_hash, write_raw
 from brokeberg.ingest.replay import CASSETTES, secrets
@@ -121,3 +123,35 @@ def test_write_raw_dedups_same_item(db_session: Session) -> None:
     assert payload["_resolved"] == ["bioguide:O000174"]
     assert payload["_unresolved"] == ["Somebody Unknown"]
     assert db_session.scalar(select(func.count()).select_from(RawItem)) >= 2
+
+
+def test_write_raw_archives_new_items_to_s3_once(
+    db_session: Session, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    s3 = boto3.client(
+        "s3", region_name="us-east-1", aws_access_key_id="x", aws_secret_access_key="x"
+    )
+    monkeypatch.setattr(archive, "get_client", lambda: s3)
+    monkeypatch.setenv("S3_RAW_BUCKET", "raw-bucket")
+    rec = _rec(7)
+    key_prefix = f"fake/{datetime.now(UTC):%Y/%m/%d}/"
+    with Stubber(s3) as stub:
+        stub.add_response(
+            "put_object",
+            {},
+            {
+                "Bucket": "raw-bucket",
+                "Key": key_prefix + content_hash("fake", rec.url, rec.raw_payload) + ".json",
+                "Body": ANY,
+                "ContentType": "application/json",
+            },
+        )
+        write_raw(db_session, FakeConnector([rec]), [rec])
+        # A duplicate is skipped before archiving: no second put_object.
+        write_raw(db_session, FakeConnector([rec]), [rec])
+        stub.assert_no_pending_responses()
+
+
+def test_archive_is_off_without_bucket(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("S3_RAW_BUCKET", "")
+    assert archive.archive({"source": "x", "content_hash": "h"}, "{}", datetime.now(UTC)) is None

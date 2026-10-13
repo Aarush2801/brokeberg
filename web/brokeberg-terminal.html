@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>Brokeberg Terminal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme: dark;
+    /* amber-phosphor palette — deliberate: warm off-white on true black, one bold amber */
+    --bg:        #0a0a0b;
+    --panel:     #101012;
+    --row:       #0d0d0f;
+    --text:      #cfc9ba;   /* warm off-white (phosphor), not generic cool gray */
+    --dim:       #6a6557;   /* warm gray — chrome, source tags */
+    --dimmer:    #413d35;
+    --amber:     #ffb000;   /* the signature — the one loud element */
+    --amber-dk:  #9a6a12;
+    --green:     #3fb950;
+    --red:       #f06a5d;
+    --cyan:      #5fa8c8;   /* interactive refs only */
+    --border:    #1b1b1e;
+    --font: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *,*::before,*::after{ box-sizing: inherit; }
+  html,body{ height:100%; margin:0; }
+  body{
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 12.5px;
+    line-height: 1.4;
+    font-variant-numeric: tabular-nums;
+    -webkit-font-smoothing: antialiased;
+  }
+  .app{ display:flex; flex-direction:column; height:100dvh; }
+
+  /* ---- header ---- */
+  header{
+    display:flex; align-items:center; gap:14px;
+    padding:6px 12px; border-bottom:1px solid var(--border);
+    background: var(--panel); white-space:nowrap; overflow:hidden;
+  }
+  .brand{ color:var(--amber); font-weight:700; letter-spacing:0.5px; }
+  .brand .cur{ color:var(--amber); animation: blink 1.1s steps(1) infinite; }
+  .scope{ color:var(--dim); }
+  .sample{ color:var(--amber-dk); border:1px solid var(--dimmer); padding:0 5px; border-radius:1px; font-size:11px; }
+  .clock{ margin-left:auto; color:var(--dim); }
+  .live{ color:var(--green); }
+  .live .dot{ animation: pulse 1.6s ease-in-out infinite; }
+
+  /* ---- ticker strip ---- */
+  .ticker{
+    display:flex; gap:0; border-bottom:1px solid var(--border);
+    background: var(--row); overflow-x:auto; scrollbar-width:none;
+  }
+  .ticker::-webkit-scrollbar{ display:none; }
+  .tick{ padding:4px 12px; border-right:1px solid var(--border); white-space:nowrap; }
+  .tick .k{ color:var(--dim); }
+  .tick .v{ color:var(--text); }
+  .up{ color:var(--green); } .down{ color:var(--red); }
+
+  /* ---- screen ---- */
+  .screen{ flex:1 1 auto; overflow-y:auto; padding:10px 12px 18px; }
+  .screen::-webkit-scrollbar{ width:9px; }
+  .screen::-webkit-scrollbar-thumb{ background:var(--dimmer); }
+
+  .scr-head{ color:var(--amber); font-weight:700; margin:0 0 2px; }
+  .scr-sub{ color:var(--dim); margin:0 0 10px; }
+  .rule{ border:0; border-top:1px solid var(--border); margin:9px 0; }
+  .rule.dash{ border-top:1px dashed var(--dimmer); }
+
+  a.ref{ color:var(--cyan); text-decoration:none; cursor:pointer; }
+  a.ref:hover{ color:var(--amber); }
+  .clk{ cursor:pointer; }
+  .clk:hover{ color:var(--amber); }
+
+  /* source tag w/ provenance tooltip */
+  .src{ color:var(--dim); cursor:help; border-bottom:1px dotted var(--dimmer); }
+  .conf{ color:var(--dim); }
+  .conf.hi{ color:var(--green); } .conf.lo{ color:var(--red); }
+  .topic{ color:var(--amber-dk); }
+
+  /* feed rows */
+  .feed-row{ display:flex; gap:10px; padding:3px 0; align-items:baseline; cursor:pointer; }
+  .feed-row:hover{ background:#141416; }
+  .feed-row .t{ color:var(--dim); width:44px; flex:none; }
+  .feed-row .mv{ width:12px; flex:none; text-align:center; }
+  .feed-row .hd{ flex:1 1 auto; }
+  .feed-row .meta{ flex:none; color:var(--dim); text-align:right; }
+
+  /* key/value block */
+  .kv{ display:grid; grid-template-columns:150px 1fr; gap:2px 14px; margin:4px 0; }
+  .kv .k{ color:var(--dim); }
+  .kv .v{ color:var(--text); }
+
+  /* tables */
+  table{ border-collapse:collapse; width:100%; margin:4px 0; }
+  th,td{ text-align:left; padding:3px 14px 3px 0; border-bottom:1px solid var(--border); vertical-align:top; }
+  th{ color:var(--dim); font-weight:500; }
+  td.num,th.num{ text-align:right; }
+
+  .blurb{ max-width:74ch; color:var(--text); margin:4px 0; }
+  .label{ color:var(--dim); }
+  .pos-s{ color:var(--green); } .pos-o{ color:var(--red); } .pos-n{ color:var(--dim); }
+
+  /* spark / overlay */
+  .spark{ letter-spacing:1px; }
+
+  /* ---- command bar ---- */
+  .cmd{
+    display:flex; align-items:center; gap:8px;
+    border-top:1px solid var(--amber-dk);
+    background:var(--panel); padding:7px 12px;
+    padding-bottom: calc(7px + env(safe-area-inset-bottom, 0px));
+  }
+  .cmd .prompt{ color:var(--amber); font-weight:700; }
+  .cmd input{
+    flex:1; background:transparent; border:0; outline:0;
+    color:var(--amber); font-family:var(--font); font-size:12.5px;
+    text-transform:uppercase; letter-spacing:0.5px; caret-color:var(--amber);
+  }
+  .cmd input::placeholder{ color:var(--amber-dk); text-transform:none; letter-spacing:0; }
+  .hint{ padding:3px 12px; color:var(--dim); border-top:1px solid var(--border); background:var(--bg); min-height:22px; }
+  .hint b{ color:var(--amber-dk); font-weight:500; }
+  .err{ color:var(--red); }
+
+  @keyframes blink{ 50%{ opacity:0; } }
+  @keyframes pulse{ 0%,100%{ opacity:1; } 50%{ opacity:0.25; } }
+  @media (max-width:560px){
+    body{ font-size:12px; }
+    .feed-row .meta{ display:none; }
+    .kv{ grid-template-columns:118px 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <span class="brand">BROKEBERG<span class="cur">▊</span></span>
+    <span class="scope">US FEDERAL · SENATE 2026</span>
+    <span class="sample">SAMPLE DATA</span>
+    <span class="clock"><span class="live"><span class="dot">●</span> LIVE</span> &nbsp;<span id="clock">—</span></span>
+  </header>
+
+  <div class="ticker" id="ticker"></div>
+
+  <div class="screen" id="screen"></div>
+
+  <div class="hint" id="hint">Type a command. <b>HELP</b> for the list · click any <span style="color:var(--cyan)">cyan</span> reference</div>
+  <div class="cmd">
+    <span class="prompt">&gt;</span>
+    <input id="cmd" autocomplete="off" autocapitalize="characters" spellcheck="false"
+           placeholder="e.g.  FEED · RACE AZ-SEN · ENT REYES · STANCE REYES TARIFFS · EVT E1042">
+  </div>
+</div>
+
+<script>
+/* ===========================================================
+   MOCK DATA  — all illustrative / synthetic. People, races,
+   figures and positions are placeholders, not real claims.
+   =========================================================== */
+
+const PROV = {
+  FRED: "FRED · Federal Reserve Bank of St. Louis · series fetched 10:02 ET",
+  BLS:  "BLS · Bureau of Labor Statistics · release 08:30 ET",
+  CNG:  "Congress.gov · Library of Congress · roll-call fetched hourly",
+  FEC:  "FEC · Federal Election Commission · filing ingested daily",
+  X:    "X API · curated account pull · ingested 14:31 ET",
+  COOK: "Cook Political Report · rating scrape · weekly",
+  NYT:  "NYT poll database · aggregate · daily",
+  PR:   "Senate.gov · member press release · ingested hourly"
+};
+
+const IND = [
+  {k:"CPI YoY",    v:"3.8%",   d:"up",   dv:"+0.3"},
+  {k:"UNRATE",     v:"4.1%",   d:"up",   dv:"+0.1"},
+  {k:"FED FUNDS",  v:"4.25%",  d:"",     dv:"0.00"},
+  {k:"10Y",        v:"4.14%",  d:"up",   dv:"+0.06"},
+  {k:"PCE YoY",    v:"3.1%",   d:"down", dv:"-0.1"},
+  {k:"WAGES YoY",  v:"4.0%",   d:"up",   dv:"+0.1"},
+  {k:"USD DXY",    v:"103.9",  d:"up",   dv:"+0.4"},
+];
+
+const EVENTS = {
+  E1042:{
+    id:"E1042", time:"10:14", mv:"up", conf:0.91,
+    hd:"CPI prints 3.8% vs 3.5% expected",
+    type:"economic_release", topics:["inflation","monetary_policy"],
+    what:"August CPI came in at 3.8% year-over-year, 0.3pp above the 3.5% consensus. Core CPI held at 3.6%. Shelter and energy led the surprise.",
+    why:"Hotter-than-expected print pushes back expected timing of rate cuts and revives cost-of-living as a campaign message in inflation-exposed states.",
+    data:[["CPIAUCSL","3.8% YoY","FRED"],["CPILFESL (core)","3.6% YoY","FRED"],["Consensus","3.5%","BLS"]],
+    reactions:[
+      {ent:"REYES", party:"R", pos:"oppose", txt:"administration's spending is still driving up prices", src:"X"},
+      {ent:"MORALES", party:"D", pos:"support", txt:"underlying trend is cooling; one month is not a trend", src:"PR"},
+    ],
+    econ:[["Rate-cut odds","↓ repriced lower","FRED"],["10Y yield","↑ +6bp","FRED"]],
+    races:[
+      {race:"AZ-SEN", why:"inflation top-3 issue; Tossup", conf:0.88},
+      {race:"OH-SEN", why:"cost-of-living salient; Lean R", conf:0.81},
+    ],
+    related:[["E0990","prior CPI release (Jul)"],["E1001","last FOMC decision"]],
+    sources:[["BLS","release"],["FRED","series"],["X","2 posts"],["PR","1 statement"]]
+  },
+  E1038:{
+    id:"E1038", time:"09:30", mv:"down", conf:0.88,
+    hd:"Border funding amendment fails 48–51",
+    type:"legislative_action", topics:["immigration"],
+    what:"A border-funding amendment to the appropriations bill failed on a near party-line vote, 48–51, with two crossovers.",
+    why:"Keeps immigration live as a wedge issue; both parties expected to use the vote in competitive races.",
+    data:[["Roll-call #412","48–51","CNG"]],
+    reactions:[
+      {ent:"REYES", party:"R", pos:"support", txt:"we must secure the border now", src:"X"},
+      {ent:"MORALES", party:"D", pos:"oppose", txt:"this amendment was a messaging stunt", src:"PR"},
+    ],
+    econ:[],
+    races:[{race:"AZ-SEN", why:"border state; immigration top issue", conf:0.9}],
+    related:[["E0975","prior border vote"]],
+    sources:[["CNG","roll-call"],["X","1 post"],["PR","1 statement"]]
+  },
+  E1033:{
+    id:"E1033", time:"08:05", mv:"up", conf:0.76,
+    hd:"New 10% steel tariff package announced",
+    type:"executive_action", topics:["trade","inflation"],
+    what:"The administration announced a 10% tariff on imported steel, effective in 30 days, citing domestic manufacturing protection.",
+    why:"Raises input costs for manufacturing; sets up a trade-vs-prices tension that cuts across several industrial-state races.",
+    data:[["Effective","+30 days","PR"]],
+    reactions:[
+      {ent:"REYES", party:"R", pos:"support", txt:"protects American steel jobs", src:"X"},
+      {ent:"MORALES", party:"D", pos:"lean_oppose", txt:"families will pay more at the register", src:"X"},
+    ],
+    econ:[["Import prices","↑ expected","FRED"],["Steel equities","↑ premarket","FRED"]],
+    races:[
+      {race:"OH-SEN", why:"steel/manufacturing base", conf:0.84},
+      {race:"PA-SEN", why:"industrial exposure", conf:0.79},
+    ],
+    related:[["E1042","CPI surprise"]],
+    sources:[["PR","statement"],["X","2 posts"],["FRED","series"]]
+  },
+  E1027:{
+    id:"E1027", time:"Yd", mv:"", conf:0.83,
+    hd:"Q3 fundraising filings posted — AZ-SEN",
+    type:"campaign_finance_filing", topics:["elections"],
+    what:"Both AZ-SEN campaigns filed Q3 reports. Incumbent reports $8.2M cash on hand; challenger $3.1M.",
+    why:"Fundraising gap widens for the incumbent in a Tossup race — an independently predictive signal.",
+    data:[["Morales (D) COH","$8.2M","FEC"],["Hale (R) COH","$3.1M","FEC"]],
+    reactions:[],
+    econ:[],
+    races:[{race:"AZ-SEN", why:"direct filing", conf:0.97}],
+    related:[],
+    sources:[["FEC","2 filings"]]
+  },
+};
+const FEED_ORDER = ["E1042","E1038","E1033","E1027"];
+
+const RACES = {
+  "AZ-SEN":{
+    name:"Arizona · U.S. Senate · 2026", rating:"Tossup", ratingHist:[["Cook","Tossup","3d"],["Sabato","Lean D","6d"],["Inside","Tossup","8d"]],
+    poll:"D +1.4", pollMeta:"NYT agg · n=6 polls · 1d",
+    topics:["immigration","inflation","housing"],
+    cands:[
+      {n:"J. Morales (inc)", p:"D", coh:"$8.2M", raised:"$19.4M"},
+      {n:"R. Hale",          p:"R", coh:"$3.1M", raised:"$11.8M"},
+    ],
+    events:["E1027","E1038","E1042"]
+  },
+  "OH-SEN":{
+    name:"Ohio · U.S. Senate · 2026", rating:"Lean R", ratingHist:[["Cook","Lean R","3d"],["Sabato","Lean R","6d"]],
+    poll:"R +3.2", pollMeta:"NYT agg · n=4 polls · 2d",
+    topics:["trade","inflation","labor"],
+    cands:[
+      {n:"T. Brennan (inc)", p:"R", coh:"$6.0M", raised:"$14.1M"},
+      {n:"D. Okafor",        p:"D", coh:"$4.4M", raised:"$9.7M"},
+    ],
+    events:["E1033","E1042"]
+  },
+};
+
+const ENTS = {
+  REYES:{
+    name:"Sen. K. Reyes", role:"U.S. Senator (R)", ids:["bioguide R000###","FEC S6##"],
+    topics:["inflation","immigration","trade"],
+    stanceSummary:[["inflation","oppose (admin)","0.89"],["immigration","strongly_support","0.92"],["trade","support","0.78"]],
+    events:["E1042","E1038","E1033"]
+  },
+  MORALES:{
+    name:"J. Morales", role:"Candidate (D) · AZ-SEN · incumbent", ids:["FEC S8##","Ballotpedia /morales"],
+    topics:["inflation","immigration","housing"],
+    stanceSummary:[["inflation","lean_support (admin)","0.74"],["immigration","oppose (amendment)","0.80"],["housing","support","0.71"]],
+    events:["E1042","E1038","E1027"]
+  },
+};
+
+const STANCES = {
+  "REYES|TARIFFS":{
+    ent:"Sen. K. Reyes", topic:"Trade / Tariffs",
+    rows:[
+      {d:"2026-03", pos:"neutral", int:0.2, txt:"monitoring the trade review closely", src:"PR"},
+      {d:"2026-05", pos:"lean_support", int:0.5, txt:"open to targeted tariffs on steel", src:"X"},
+      {d:"2026-07", pos:"support", int:0.7, txt:"tariffs protect American manufacturing", src:"X"},
+      {d:"2026-09", pos:"support", int:0.8, txt:"we must defend domestic steel jobs", src:"X"},
+    ]
+  },
+  "REYES|INFLATION":{
+    ent:"Sen. K. Reyes", topic:"Inflation / Cost of living",
+    rows:[
+      {d:"2026-04", pos:"oppose", int:0.6, txt:"spending is fuelling prices", src:"PR"},
+      {d:"2026-06", pos:"oppose", int:0.7, txt:"families feel it at the pump", src:"X"},
+      {d:"2026-08", pos:"oppose", int:0.85, txt:"the administration's spending is still driving up prices", src:"X"},
+    ]
+  },
+};
+
+/* ===========================================================
+   RENDER HELPERS
+   =========================================================== */
+const el = document.getElementById('screen');
+const hint = document.getElementById('hint');
+
+function src(tag, extra){
+  const t = PROV[tag] || tag;
+  return `<span class="src" title="${(extra?extra+' — ':'')+t}">[${tag}]</span>`;
+}
+function confTag(c){
+  const cls = c>=0.85?'hi':(c<0.7?'lo':'');
+  return `<span class="conf ${cls}">${c.toFixed(2)}</span>`;
+}
+function topics(arr){ return arr.map(t=>`<span class="topic">#${t}</span>`).join(' '); }
+function posClass(p){ if(/support/.test(p))return 'pos-s'; if(/oppose/.test(p))return 'pos-o'; return 'pos-n'; }
+function sparkline(vals){
+  const bars="▁▂▃▄▅▆▇█"; const mn=Math.min(...vals), mx=Math.max(...vals);
+  return `<span class="spark">`+vals.map(v=>{
+    const i = mx===mn?3:Math.round((v-mn)/(mx-mn)*7); return bars[i];
+  }).join('')+`</span>`;
+}
+
+/* ===========================================================
+   SCREENS
+   =========================================================== */
+function scrFeed(){
+  let rows = FEED_ORDER.map(id=>{
+    const e = EVENTS[id];
+    const mv = e.mv==='up'?'<span class="up">▲</span>':e.mv==='down'?'<span class="down">▼</span>':'<span class="dim">·</span>';
+    return `<div class="feed-row" data-cmd="EVT ${id}">
+      <span class="t">${e.time}</span>
+      <span class="mv">${mv}</span>
+      <span class="hd">${e.hd} &nbsp;${topics(e.topics)}</span>
+      <span class="meta">${e.sources.map(s=>s[0]).join(' ')} · ${confTag(e.conf)}</span>
+    </div>`;
+  }).join('');
+  return `<div class="scr-head">FEED · what changed</div>
+    <div class="scr-sub">last 24h · ranked by salience (recency × sources × entity weight × race proximity)</div>
+    ${rows}
+    <hr class="rule dash">
+    <div class="label">click a headline → full event object · <span class="clk" data-cmd="HELP">HELP</span> for all commands</div>`;
+}
+
+function scrEvent(id){
+  const e = EVENTS[id]; if(!e) return err(`No event ${id}`);
+  const react = e.reactions.length ? e.reactions.map(r=>
+    `<tr><td><a class="ref" data-cmd="ENT ${r.ent}">${r.ent}</a> (${r.party})</td>
+     <td class="${posClass(r.pos)}">${r.pos.replace('_',' ')}</td>
+     <td>"${r.txt}" ${src(r.src)}</td></tr>`).join('') : '';
+  const races = e.races.map(x=>
+    `<tr><td><a class="ref" data-cmd="RACE ${x.race}">${x.race}</a></td>
+     <td>${x.why}</td><td class="num">${confTag(x.conf)}</td></tr>`).join('');
+  const econ = e.econ.length ? `<hr class="rule"><div class="label">Economic linkage</div>
+     <table>${e.econ.map(x=>`<tr><td>${x[0]}</td><td>${x[1]}</td><td>${src(x[2])}</td></tr>`).join('')}</table>`:'';
+  const data = e.data.length ? `<hr class="rule"><div class="label">Underlying data</div>
+     <table>${e.data.map(x=>`<tr><td>${x[0]}</td><td>${x[1]}</td><td>${src(x[2])}</td></tr>`).join('')}</table>`:'';
+  const related = e.related.length ? `<hr class="rule"><div class="label">Related events</div>
+     ${e.related.map(x=>`<div class="feed-row" data-cmd="EVT ${x[0]}"><span class="t">${x[0]}</span><span class="hd">${x[1]}</span></div>`).join('')}`:'';
+  return `<div class="scr-head">${e.id} &nbsp;${e.hd}</div>
+    <div class="scr-sub">${e.time} · ${e.type.replace('_',' ')} · ${topics(e.topics)} · conf ${confTag(e.conf)} · verified (corroborated)</div>
+    <div class="label">What happened</div><div class="blurb">${e.what}</div>
+    <div class="label">Why it matters</div><div class="blurb">${e.why}</div>
+    ${react?`<hr class="rule"><div class="label">Political reactions</div><table>${react}</table>`:''}
+    ${econ}
+    <hr class="rule"><div class="label">Affected elections</div>
+    <table><tr><th>Race</th><th>Rationale</th><th class="num">conf</th></tr>${races}</table>
+    ${data}
+    ${related}
+    <hr class="rule dash"><div class="label">Sources: ${e.sources.map(s=>src(s[0],s[1])).join(' ')}</div>`;
+}
+
+function scrRace(code){
+  const r = RACES[code]; if(!r) return err(`No race ${code}. Try AZ-SEN or OH-SEN`);
+  const cands = r.cands.map(c=>
+    `<tr><td>${c.n}</td><td>${c.p}</td><td class="num">${c.coh}</td><td class="num">${c.raised}</td><td>${src('FEC')}</td></tr>`).join('');
+  const rh = r.ratingHist.map(x=>`${x[0]} ${x[1]} <span class="dim">[${x[2]}]</span>`).join(' · ');
+  const ev = r.events.map(id=>{ const e=EVENTS[id];
+    return `<div class="feed-row" data-cmd="EVT ${id}"><span class="t">${e.time}</span><span class="hd">${e.hd} &nbsp;${topics(e.topics)}</span><span class="meta">${confTag(e.conf)}</span></div>`;
+  }).join('');
+  return `<div class="scr-head">${code} &nbsp;${r.name}</div>
+    <div class="scr-sub">RACE dossier · ${topics(r.topics)}</div>
+    <div class="kv">
+      <div class="k">Rating</div><div class="v">${r.rating} &nbsp;<span class="dim">(${rh})</span> ${src('COOK')}</div>
+      <div class="k">Poll avg</div><div class="v">${r.poll} &nbsp;<span class="dim">${r.pollMeta}</span> ${src('NYT')}</div>
+    </div>
+    <hr class="rule"><div class="label">Candidates</div>
+    <table><tr><th>Name</th><th>Party</th><th class="num">Cash on hand</th><th class="num">Raised</th><th>Src</th></tr>${cands}</table>
+    <hr class="rule"><div class="label">Recent linked events</div>${ev}`;
+}
+
+function scrEnt(name){
+  const e = ENTS[name]; if(!e) return err(`No entity ${name}. Try REYES or MORALES`);
+  const ss = e.stanceSummary.map(s=>
+    `<tr><td><a class="ref" data-cmd="STANCE ${name} ${s[0].toUpperCase()}">${s[0]}</a></td>
+     <td class="${posClass(s[1])}">${s[1]}</td><td class="num">${s[2]}</td></tr>`).join('');
+  const ev = e.events.map(id=>{ const e2=EVENTS[id];
+    return `<div class="feed-row" data-cmd="EVT ${id}"><span class="t">${e2.time}</span><span class="hd">${e2.hd}</span><span class="meta">${confTag(e2.conf)}</span></div>`;
+  }).join('');
+  return `<div class="scr-head">${e.name}</div>
+    <div class="scr-sub">${e.role} · ${e.ids.map(i=>`<span class="dim">${i}</span>`).join(' · ')}</div>
+    <div class="label">Stance summary &nbsp;<span class="dim">(click a topic → timeline)</span></div>
+    <table><tr><th>Topic</th><th>Position</th><th class="num">conf</th></tr>${ss}</table>
+    <hr class="rule"><div class="label">Recent events</div>${ev}`;
+}
+
+function scrStance(name, topic){
+  const key = `${name}|${topic}`; const s = STANCES[key];
+  if(!s) return err(`No stance series for ${name} / ${topic}. Try: STANCE REYES TARIFFS`);
+  const ints = s.rows.map(r=>r.int);
+  const rows = s.rows.map(r=>
+    `<tr><td>${r.d}</td><td class="${posClass(r.pos)}">${r.pos.replace('_',' ')}</td>
+     <td class="num">${r.int.toFixed(2)}</td><td>"${r.txt}" ${src(r.src)}</td></tr>`).join('');
+  return `<div class="scr-head">STANCE · ${s.ent} · ${s.topic}</div>
+    <div class="scr-sub">position over time · span-grounded · ${s.rows.length} statements</div>
+    <div class="kv"><div class="k">Intensity trend</div><div class="v">${sparkline(ints)} &nbsp;<span class="dim">${ints[0].toFixed(2)} → ${ints[ints.length-1].toFixed(2)}</span></div></div>
+    <hr class="rule">
+    <table><tr><th>Date</th><th>Position</th><th class="num">int</th><th>Grounding quote</th></tr>${rows}</table>
+    <hr class="rule dash"><div class="label">every row traces to a stored source span — nothing synthesised</div>`;
+}
+
+function scrHelp(){
+  const cmds = [
+    ["FEED","live 'what changed' — the default screen (push, no query)"],
+    ["EVT &lt;id&gt;","full event object — e.g. EVT E1042"],
+    ["RACE &lt;code&gt;","race dossier — AZ-SEN, OH-SEN"],
+    ["ENT &lt;name&gt;","entity dossier — REYES, MORALES"],
+    ["STANCE &lt;ent&gt; &lt;topic&gt;","position timeline — STANCE REYES TARIFFS"],
+    ["HELP","this screen"],
+  ];
+  return `<div class="scr-head">HELP · command reference</div>
+    <div class="scr-sub">~a dozen commands, each a query over one shared graph</div>
+    <table>${cmds.map(c=>`<tr><td style="color:var(--amber)">${c[0]}</td><td>${c[1]}</td></tr>`).join('')}</table>
+    <hr class="rule dash">
+    <div class="label">push mode runs on its own (FEED, alerts). pull mode = you ask, an LLM answers over the graph with sources + confidence. the data is pre-built; the query is just retrieval.</div>`;
+}
+function err(msg){ return `<div class="scr-head err">⚠ ${msg}</div><div class="label">Type <span class="clk" data-cmd="HELP" style="color:var(--amber)">HELP</span> for valid commands.</div>`; }
+
+/* ===========================================================
+   ROUTER + COMMAND PARSER
+   =========================================================== */
+function run(raw){
+  const parts = raw.trim().toUpperCase().split(/\s+/).filter(Boolean);
+  if(!parts.length) return;
+  const [c, a, b] = parts;
+  let out, ok=true;
+  switch(c){
+    case 'FEED': case 'F': out = scrFeed(); break;
+    case 'EVT': case 'E': out = scrEvent(a); break;
+    case 'RACE': case 'R': out = scrRace(a); break;
+    case 'ENT': out = scrEnt(a); break;
+    case 'STANCE': case 'S': out = scrStance(a, b); break;
+    case 'HELP': case 'H': case '?': out = scrHelp(); break;
+    case 'CLEAR': case 'CLS': out = scrFeed(); break;
+    default: out = err(`Unknown command: ${c}`); ok=false;
+  }
+  el.innerHTML = out; el.scrollTop = 0;
+  hint.innerHTML = ok ? `<span class="dim">ran</span> <b>${raw.trim().toUpperCase()}</b>` :
+    `<span class="err">unrecognised — try HELP</span>`;
+  bindClicks();
+}
+function bindClicks(){
+  el.querySelectorAll('[data-cmd]').forEach(n=>{
+    n.onclick = ev=>{ ev.stopPropagation(); run(n.getAttribute('data-cmd')); };
+  });
+}
+
+/* ticker */
+document.getElementById('ticker').innerHTML = IND.map(i=>{
+  const arrow = i.d==='up'?'<span class="up">▲</span>':i.d==='down'?'<span class="down">▼</span>':'<span class="dim">—</span>';
+  const dcls = i.d==='up'?'up':i.d==='down'?'down':'dim';
+  return `<div class="tick"><span class="k">${i.k}</span> <span class="v">${i.v}</span> ${arrow}<span class="${dcls}"> ${i.dv}</span></div>`;
+}).join('');
+
+/* clock */
+function tick(){ const d=new Date();
+  document.getElementById('clock').textContent =
+    d.toLocaleTimeString('en-US',{hour12:false})+' ET';
+}
+tick(); setInterval(tick,1000);
+
+/* command input */
+const input = document.getElementById('cmd');
+let histIdx = -1; const history = [];
+input.addEventListener('keydown', e=>{
+  if(e.key==='Enter'){ const v=input.value; if(v.trim()){ history.unshift(v); histIdx=-1; } run(v); input.value=''; }
+  else if(e.key==='ArrowUp'){ if(histIdx<history.length-1){ histIdx++; input.value=history[histIdx]; e.preventDefault(); } }
+  else if(e.key==='ArrowDown'){ if(histIdx>0){ histIdx--; input.value=history[histIdx]; } else { histIdx=-1; input.value=''; } e.preventDefault(); }
+});
+document.querySelector('.app').addEventListener('click', ()=>{ if(window.getSelection().isCollapsed) input.focus(); });
+
+/* boot */
+run('FEED'); input.focus();
+</script>
+</body>
+</html>

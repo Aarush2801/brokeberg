@@ -12,8 +12,10 @@ dependencies = [
     "anthropic>=1.11.0",
     "beautifulsoup4>=4.15.0",
     "boto3>=1.43.108",
+    "fastapi>=0.142.4",
     "feedparser>=6.0.14",
     "httpx>=0.28.1",
+    "mangum>=0.22.0",
     "pgvector>=0.5.0",
     "psycopg[binary]>=3.3.6",
     "pydantic>=2",
@@ -22,12 +24,17 @@ dependencies = [
     "pyyaml>=6.0.3",
     "rapidfuzz>=3.14.6",
     "selectolax>=1.0.0",
-    "sentence-transformers>=6.1.0",
     "sqlalchemy>=2",
     "tenacity>=9.1.4",
+    "uvicorn>=0.54.0",
 ]
 
 [dependency-groups]
+# Local bge embeddings (pulls in torch). Prod embeds with Titan on Bedrock, so the Lambda image
+# installs without this group.
+local = [
+    "sentence-transformers>=6.1.0",
+]
 dev = [
     "mypy>=2.4.0",
     "pytest>=9.1.1",
@@ -35,6 +42,9 @@ dev = [
     "types-pyyaml>=6.0.12.20260906",
     "vcrpy>=8.3.0",
 ]
+
+[tool.uv]
+default-groups = ["dev", "local"]
 
 [build-system]
 requires = ["uv_build>=0.12.23,<0.13.0"]

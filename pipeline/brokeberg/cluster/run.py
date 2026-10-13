@@ -18,21 +18,16 @@ from brokeberg.db.session import session_scope
 log = logging.getLogger("brokeberg.cluster")
 
 
-def main() -> None:
-    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument("--limit", type=int, default=None)
-    parser.add_argument("--force", action="store_true", help="re-materialize every head")
-    args = parser.parse_args()
-    logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
-
+def run(*, limit: int | None = None, force: bool = False) -> dict[str, int]:
+    """Embed, cluster and materialize everything pending; returns counts."""
     with session_scope() as session:
-        embedded = embed_events.embed_pending(session, args.limit)
+        embedded = embed_events.embed_pending(session, limit)
     print(f"embedded: {embedded}")
 
     settings = get_settings()
     counts = {"new": 0, "attached": 0, "tiebreaks": 0, "failed": 0}
     with session_scope() as session:
-        pending = cluster.pending(session, args.limit)
+        pending = cluster.pending(session, limit)
     for event_id in pending:
         try:
             with session_scope() as session:
@@ -57,11 +52,23 @@ def main() -> None:
             with session_scope() as session:
                 head = session.get(Event, head_id)
                 assert head is not None
-                refreshed += event_object.materialize(session, head, lexicon, force=args.force)
+                refreshed += event_object.materialize(session, head, lexicon, force=force)
         except Exception as e:  # noqa: BLE001
             log.warning("materializing head %s failed: %s", head_id, e)
             failed += 1
     print(f"heads: {len(heads)}; materialized: {refreshed}; failed: {failed}")
+    return {
+        "embedded": embedded, **counts, "materialized": refreshed, "materialize_failed": failed
+    }
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    parser.add_argument("--limit", type=int, default=None)
+    parser.add_argument("--force", action="store_true", help="re-materialize every head")
+    args = parser.parse_args()
+    logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
+    run(limit=args.limit, force=args.force)
 
 
 if __name__ == "__main__":

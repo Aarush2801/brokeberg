@@ -1,28 +1,29 @@
-"""AWS Bedrock provider (prod), via the Converse API."""
+"""AWS Bedrock provider (prod): the Messages API over `bedrock-runtime` InvokeModel.
+
+Requests are built by `_anthropic.messages_call`, so structured outputs, the stop-reason guard and
+the absence of a thinking override are identical to dev: eval runs compare across providers.
+`model` is a Bedrock inference-profile ID (LLM_MODEL / LLM_MODEL_CHEAP, e.g. `us.anthropic.…`).
+InvokeModel (not the Mantle endpoint) because it serves both tiers: Haiku 4.5 is only there.
+"""
 
 from functools import lru_cache
 from typing import Any
 
-import boto3
-from botocore.exceptions import ClientError
-from tenacity import retry, retry_if_exception, stop_after_attempt, wait_exponential
+import anthropic
+from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_exponential
 
 from brokeberg.config import get_settings
-
-_TRANSIENT_CODES = {"ThrottlingException", "ServiceUnavailableException", "ModelNotReadyException"}
-
-
-def _is_transient(e: BaseException) -> bool:
-    return isinstance(e, ClientError) and e.response["Error"]["Code"] in _TRANSIENT_CODES
+from brokeberg.llm._anthropic import _TRANSIENT, messages_call
 
 
 @lru_cache
-def get_client() -> Any:
-    return boto3.client("bedrock-runtime", region_name=get_settings().require("aws_region"))
+def get_client() -> anthropic.AnthropicBedrock:
+    # Credentials come from the default AWS chain (the Lambda role in prod).
+    return anthropic.AnthropicBedrock(aws_region=get_settings().require("aws_region"))
 
 
 @retry(
-    retry=retry_if_exception(_is_transient),
+    retry=retry_if_exception_type(_TRANSIENT),
     stop=stop_after_attempt(4),
     wait=wait_exponential(min=2, max=30),
     reraise=True,
@@ -35,18 +36,12 @@ def call(
     max_tokens: int,
     json_schema: dict[str, Any] | None,
 ) -> str:
-    """Return the response text (Converse API)."""
-    if json_schema is not None:
-        # TODO(day 7): structured outputs on Bedrock. Current Sonnet rejects the forced-tool
-        # pattern Converse would need; move this provider to the Messages-API Bedrock client.
-        raise NotImplementedError("structured output on Bedrock is not wired yet (Day 7)")
-    kwargs: dict[str, Any] = {
-        "modelId": model,
-        "messages": [{"role": "user", "content": [{"text": prompt}]}],
-        "inferenceConfig": {"maxTokens": max_tokens},
-    }
-    if system:
-        kwargs["system"] = [{"text": system}]
-    resp = get_client().converse(**kwargs)
-    content = resp["output"]["message"]["content"]
-    return "".join(block["text"] for block in content if "text" in block)
+    """Return the response text; with `json_schema`, that text is schema-constrained JSON."""
+    return messages_call(
+        get_client(),
+        prompt,
+        model=model,
+        system=system,
+        max_tokens=max_tokens,
+        json_schema=json_schema,
+    )

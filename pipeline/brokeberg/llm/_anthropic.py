@@ -36,6 +36,27 @@ def call(
     json_schema: dict[str, Any] | None,
 ) -> str:
     """Return the response text; with `json_schema`, that text is schema-constrained JSON."""
+    return messages_call(
+        get_client(),
+        prompt,
+        model=model,
+        system=system,
+        max_tokens=max_tokens,
+        json_schema=json_schema,
+    )
+
+
+def messages_call(
+    client: Any,
+    prompt: str,
+    *,
+    model: str,
+    system: str | None,
+    max_tokens: int,
+    json_schema: dict[str, Any] | None,
+) -> str:
+    """One Messages API request on any SDK client (first-party or Bedrock), so every provider
+    sends the same request and applies the same output checks."""
     kwargs: dict[str, Any] = {
         "model": model,
         "max_tokens": max_tokens,
@@ -46,7 +67,7 @@ def call(
     if json_schema is not None:
         kwargs["output_config"] = {"format": {"type": "json_schema", "schema": json_schema}}
 
-    resp = get_client().messages.create(**kwargs)
+    resp = client.messages.create(**kwargs)
 
     # A truncated or refused response may not match the schema; never pass it on as valid.
     if resp.stop_reason in ("max_tokens", "refusal"):

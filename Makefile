@@ -9,4 +9,5 @@ ingest-once: ; cd pipeline && uv run python -m brokeberg.ingest.run_once $(if $(
 extract:     ; cd pipeline && uv run python -m brokeberg.extract.run $(ARGS)
 cluster:     ; cd pipeline && uv run python -m brokeberg.cluster.run $(ARGS)
 graph:       ; cd pipeline && uv run python -m brokeberg.graph.run
+api:         ; cd pipeline && uv run uvicorn brokeberg.api.app:app --port $(or $(API_PORT),8000) --reload
 web:         ; cd web && npm run dev

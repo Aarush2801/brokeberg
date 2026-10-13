@@ -35,9 +35,8 @@ def process_head(session: Session, head: Event, settings: Settings) -> tuple[str
     return status, edges, races
 
 
-def main() -> None:
-    argparse.ArgumentParser(description=__doc__.splitlines()[0]).parse_args()
-    logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
+def run() -> dict[str, int]:
+    """Edges -> verify -> election links over every head; returns counts."""
     settings = get_settings()
 
     with session_scope() as session:
@@ -60,6 +59,13 @@ def main() -> None:
         print(f"head {head_id:<6} {status:<14} edges={n_edges:<3} races={n_races}")
     print(f"heads: {len(ids)}; {dict(statuses)}; edges: {edges}; race links: {races}; "
           f"failed: {failed}")
+    return {"heads": len(ids), "edges": edges, "race_links": races, "failed": failed}
+
+
+def main() -> None:
+    argparse.ArgumentParser(description=__doc__.splitlines()[0]).parse_args()
+    logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
+    run()
 
 
 if __name__ == "__main__":

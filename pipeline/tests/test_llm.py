@@ -5,7 +5,7 @@ import pytest
 from pydantic import BaseModel, Field
 
 from brokeberg import llm
-from brokeberg.llm import _anthropic
+from brokeberg.llm import _anthropic, _bedrock
 from brokeberg.llm.schema import enforced_schema
 from brokeberg.taxonomy import Topic
 
@@ -91,3 +91,27 @@ def test_model_defaults_to_settings_and_can_be_overridden(monkeypatch: pytest.Mo
     assert messages.kwargs["model"] == llm.get_settings().llm_model
     llm.complete("hi", model="claude-haiku-4-5")
     assert messages.kwargs["model"] == "claude-haiku-4-5"
+
+
+def test_bedrock_sends_the_same_request_as_anthropic(monkeypatch: pytest.MonkeyPatch) -> None:
+    dev = _install(monkeypatch, '{"x": 1, "y": 2}')
+    llm.complete("give a point", schema=Point, system="sys", model="m")
+
+    prod = FakeMessages('{"x": 1, "y": 2}')
+    monkeypatch.setattr(_bedrock, "get_client", lambda: SimpleNamespace(messages=prod))
+    monkeypatch.setenv("LLM_PROVIDER", "bedrock")
+    llm.get_settings.cache_clear()
+    assert llm.complete("give a point", schema=Point, system="sys", model="m") == Point(x=1, y=2)
+    assert prod.kwargs == dev.kwargs
+
+
+@pytest.mark.parametrize("stop", ["max_tokens", "refusal"])
+def test_bedrock_truncated_or_refused_output_raises(
+    monkeypatch: pytest.MonkeyPatch, stop: str
+) -> None:
+    prod = FakeMessages('{"x": 1, "y": 2}', stop)
+    monkeypatch.setattr(_bedrock, "get_client", lambda: SimpleNamespace(messages=prod))
+    monkeypatch.setenv("LLM_PROVIDER", "bedrock")
+    llm.get_settings.cache_clear()
+    with pytest.raises(llm.LLMOutputError):
+        llm.complete("give a point", schema=Point)

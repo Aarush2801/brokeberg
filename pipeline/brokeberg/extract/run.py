@@ -223,20 +223,13 @@ def pending(
     return list(session.scalars(q))
 
 
-def main() -> None:
-    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    parser.add_argument("--limit", type=int, default=None)
-    parser.add_argument("--source", default=None)
-    parser.add_argument("--raw-item-id", type=int, default=None)
-    args = parser.parse_args()
-    logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
-
+def run(
+    *, limit: int | None = None, source: str | None = None, raw_item_id: int | None = None
+) -> dict[str, int]:
+    """Extract every pending raw item (one transaction each); returns counts by status."""
     with session_scope() as session:
         ids = [
-            i.id
-            for i in pending(
-                session, source=args.source, raw_item_id=args.raw_item_id, limit=args.limit
-            )
+            i.id for i in pending(session, source=source, raw_item_id=raw_item_id, limit=limit)
         ]
     counts: dict[str, int] = {}
     for raw_id in ids:
@@ -254,6 +247,17 @@ def main() -> None:
             .where(ReviewQueue.status == ReviewStatus.OPEN)
         )
     print(f"done: {counts or 'nothing pending'}; open review_queue rows: {review_open}")
+    return counts
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    parser.add_argument("--limit", type=int, default=None)
+    parser.add_argument("--source", default=None)
+    parser.add_argument("--raw-item-id", type=int, default=None)
+    args = parser.parse_args()
+    logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
+    run(limit=args.limit, source=args.source, raw_item_id=args.raw_item_id)
 
 
 if __name__ == "__main__":
