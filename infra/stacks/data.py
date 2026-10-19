@@ -24,6 +24,7 @@ class DataStack(Stack):
             block_public_access=s3.BlockPublicAccess.BLOCK_ALL,
             encryption=s3.BucketEncryption.S3_MANAGED,
             enforce_ssl=True,
+            versioned=True,  # overwrites/deletes keep the prior version
             # The REPLAY archive: survives `cdk destroy`. Delete it by hand if you mean to.
             removal_policy=RemovalPolicy.RETAIN,
             auto_delete_objects=False,
