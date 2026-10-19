@@ -1314,3 +1314,44 @@ items:
     - canonical_id: bioguide:S001198
       topic: energy_climate
       position: oppose
+- id: bill-s5690-dream-plaque
+  source: congress
+  source_type: government_primary
+  url: https://www.congress.gov/bill/119th-congress/senate-bill/5690
+  text: 'S. 5690 (119th Congress): Renewing the Dream Act
+
+    Latest action (2026-10-15): Under authority of the order of the Senate of September 30, 2026,
+    ordered read twice and referred to the Committee on Energy and Natural Resources.'
+  event_time: '2026-10-15T00:00:00+00:00'
+  raw:
+    kind: bill
+    type: S
+    title: Renewing the Dream Act
+    number: '5690'
+    congress: 119
+    sponsors:
+    - party: D
+      state: GA
+      fullName: Sen. Warnock, Raphael G. [D-GA]
+      bioguideId: W000790
+    policyArea: null
+    latestAction:
+      text: Under authority of the order of the Senate of September 30, 2026, ordered read twice
+        and referred to the Committee on Energy and Natural Resources.
+      actionDate: '2026-10-15'
+    introducedDate: '2026-10-15'
+  resolved:
+  - bioguide:W000790
+  synthetic: false
+  verified: false
+  notes: 'Title-cue trap. Prod (2026-10-19, event 36) tagged this immigration off the words "Dream
+    Act". The official title is "A bill to provide for the replacement of the plaque at Lincoln
+    Memorial commemorating the I Have a Dream speech of Martin Luther King, Jr." (an NPS memorial,
+    hence Energy and Natural Resources). No taxonomy topic fits.'
+  expected:
+    relevant: true
+    event_type: legislative_action
+    entities:
+    - bill:119-s-5690
+    topics: []
+    stances: []
