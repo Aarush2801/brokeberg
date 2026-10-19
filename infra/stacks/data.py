@@ -24,8 +24,9 @@ class DataStack(Stack):
             block_public_access=s3.BlockPublicAccess.BLOCK_ALL,
             encryption=s3.BucketEncryption.S3_MANAGED,
             enforce_ssl=True,
-            removal_policy=RemovalPolicy.DESTROY,
-            auto_delete_objects=True,
+            # The REPLAY archive: survives `cdk destroy`. Delete it by hand if you mean to.
+            removal_policy=RemovalPolicy.RETAIN,
+            auto_delete_objects=False,
         )
 
         # Starts empty and is never templated again, so a redeploy can't wipe it.
