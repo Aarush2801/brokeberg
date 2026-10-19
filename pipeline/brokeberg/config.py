@@ -101,6 +101,9 @@ class Settings(BaseSettings):
     # Prod Aurora (express configuration) accepts only IAM auth: sign each connection with a token.
     db_iam_auth: bool = False
     s3_raw_bucket: str | None = None
+    # Shared secret the web app's server sends on POST /api/query (the one endpoint that spends
+    # LLM credits). Unset = no check (local dev); the prod Lambda refuses to start without it.
+    query_secret: str | None = None
 
     # Source keys
     congress_api_key: str | None = None

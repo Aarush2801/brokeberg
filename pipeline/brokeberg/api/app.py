@@ -4,9 +4,10 @@ so provenance (source URL + span + trust tier) and confidence reach the UI on ev
 The web app proxies `/api/*` here; nothing in this module writes to the database.
 """
 
+import hmac
 from collections.abc import Iterator
 
-from fastapi import Depends, FastAPI, Request
+from fastapi import Depends, FastAPI, Header, HTTPException, Request
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 from sqlalchemy.orm import Session
@@ -32,6 +33,17 @@ def get_session() -> Iterator[Session]:
 
 
 DB = Depends(get_session)
+
+QUERY_SECRET_HEADER = "x-brokeberg-query-key"
+
+
+def require_query_secret(
+    key: str | None = Header(default=None, alias=QUERY_SECRET_HEADER),
+) -> None:
+    """Gate the LLM-spending endpoint behind a shared secret only the web app's server holds."""
+    secret = get_settings().query_secret
+    if secret and not (key and hmac.compare_digest(key, secret)):
+        raise HTTPException(status_code=403, detail="forbidden")
 
 
 @app.exception_handler(refs.Direction)
@@ -101,6 +113,6 @@ def indicators(session: Session = DB) -> list[views.TickerRow]:
     return views.ticker(session)
 
 
-@app.post("/api/query")
+@app.post("/api/query", dependencies=[Depends(require_query_secret)])
 def query(body: QueryRequest, session: Session = DB) -> QueryResponse:
     return answer(session, body.question)

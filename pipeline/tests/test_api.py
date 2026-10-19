@@ -13,7 +13,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from brokeberg.api import rsch
-from brokeberg.api.app import app, get_session
+from brokeberg.api.app import QUERY_SECRET_HEADER, app, get_session
 from brokeberg.api.rsch import Claim, RschAnswer
 from brokeberg.config import get_settings
 from brokeberg.db.models import EMBED_DIM, Event, EventEmbedding, Indicator
@@ -232,3 +232,26 @@ def test_rsch_without_records_never_calls_the_model(
     body = ask(client, "what is the weather on mars?")
     assert body["refused"] is True and body["sources"] == []
     assert fake_llm.calls == []
+
+
+# --- /api/query shared secret ------------------------------------------------------------------
+
+
+def test_query_requires_the_shared_secret_when_set(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("QUERY_SECRET", "s3cret")
+    get_settings.cache_clear()
+    client = TestClient(app)
+    # A too-short question: past the guard it is a 422, so 403 vs 422 shows where it stopped.
+    def post(key: str | None) -> int:
+        headers = {QUERY_SECRET_HEADER: key} if key else {}
+        return client.post("/api/query", json={"question": "x"}, headers=headers).status_code
+
+    assert post(None) == 403
+    assert post("nope") == 403
+    assert post("s3cret") == 422
+
+
+def test_query_is_open_when_no_secret_is_configured(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.delenv("QUERY_SECRET", raising=False)
+    get_settings.cache_clear()
+    assert TestClient(app).post("/api/query", json={"question": "x"}).status_code == 422

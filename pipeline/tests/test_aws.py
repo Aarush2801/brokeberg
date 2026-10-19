@@ -10,6 +10,7 @@ from sqlalchemy.orm import Session
 
 from brokeberg.aws import handlers, secrets
 from brokeberg.cluster import run as cluster_run
+from brokeberg.config import get_settings
 from brokeberg.db import session as db_session
 from brokeberg.extract import run as extract_run
 from brokeberg.graph import run as graph_run
@@ -182,3 +183,15 @@ def test_process_at_cap_skips_extraction_but_still_clusters(
 def test_extracted_today_counts_from_utc_midnight(db_session: Session) -> None:
     tomorrow = datetime.now(UTC) + timedelta(days=1)
     assert handlers.extracted_today(db_session, tomorrow) == 0
+
+
+def test_api_lambda_fails_closed_without_query_secret(monkeypatch: pytest.MonkeyPatch) -> None:
+    from brokeberg.aws import api as aws_api
+    from brokeberg.config import MissingConfigError
+
+    monkeypatch.setattr(secrets, "load", lambda: None)
+    monkeypatch.setattr(aws_api, "_mangum", None)
+    monkeypatch.delenv("QUERY_SECRET", raising=False)
+    get_settings.cache_clear()
+    with pytest.raises(MissingConfigError):
+        aws_api.handler({}, None)

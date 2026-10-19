@@ -5,11 +5,13 @@
 Source API keys come from the repo-root .env (never committed); the provider flip and model IDs
 are set here; S3_RAW_BUCKET comes from the BrokebergData stack output and DATABASE_URL (no
 password; DB_IAM_AUTH=true) from the express cluster (express_db.py). Prints key names only.
-Re-run after any change; it replaces the whole secret.
+Re-run after any change; it replaces the whole secret, except QUERY_SECRET (the /api/query
+shared secret), which is generated on the first push and carried over on every later one.
 """
 
 import argparse
 import json
+import secrets
 from pathlib import Path
 
 import boto3
@@ -44,6 +46,8 @@ def main() -> None:
     parser.add_argument("--haiku", default=HAIKU)
     args = parser.parse_args()
 
+    client = boto3.client("secretsmanager", region_name=REGION)
+    current = json.loads(client.get_secret_value(SecretId=SECRET_ID)["SecretString"])
     env = dotenv_values(REPO_ROOT / ".env")
     missing = [k for k in SOURCE_KEYS if not env.get(k)]
     secret = {k: env[k] for k in SOURCE_KEYS if env.get(k)}
@@ -58,8 +62,9 @@ def main() -> None:
         "S3_RAW_BUCKET": stack_output("RawBucketName"),
         "DATABASE_URL": database_url(endpoint(), DB_USER, DB_NAME),
         "DB_IAM_AUTH": "true",
+        "QUERY_SECRET": current.get("QUERY_SECRET") or secrets.token_urlsafe(32),
     }
-    boto3.client("secretsmanager", region_name=REGION).put_secret_value(
+    client.put_secret_value(
         SecretId=SECRET_ID, SecretString=json.dumps(secret)
     )
     print(f"wrote {SECRET_ID}: {', '.join(sorted(secret))}")
