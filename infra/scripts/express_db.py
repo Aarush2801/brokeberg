@@ -1,6 +1,8 @@
 """Create / inspect / delete the prod Aurora cluster (express configuration).
 
-    cd pipeline && uv run python ../infra/scripts/express_db.py status|create|delete [--no-snapshot]
+    cd pipeline && uv run python ../infra/scripts/express_db.py ACTION [--no-snapshot]
+
+ACTION is status, create, createdb (re-run just the CREATE DATABASE step) or delete.
 
 Free-plan accounts can only create Aurora PostgreSQL with express configuration: no VPC, an
 internet access gateway, IAM-only auth, at most 4 ACU and 1 GB storage. CloudFormation has no
@@ -101,7 +103,7 @@ def create() -> None:
         DBClusterIdentifier=CLUSTER_ID,
         Engine="aurora-postgresql",
         WithExpressConfiguration=True,
-        DatabaseName=DB_NAME,
+        # No DatabaseName: express rejects an initial database; create_database() makes it.
         Tags=[{"Key": "project", "Value": "brokeberg"}],
     )
     _wait(_available, "cluster + instance available")
@@ -111,7 +113,30 @@ def create() -> None:
         ApplyImmediately=True,
     )
     _wait(_available, "scaling change to apply")
+    create_database()
     status()
+
+
+def create_database() -> None:
+    """CREATE DATABASE DB_NAME over IAM auth, connected to the default `postgres` database.
+    Idempotent."""
+    import psycopg
+
+    host = endpoint()
+    token = rds().generate_db_auth_token(DBHostname=host, Port=5432, DBUsername=DB_USER)
+    with psycopg.connect(
+        host=host,
+        user=DB_USER,
+        password=token,
+        dbname="postgres",
+        sslmode="require",
+        autocommit=True,
+    ) as conn:
+        if conn.execute("SELECT 1 FROM pg_database WHERE datname = %s", (DB_NAME,)).fetchone():
+            print(f"database {DB_NAME!r} already exists")
+            return
+        conn.execute(f'CREATE DATABASE "{DB_NAME}"')
+        print(f"created database {DB_NAME!r}")
 
 
 def delete(snapshot: bool) -> None:
@@ -134,13 +159,15 @@ def delete(snapshot: bool) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("action", choices=("status", "create", "delete"))
+    parser.add_argument("action", choices=("status", "create", "createdb", "delete"))
     parser.add_argument("--no-snapshot", action="store_true", help="delete without a snapshot")
     args = parser.parse_args()
     if args.action == "status":
         status()
     elif args.action == "create":
         create()
+    elif args.action == "createdb":
+        create_database()
     else:
         delete(snapshot=not args.no_snapshot)
 
