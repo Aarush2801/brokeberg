@@ -82,23 +82,28 @@ Every rendered claim links to its provenance (source, span, confidence).
 
 ## Eval
 
-The extraction DAG is scored against a hand-labeled golden set of 30 items (X posts, bills, Senate
-votes, FEC filings) in `pipeline/brokeberg/eval/golden/`. Current baseline
-(`claude-sonnet-4-6`, cheap passes on `claude-haiku-4-5`, prompt `day3-v2`):
+The extraction DAG is scored against a hand-labeled golden set in
+`pipeline/brokeberg/eval/golden/`. The baseline covers the 30 verified real items (X posts, bills,
+Senate votes, FEC filings), with `claude-sonnet-4-6` and the cheap passes on `claude-haiku-4-5`
+(prompt `day3-v2`):
 
 | Pass | Metric | Score |
 |---|---|---|
 | Gate | accuracy | 0.93 |
-| Event type | accuracy | 0.92 |
-| Entities | precision / recall / F1 | 0.67 / 0.96 / 0.79 |
-| Topics | precision / recall / F1 | 0.67 / 0.94 / 0.78 |
-| Stance | precision / recall / F1 | 0.29 / 1.00 / 0.44 |
+| Event type | accuracy | 0.96 |
+| Entities | precision / recall / F1 | 1.00 / 0.92 / 0.96 |
+| Topics | precision / recall / F1 | 0.70 / 0.94 / 0.80 |
+| Stance | precision / recall / F1 | 0.40 / 1.00 / 0.57 |
 | Stance | direction accuracy | 1.00 |
 
-Recall is high everywhere. Precision is the weak spot, especially for stance: the model attaches
-stances that the golden set doesn't label, and its position labels don't yet match the golden set
-(0.00 position accuracy), even though it gets the direction right every time. Tightening stance
-precision is the next prompt iteration.
+These are small samples (25 gold entities, 17 gold topics), so one item moves a metric by several
+points. Entity precision used to read 0.67 because the scorer counted each bill's sponsor as an
+extra entity whenever the extractor also tagged them `actor`. Sponsors are structural and never
+labeled, so the scorer now excludes them; the old baseline is kept as
+`baseline.pre-structural-dedupe.json`. Topic and stance precision are the weak spots: the model
+over-tags topics (e.g. reading "Dream Act" in a bill title as immigration, now a golden case) and
+attaches stances the golden set doesn't label, with 0.00 position accuracy even though it gets the
+direction right every time.
 
 ## Repo layout
 

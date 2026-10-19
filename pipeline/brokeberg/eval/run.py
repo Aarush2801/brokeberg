@@ -26,7 +26,7 @@ from brokeberg.eval.golden import STRUCTURAL_ROLES, GoldenItem, load
 from brokeberg.eval.score import Predicted, score
 from brokeberg.extract.classify import Classification
 from brokeberg.extract.doc import PROMPT_VERSION
-from brokeberg.extract.entities import EntitiesResult
+from brokeberg.extract.entities import EntitiesResult, LinkedEntity
 from brokeberg.extract.event_core import EventCore
 from brokeberg.extract.gate import GateResult
 from brokeberg.extract.run import Extraction, run_passes
@@ -38,6 +38,15 @@ EVAL_DIR = Path(__file__).resolve().parent
 BASELINE = EVAL_DIR / "baseline.json"
 RESULTS_DIR = EVAL_DIR / "results"
 TOLERANCE = 0.02  # a rate metric may drop at most this much vs. baseline
+
+
+def scored_entities(resolved: list[LinkedEntity]) -> tuple[set[str], set[str]]:
+    """(scored, excluded) canonical IDs. Gold never lists the author/sponsor/voters, so an entity
+    holding a structural role is excluded even when the extractor also tags it actor/subject
+    (a bill's sponsor comes back as both `sponsor` and `actor`)."""
+    structural = {e.canonical_id for e in resolved if e.role in STRUCTURAL_ROLES}
+    other = {e.canonical_id for e in resolved if e.role not in STRUCTURAL_ROLES}
+    return {c for c in other - structural if c}, {c for c in other & structural if c}
 
 
 def to_predicted(ex: Extraction) -> Predicted:
@@ -56,8 +65,7 @@ def to_predicted(ex: Extraction) -> Predicted:
         for e in ents.resolved:
             assert e.entity_id is not None and e.canonical_id is not None
             cid_by_id[e.entity_id] = e.canonical_id
-            if e.role not in STRUCTURAL_ROLES:
-                pred.entities.add(e.canonical_id)
+        pred.entities, _ = scored_entities(ents.resolved)
     cls = out.get("classify")
     if isinstance(cls, Classification):
         pred.topics = set(cls.topics)
@@ -71,6 +79,8 @@ def _item_report(item: GoldenItem, ex: Extraction, pred: Predicted) -> dict[str,
     gold = item.expected
     gold_st = {f"{s.canonical_id}|{s.topic}": str(s.position) for s in gold.stances}
     pred_st = {f"{k[0]}|{k[1]}": str(v) for k, v in pred.stances.items()}
+    ents = ex.state.outputs.get("entities")
+    excluded = scored_entities(ents.resolved)[1] if isinstance(ents, EntitiesResult) else set()
     return {
         "id": item.id,
         "status": ex.status.value,
@@ -80,6 +90,7 @@ def _item_report(item: GoldenItem, ex: Extraction, pred: Predicted) -> dict[str,
         "entities": {
             "missed": sorted(set(gold.entities) - pred.entities),
             "extra": sorted(pred.entities - set(gold.entities)),
+            "excluded_structural": sorted(excluded),
         },
         "topics": {
             "missed": sorted(set(gold.topics) - pred.topics),

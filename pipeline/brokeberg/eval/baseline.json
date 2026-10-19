@@ -1,5 +1,5 @@
 {
-  "run_at": "2026-10-13T15:57:12.949245+00:00",
+  "run_at": "2026-10-19T20:59:32.504409+00:00",
   "prompt_version": "day3-v2",
   "models": {
     "default": "claude-sonnet-4-6",
@@ -43,16 +43,16 @@
     "gate.accuracy": 0.9333333333333333,
     "gate.drop_precision": 0.6666666666666666,
     "gate.drop_recall": 0.6666666666666666,
-    "event_type.accuracy": 0.9230769230769231,
-    "entities.precision": 0.6666666666666666,
-    "entities.recall": 0.96,
-    "entities.f1": 0.7868852459016393,
-    "topics.precision": 0.6666666666666666,
+    "event_type.accuracy": 0.9615384615384616,
+    "entities.precision": 1.0,
+    "entities.recall": 0.92,
+    "entities.f1": 0.9583333333333334,
+    "topics.precision": 0.6956521739130435,
     "topics.recall": 0.9411764705882353,
-    "topics.f1": 0.7804878048780487,
-    "stance.precision": 0.2857142857142857,
+    "topics.f1": 0.7999999999999999,
+    "stance.precision": 0.4,
     "stance.recall": 1.0,
-    "stance.f1": 0.4444444444444445,
+    "stance.f1": 0.5714285714285715,
     "stance.position_accuracy": 0.0,
     "stance.direction_accuracy": 1.0
   }

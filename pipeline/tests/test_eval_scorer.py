@@ -1,8 +1,10 @@
 import pytest
 
 from brokeberg.eval.golden import Expected, ExpectedStance, load
+from brokeberg.eval.run import scored_entities
 from brokeberg.eval.score import Predicted, score
-from brokeberg.taxonomy import EventType, Stance, Topic
+from brokeberg.extract.entities import LinkedEntity
+from brokeberg.taxonomy import EntityType, EventType, Stance, Topic
 
 T, H = Topic.TRADE_TARIFFS, Topic.HOUSING
 
@@ -56,3 +58,30 @@ def test_golden_file_loads_and_is_well_formed() -> None:
     for i in items:
         for s in i.expected.stances:
             assert s.canonical_id in i.expected.entities or s.canonical_id in i.resolved, i.id
+
+
+def _linked(cid: str, role: str) -> LinkedEntity:
+    return LinkedEntity(
+        mention=cid, entity_id=hash(cid) % 1000, canonical_id=cid,
+        entity_type=EntityType.POLITICIAN, role=role, span=cid, confidence=1.0, method="connector",
+    )
+
+
+def test_sponsor_tagged_actor_too_is_not_scored() -> None:
+    # A bill's sponsor comes back as both `sponsor` and `actor`; gold never lists the sponsor.
+    scored, excluded = scored_entities([
+        _linked("bioguide:W000790", "sponsor"),
+        _linked("bioguide:W000790", "actor"),
+        _linked("bill:119-s-5690", "subject"),
+    ])
+    assert scored == {"bill:119-s-5690"}
+    assert excluded == {"bioguide:W000790"}
+
+
+def test_non_structural_entities_are_scored() -> None:
+    scored, excluded = scored_entities([
+        _linked("bioguide:A", "actor"),
+        _linked("bioguide:B", "author"),
+        _linked("fips:02", "target"),
+    ])
+    assert scored == {"bioguide:A", "fips:02"} and excluded == set()
