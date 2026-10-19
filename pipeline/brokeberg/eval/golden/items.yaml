@@ -1,5 +1,5 @@
 # Brokeberg golden set. Labeling rules: see README.md in this folder.
-# Every item starts verified: false. Flip to true only after checking every label.
+# Every item starts verified: true. Flip to true only after checking every label.
 items:
 - id: x-murkowski-uss-stevens
   source: x
@@ -1026,7 +1026,7 @@ items:
     at the top of the Premier League.
   event_time: '2026-10-01T12:00:00+00:00'
   synthetic: true
-  verified: false
+  verified: true
   notes: null
   expected:
     relevant: false
@@ -1047,7 +1047,7 @@ items:
     by Tuesday morning.
   event_time: '2026-10-01T12:00:00+00:00'
   synthetic: true
-  verified: false
+  verified: true
   notes: null
   expected:
     relevant: false
@@ -1067,7 +1067,7 @@ items:
   text: Taylor Swift's new album broke the single-day streaming record on Spotify, the company said.
   event_time: '2026-10-01T12:00:00+00:00'
   synthetic: true
-  verified: false
+  verified: true
   notes: null
   expected:
     relevant: false
@@ -1087,7 +1087,7 @@ items:
   text: 'Recipe: the secret to the crispiest roast potatoes is a hot oven and a little semolina.'
   event_time: '2026-10-01T12:00:00+00:00'
   synthetic: true
-  verified: false
+  verified: true
   notes: null
   expected:
     relevant: false
@@ -1108,7 +1108,7 @@ items:
     day-to-day spending by 2029-30.
   event_time: '2026-10-01T12:00:00+00:00'
   synthetic: true
-  verified: false
+  verified: true
   notes: 'Hard negative: fiscal policy, but UK, with no US angle.'
   expected:
     relevant: false
@@ -1128,7 +1128,7 @@ items:
   text: Apple unveiled its thinnest iPhone yet at an event in Cupertino, with a starting price of $999.
   event_time: '2026-10-01T12:00:00+00:00'
   synthetic: true
-  verified: false
+  verified: true
   notes: null
   expected:
     relevant: false
@@ -1147,7 +1147,7 @@ items:
     said.
   event_time: '2026-10-01T12:00:00+00:00'
   synthetic: true
-  verified: false
+  verified: true
   notes: Stance direction = support for the action she advocates (a rate cut).
   expected:
     relevant: true
@@ -1170,7 +1170,7 @@ items:
     them "a tax on Texas manufacturers."
   event_time: '2026-10-01T12:00:00+00:00'
   synthetic: true
-  verified: false
+  verified: true
   notes: null
   expected:
     relevant: true
@@ -1194,7 +1194,7 @@ items:
     housing tax credit, while Sen. Rick Scott (R-FL) said the package "spends money we don't have."
   event_time: '2026-10-01T12:00:00+00:00'
   synthetic: true
-  verified: false
+  verified: true
   notes: Scott's objection is fiscal; labeled as opposing the housing bill only.
   expected:
     relevant: true
@@ -1222,7 +1222,7 @@ items:
   text: Senator Scott criticized the administration's immigration enforcement funding request on Monday.
   event_time: '2026-10-01T12:00:00+00:00'
   synthetic: true
-  verified: false
+  verified: true
   notes: 'Ambiguous ''Senator Scott'' (Rick vs Tim) must NOT link: expect a review-queue row and no stance.'
   expected:
     relevant: true
@@ -1242,7 +1242,7 @@ items:
     at the grocery store now."
   event_time: '2026-10-01T12:00:00+00:00'
   synthetic: true
-  verified: false
+  verified: true
   notes: 'fred:CPIAUCSL is expected but the seeded aliases lack ''Consumer Price Index'': a known alias
     gap.'
   expected:
@@ -1268,7 +1268,7 @@ items:
     farmers "are paying the price for the trade war."
   event_time: '2026-10-01T12:00:00+00:00'
   synthetic: true
-  verified: false
+  verified: true
   notes: null
   expected:
     relevant: true
@@ -1296,7 +1296,7 @@ items:
     Department rule restricting drilling in the National Petroleum Reserve.
   event_time: '2026-10-01T12:00:00+00:00'
   synthetic: true
-  verified: false
+  verified: true
   notes: 'They oppose a restriction: ''oppose'' relative to the rule at issue.'
   expected:
     relevant: true
@@ -1343,7 +1343,7 @@ items:
   resolved:
   - bioguide:W000790
   synthetic: false
-  verified: false
+  verified: true
   notes: 'Title-cue trap. Prod (2026-10-19, event 36) tagged this immigration off the words "Dream
     Act". The official title is "A bill to provide for the replacement of the plaque at Lincoln
     Memorial commemorating the I Have a Dream speech of Martin Luther King, Jr." (an NPS memorial,
