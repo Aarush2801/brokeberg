@@ -14,7 +14,7 @@ import boto3
 from pydantic import BaseModel
 
 os.environ.update({"LLM_PROVIDER": "bedrock", "EMBED_PROVIDER": "bedrock"})
-os.environ.setdefault("AWS_REGION", "us-east-1")
+os.environ.setdefault("AWS_REGION", "us-east-2")
 os.environ["EMBED_MODEL"] = "amazon.titan-embed-text-v2:0"
 
 from brokeberg import llm  # noqa: E402

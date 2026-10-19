@@ -94,7 +94,7 @@ git-ignored.)
   **$30** → email alert at **80%** → Create. ✅ Budget listed.
 - [ ] IAM user: search "IAM" → **Users → Create user** `brokeberg-dev` → attach **AdministratorAccess** →
   Create → open user → **Security credentials → Create access key → CLI** → copy Access key + Secret.
-- [ ] In Terminal — ⌨️ `aws configure` → paste key, secret, region `us-east-1`, output `json`.
+- [ ] In Terminal — ⌨️ `aws configure` → paste key, secret, region `us-east-2`, output `json`.
   - [ ] ✅ ⌨️ `aws sts get-caller-identity` prints your account.
 - [ ] **Bedrock access (lead time — do now):** search "Bedrock" → **Model access → Manage/Enable** →
   tick **Anthropic Claude** + **Titan Text Embeddings V2** → submit. ✅ Status → "Access granted" (may lag).
@@ -164,7 +164,7 @@ BLS_API_KEY=
 DATA_GOV_API_KEY=
 CENSUS_API_KEY=
 X_BEARER_TOKEN=
-AWS_REGION=us-east-1
+AWS_REGION=us-east-2
 S3_RAW_BUCKET=brokeberg-raw-yourname
 EOF
 ```

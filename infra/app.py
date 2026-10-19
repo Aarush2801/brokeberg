@@ -14,7 +14,7 @@ from stacks.data import DataStack
 from stacks.pipeline import PipelineStack
 
 app = cdk.App()
-env = cdk.Environment(account=os.environ.get("CDK_DEFAULT_ACCOUNT"), region="us-east-1")
+env = cdk.Environment(account=os.environ.get("CDK_DEFAULT_ACCOUNT"), region="us-east-2")
 
 data = DataStack(app, "BrokebergData", env=env)
 PipelineStack(app, "BrokebergPipeline", data=data, env=env)

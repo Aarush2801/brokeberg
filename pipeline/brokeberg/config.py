@@ -98,6 +98,8 @@ class Settings(BaseSettings):
 
     # AWS
     aws_region: str | None = None
+    # Prod Aurora (express configuration) accepts only IAM auth: sign each connection with a token.
+    db_iam_auth: bool = False
     s3_raw_bucket: str | None = None
 
     # Source keys

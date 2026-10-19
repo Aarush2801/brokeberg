@@ -1,8 +1,8 @@
 {
-  "run_at": "2026-10-07T18:52:01.119704+00:00",
+  "run_at": "2026-10-13T15:57:12.949245+00:00",
   "prompt_version": "day3-v2",
   "models": {
-    "default": "claude-sonnet-5-5",
+    "default": "claude-sonnet-4-6",
     "cheap": "claude-haiku-4-5"
   },
   "items": [
@@ -44,15 +44,15 @@
     "gate.drop_precision": 0.6666666666666666,
     "gate.drop_recall": 0.6666666666666666,
     "event_type.accuracy": 0.9230769230769231,
-    "entities.precision": 1.0,
+    "entities.precision": 0.6666666666666666,
     "entities.recall": 0.96,
-    "entities.f1": 0.9795918367346939,
-    "topics.precision": 0.64,
+    "entities.f1": 0.7868852459016393,
+    "topics.precision": 0.6666666666666666,
     "topics.recall": 0.9411764705882353,
-    "topics.f1": 0.7619047619047621,
-    "stance.precision": 0.5,
+    "topics.f1": 0.7804878048780487,
+    "stance.precision": 0.2857142857142857,
     "stance.recall": 1.0,
-    "stance.f1": 0.6666666666666666,
+    "stance.f1": 0.4444444444444445,
     "stance.position_accuracy": 0.0,
     "stance.direction_accuracy": 1.0
   }

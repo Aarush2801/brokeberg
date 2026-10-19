@@ -41,6 +41,20 @@ def bedrock_policy(stack: Stack) -> iam.PolicyStatement:
     )
 
 
+# Aurora's master user (infra/scripts/express_db.py); express clusters accept only IAM auth.
+DB_USER = "postgres"
+
+
+def db_connect_policy(stack: Stack) -> iam.PolicyStatement:
+    """IAM DB auth for the express cluster. Its resource ID only exists after express_db.py
+    creates it outside CloudFormation, hence the `cluster-*` wildcard (one cluster per account
+    here; the free plan allows two)."""
+    return iam.PolicyStatement(
+        actions=["rds-db:connect"],
+        resources=[f"arn:aws:rds-db:{stack.region}:{stack.account}:dbuser:cluster-*/{DB_USER}"],
+    )
+
+
 class PipelineStack(Stack):
     def __init__(
         self, scope: Construct, construct_id: str, data: DataStack, **kwargs: object
@@ -75,7 +89,7 @@ class PipelineStack(Stack):
                 ),
             )
             data.app_secret.grant_read(fn)
-            data.db_secret.grant_read(fn)
+            fn.add_to_role_policy(db_connect_policy(self))
             fn.add_to_role_policy(bedrock_policy(self))
             return fn
 

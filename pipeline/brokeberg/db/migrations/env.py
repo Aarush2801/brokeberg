@@ -6,6 +6,7 @@ from sqlalchemy import create_engine, pool
 from brokeberg.config import get_settings
 from brokeberg.db import models  # noqa: F401  (registers tables on Base.metadata)
 from brokeberg.db.base import Base
+from brokeberg.db.session import use_iam_auth
 
 config = context.config
 
@@ -35,6 +36,8 @@ def run_migrations_online() -> None:
     # A plain engine (not brokeberg.db.get_engine): pgvector registration needs the
     # `vector` extension, which the baseline migration is what creates.
     connectable = create_engine(DATABASE_URL, poolclass=pool.NullPool)
+    if get_settings().db_iam_auth:
+        use_iam_auth(connectable)
 
     with connectable.connect() as connection:
         context.configure(connection=connection, target_metadata=target_metadata)

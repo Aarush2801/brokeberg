@@ -1,14 +1,15 @@
 """Prod config from Secrets Manager -> `os.environ`, before the first `get_settings()`.
 
-Two secrets, both created by the BrokebergData stack:
-- `brokeberg/prod/app`: a flat JSON object of Settings env vars (LLM_PROVIDER, LLM_MODEL, API
-  keys, ...). Filled by `infra/scripts/push_secrets.py`.
-- `brokeberg/prod/db`: the RDS-generated Aurora credentials; DATABASE_URL is built from it.
+One secret, created by the BrokebergData stack: `brokeberg/prod/app`, a flat JSON object of
+Settings env vars (LLM_PROVIDER, LLM_MODEL, API keys, DATABASE_URL, ...). Filled by
+`infra/scripts/push_secrets.py`. Aurora (express configuration) accepts only IAM auth, so
+DATABASE_URL has no password and DB_IAM_AUTH=true makes each connection sign a token.
 
 Variables already set on the process (e.g. a per-function X_MAX_RESULTS) win over the secret.
 
 `python -m brokeberg.aws.secrets` prints `export` lines for a local shell
-(`infra/scripts/prod_env.sh`), so `make migrate` / `make eval` can run against prod.
+(`eval "$(uv run python -m brokeberg.aws.secrets)"`), so `make migrate` / `make eval` can run
+against prod.
 """
 
 import json
@@ -21,7 +22,6 @@ from sqlalchemy import URL
 from brokeberg.config import get_settings
 
 APP_SECRET_ID = "brokeberg/prod/app"
-DB_SECRET_ID = "brokeberg/prod/db"
 # Aurora at 0 ACU takes ~15-30s to resume; the first connection waits for it.
 CONNECT_TIMEOUT_S = 60
 
@@ -30,23 +30,21 @@ def _get(client: Any, secret_id: str) -> dict[str, Any]:
     return dict(json.loads(client.get_secret_value(SecretId=secret_id)["SecretString"]))
 
 
-def database_url(db: dict[str, Any]) -> str:
+def database_url(host: str, username: str, database: str, port: int = 5432) -> str:
+    """A TLS URL with no password: the IAM token is supplied per connection (DB_IAM_AUTH)."""
     return URL.create(
         "postgresql+psycopg",
-        username=db["username"],
-        password=db["password"],
-        host=db["host"],
-        port=int(db.get("port", 5432)),
-        database=db.get("dbname", "brokeberg"),
+        username=username,
+        host=host,
+        port=port,
+        database=database,
         query={"sslmode": "require", "connect_timeout": str(CONNECT_TIMEOUT_S)},
-    ).render_as_string(hide_password=False)
+    ).render_as_string()
 
 
 def resolve(client: Any) -> dict[str, str]:
-    """The env vars prod runs with: the app secret plus DATABASE_URL."""
-    env = {k.upper(): str(v) for k, v in _get(client, APP_SECRET_ID).items()}
-    env["DATABASE_URL"] = database_url(_get(client, DB_SECRET_ID))
-    return env
+    """The env vars prod runs with: the app secret, keys uppercased."""
+    return {k.upper(): str(v) for k, v in _get(client, APP_SECRET_ID).items()}
 
 
 def load(client: Any | None = None) -> None:

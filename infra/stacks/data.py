@@ -1,77 +1,22 @@
-"""BrokebergData: Aurora PostgreSQL Serverless v2 (pgvector), the raw S3 bucket, and the secrets.
+"""BrokebergData: the raw S3 bucket and the app-config secret.
 
-Stateful and cheap at rest: Aurora scales to 0 ACU and auto-pauses when idle. Destroying this
-stack leaves a final Aurora snapshot (RemovalPolicy.SNAPSHOT).
+Aurora is NOT in this stack. Free-plan accounts can only create Aurora PostgreSQL with express
+configuration (no VPC, internet access gateway, IAM-only auth), which CloudFormation can't
+express; `infra/scripts/express_db.py` creates and deletes it. Lambdas connect with IAM tokens
+(see `db_connect_policy` in stacks/pipeline.py), so there is no DB password or DB secret.
 """
 
-from aws_cdk import Annotations, CfnOutput, Duration, RemovalPolicy, Stack
-from aws_cdk import aws_ec2 as ec2
-from aws_cdk import aws_rds as rds
+from aws_cdk import CfnOutput, RemovalPolicy, Stack
 from aws_cdk import aws_s3 as s3
 from aws_cdk import aws_secretsmanager as secretsmanager
 from constructs import Construct
 
 APP_SECRET_NAME = "brokeberg/prod/app"
-DB_SECRET_NAME = "brokeberg/prod/db"
-DB_NAME = "brokeberg"
 
 
 class DataStack(Stack):
     def __init__(self, scope: Construct, construct_id: str, **kwargs: object) -> None:
         super().__init__(scope, construct_id, **kwargs)
-
-        # Public subnets only, no NAT: Lambdas run outside the VPC and reach Aurora's public
-        # endpoint over TLS (a NAT gateway would cost ~$33/mo).
-        vpc = ec2.Vpc(
-            self,
-            "Vpc",
-            max_azs=2,
-            nat_gateways=0,
-            subnet_configuration=[
-                ec2.SubnetConfiguration(name="public", subnet_type=ec2.SubnetType.PUBLIC)
-            ],
-        )
-        db_sg = ec2.SecurityGroup(self, "DbSg", vpc=vpc, allow_all_outbound=False)
-        db_sg.add_ingress_rule(
-            ec2.Peer.any_ipv4(),
-            ec2.Port.tcp(5432),
-            "Lambda has no fixed egress IPs; protected by forced TLS + generated password",
-        )
-
-        engine = rds.DatabaseClusterEngine.aurora_postgres(
-            version=rds.AuroraPostgresEngineVersion.VER_16_9
-        )
-        self.cluster = rds.DatabaseCluster(
-            self,
-            "Db",
-            engine=engine,
-            credentials=rds.Credentials.from_generated_secret(
-                "brokeberg",
-                secret_name=DB_SECRET_NAME,
-                exclude_characters=" %+~`#$&*()|[]{}:;<>?!'/@\"\\",
-            ),
-            default_database_name=DB_NAME,
-            writer=rds.ClusterInstance.serverless_v2("writer", publicly_accessible=True),
-            serverless_v2_min_capacity=0,
-            serverless_v2_max_capacity=2,
-            serverless_v2_auto_pause_duration=Duration.minutes(10),
-            parameter_group=rds.ParameterGroup(
-                self, "Params", engine=engine, parameters={"rds.force_ssl": "1"}
-            ),
-            vpc=vpc,
-            vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PUBLIC),
-            security_groups=[db_sg],
-            storage_encrypted=True,
-            backup=rds.BackupProps(retention=Duration.days(1)),
-            removal_policy=RemovalPolicy.SNAPSHOT,
-        )
-        # Public Aurora is the chosen trade-off (no NAT); synth still notes W9011.
-        Annotations.of(db_sg).acknowledge_warning(
-            "CloudFormation-Validate::W2508",
-            "Public Aurora by design: Lambdas run outside the VPC; TLS forced, generated password",
-        )
-        assert self.cluster.secret is not None
-        self.db_secret = self.cluster.secret
 
         self.bucket = s3.Bucket(
             self,
@@ -84,7 +29,8 @@ class DataStack(Stack):
         )
 
         # Starts empty and is never templated again, so a redeploy can't wipe it.
-        # Filled by infra/scripts/push_secrets.py (provider flip, model IDs, source API keys).
+        # Filled by infra/scripts/push_secrets.py (provider flip, model IDs, source API keys,
+        # DATABASE_URL + DB_IAM_AUTH).
         self.app_secret = secretsmanager.Secret(
             self,
             "App",
@@ -95,4 +41,3 @@ class DataStack(Stack):
         )
 
         CfnOutput(self, "RawBucketName", value=self.bucket.bucket_name)
-        CfnOutput(self, "DbEndpoint", value=self.cluster.cluster_endpoint.hostname)

@@ -65,7 +65,7 @@ Collect each into a scratch file, then move into `.env` (Section 6).
 
 NYT poll data + race-ratings sites need no key (scrape w/ attribution).
 
-AWS one-time: create an IAM admin user, `aws configure` (region `us-east-1`), and in **Bedrock → Model
+AWS one-time: create an IAM admin user, `aws configure` (region `us-east-2`), and in **Bedrock → Model
 access** request **Anthropic Claude** + **Titan Text Embeddings V2** now (it has lead time).
 
 ---
@@ -122,7 +122,7 @@ BLS_API_KEY=
 DATA_GOV_API_KEY=
 CENSUS_API_KEY=
 X_BEARER_TOKEN=
-AWS_REGION=us-east-1
+AWS_REGION=us-east-2
 S3_RAW_BUCKET=brokeberg-raw-yourname
 EOF
 ```

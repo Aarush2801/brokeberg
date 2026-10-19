@@ -4,28 +4,21 @@ from datetime import UTC, datetime, timedelta
 from typing import Any
 
 import pytest
-from sqlalchemy import make_url
+from sqlalchemy import create_engine, make_url
 from sqlalchemy.orm import Session
 
 from brokeberg.aws import handlers, secrets
 from brokeberg.cluster import run as cluster_run
+from brokeberg.db import session as db_session
 from brokeberg.extract import run as extract_run
 from brokeberg.graph import run as graph_run
 from brokeberg.ingest import run_once
 from brokeberg.ingest.base import Stats
 
-DB_SECRET = {
-    "username": "brokeberg",
-    "password": "p@ss/word:1",
-    "host": "db.cluster-x.us-east-1.rds.amazonaws.com",
-    "port": 5432,
-    "dbname": "brokeberg",
-}
-
 
 class FakeSecrets:
     def __init__(self, app: dict[str, Any]) -> None:
-        self.values = {secrets.APP_SECRET_ID: app, secrets.DB_SECRET_ID: DB_SECRET}
+        self.values = {secrets.APP_SECRET_ID: app}
 
     def get_secret_value(self, SecretId: str) -> dict[str, str]:  # noqa: N803 - boto3 casing
         return {"SecretString": json.dumps(self.values[SecretId])}
@@ -42,14 +35,39 @@ class FakeSqs:
 # --- secrets ----------------------------------------------------------------------------------
 
 
-def test_resolve_builds_tls_database_url_and_uppercases_keys() -> None:
+def test_resolve_uppercases_keys_and_stringifies_values() -> None:
     env = secrets.resolve(FakeSecrets({"llm_provider": "bedrock", "X_MAX_RESULTS": 5}))
-    assert env["LLM_PROVIDER"] == "bedrock" and env["X_MAX_RESULTS"] == "5"
-    url = make_url(env["DATABASE_URL"])
+    assert env == {"LLM_PROVIDER": "bedrock", "X_MAX_RESULTS": "5"}
+
+
+def test_database_url_is_tls_with_no_password() -> None:
+    url = make_url(
+        secrets.database_url("db.cluster-x.us-east-2.rds.amazonaws.com", "postgres", "brokeberg")
+    )
     assert url.drivername == "postgresql+psycopg"
-    assert url.password == DB_SECRET["password"]  # special characters survive quoting
-    assert url.host == DB_SECRET["host"] and url.database == "brokeberg"
+    assert url.password is None  # IAM token supplied per connection
+    assert url.host.endswith("us-east-2.rds.amazonaws.com") and url.port == 5432
+    assert url.username == "postgres" and url.database == "brokeberg"
     assert url.query["sslmode"] == "require"
+
+
+def test_iam_auth_signs_each_connection_with_a_fresh_token(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    calls: list[tuple[str, int, str]] = []
+
+    def fake_token(host: str, port: int, user: str) -> str:
+        calls.append((host, port, user))
+        return f"token-{len(calls)}"
+
+    monkeypatch.setattr(db_session, "iam_token", fake_token)
+    engine = create_engine("postgresql+psycopg://postgres@db.example:5432/brokeberg")
+    db_session.use_iam_auth(engine)
+    for expected in ("token-1", "token-2"):
+        cparams: dict[str, Any] = {}
+        engine.dialect.dispatch.do_connect(engine.dialect, None, [], cparams)
+        assert cparams["password"] == expected
+    assert calls == [("db.example", 5432, "postgres")] * 2
 
 
 def test_load_never_overrides_process_env(monkeypatch: pytest.MonkeyPatch) -> None:

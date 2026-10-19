@@ -12,7 +12,7 @@ from constructs import Construct
 
 from stacks.data import DataStack
 from stacks.image import image_code
-from stacks.pipeline import bedrock_policy
+from stacks.pipeline import bedrock_policy, db_connect_policy
 
 
 class ApiStack(Stack):
@@ -38,7 +38,7 @@ class ApiStack(Stack):
             ),
         )
         data.app_secret.grant_read(fn)
-        data.db_secret.grant_read(fn)
+        fn.add_to_role_policy(db_connect_policy(self))
         fn.add_to_role_policy(bedrock_policy(self))
 
         url = fn.add_function_url(auth_type=lambda_.FunctionUrlAuthType.NONE)

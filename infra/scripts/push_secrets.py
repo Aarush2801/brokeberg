@@ -3,7 +3,8 @@
     cd pipeline && uv run python ../infra/scripts/push_secrets.py
 
 Source API keys come from the repo-root .env (never committed); the provider flip and model IDs
-are set here; S3_RAW_BUCKET comes from the BrokebergData stack output. Prints key names only.
+are set here; S3_RAW_BUCKET comes from the BrokebergData stack output and DATABASE_URL (no
+password; DB_IAM_AUTH=true) from the express cluster (express_db.py). Prints key names only.
 Re-run after any change; it replaces the whole secret.
 """
 
@@ -12,10 +13,12 @@ import json
 from pathlib import Path
 
 import boto3
+from brokeberg.aws.secrets import database_url
 from dotenv import dotenv_values
+from express_db import DB_NAME, DB_USER, endpoint
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-REGION = "us-east-1"
+REGION = "us-east-2"
 SECRET_ID = "brokeberg/prod/app"
 SOURCE_KEYS = (
     "CONGRESS_API_KEY",
@@ -53,6 +56,8 @@ def main() -> None:
         "EMBED_DIM": "1024",
         "AWS_REGION": REGION,
         "S3_RAW_BUCKET": stack_output("RawBucketName"),
+        "DATABASE_URL": database_url(endpoint(), DB_USER, DB_NAME),
+        "DB_IAM_AUTH": "true",
     }
     boto3.client("secretsmanager", region_name=REGION).put_secret_value(
         SecretId=SECRET_ID, SecretString=json.dumps(secret)
