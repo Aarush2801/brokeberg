@@ -1,4 +1,5 @@
 import json
+import logging
 import os
 from datetime import UTC, datetime, timedelta
 from typing import Any
@@ -90,6 +91,22 @@ def test_load_never_overrides_process_env(monkeypatch: pytest.MonkeyPatch) -> No
 def warm(monkeypatch: pytest.MonkeyPatch) -> None:
     """Skip the Secrets Manager cold start."""
     monkeypatch.setattr(handlers, "_loaded", True)
+
+
+def test_cold_start_keeps_api_keys_out_of_logs(monkeypatch: pytest.MonkeyPatch) -> None:
+    # httpx logs request URLs (with ?api_key=...) at INFO; the root logger goes to INFO.
+    monkeypatch.setattr(handlers, "_loaded", False)
+    monkeypatch.setattr(secrets, "load", lambda: None)
+    root, httpx_log = logging.getLogger(), logging.getLogger("httpx")
+    saved = root.level, httpx_log.level
+    httpx_log.setLevel(logging.NOTSET)
+    try:
+        handlers._cold_start()
+        assert root.isEnabledFor(logging.INFO)
+        assert not httpx_log.isEnabledFor(logging.INFO)
+    finally:
+        root.setLevel(saved[0])
+        httpx_log.setLevel(saved[1])
 
 
 def _ingest_stats(monkeypatch: pytest.MonkeyPatch, stats: Stats) -> list[Any]:

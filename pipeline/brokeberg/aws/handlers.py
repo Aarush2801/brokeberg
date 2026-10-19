@@ -33,6 +33,9 @@ def _cold_start() -> None:
     global _loaded
     if not _loaded:
         logging.getLogger().setLevel(logging.INFO)
+        # httpx logs full request URLs at INFO, and FRED/Congress/FEC put the API key in the
+        # query string, so it would land in CloudWatch.
+        logging.getLogger("httpx").setLevel(logging.WARNING)
         secrets.load()
         _loaded = True
 
